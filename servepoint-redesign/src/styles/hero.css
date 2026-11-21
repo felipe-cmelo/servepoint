@@ -1,0 +1,1022 @@
+/* ServePoint Canada: the hero, the sample sheet and the process scene (docs/15 sections 3 and 5).
+   v4.1: a calm navy hero with a sheet of paper. No grid, no glow, no network lines. The sheet is the one visual. */
+
+@layer sections {
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    display: grid;
+    align-content: center;
+    min-height: min(100svh, 49rem);
+    padding-top: calc(var(--header-h) + clamp(1.75rem, 5svh, 4rem));
+    padding-bottom: clamp(2.5rem, 7svh, 5rem);
+    background: var(--navy-900);
+    color: var(--fg);
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+  .hero-copy > * + * {
+    margin-top: var(--s-5);
+  }
+  .hero-copy h1 {
+    max-width: 15ch;
+  }
+  .hero-copy .lead {
+    max-width: 33rem;
+    color: var(--fg-2);
+    font-size: var(--fs-lead);
+    line-height: 1.58;
+  }
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-3);
+    padding-top: var(--s-2);
+  }
+  .byline {
+    max-width: 33rem;
+    color: var(--fg-2);
+    font-size: var(--fs-sm);
+  }
+  .byline strong {
+    color: var(--fg);
+    font-weight: 600;
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-2) var(--s-6);
+    max-width: 34rem;
+    padding-top: var(--s-5);
+    border-top: 1px solid var(--card-border);
+  }
+  .facts li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    color: var(--fg);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .facts .icon {
+    margin-top: 0.12rem;
+    color: var(--teal-300);
+    stroke-width: 2.4;
+  }
+
+  /* ---------- The sample sheet ---------- */
+  .sheet-wrap {
+    /* The sheet is about 46 em tall. Its size follows the window height so the pinned copy always fits under the header. */
+    --sf: clamp(0.7rem, calc((100svh - 6.75rem) / 46), 0.8125rem);
+    position: relative;
+    width: 100%;
+    max-width: 29rem;
+    margin-inline: auto 14px;
+    font-size: var(--sf);
+  }
+  /* Two sheets under the first, offset like a stack on a desk */
+  .sheet-stack {
+    position: relative;
+  }
+  .sheet-stack::before,
+  .sheet-stack::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 3px;
+    background: var(--surface);
+    box-shadow: 0 1px 0 color-mix(in srgb, var(--navy-950) 10%, transparent);
+  }
+  .sheet-stack::before {
+    transform: translate(7px, 8px) rotate(0.5deg);
+    opacity: 0.9;
+  }
+  .sheet-stack::after {
+    transform: translate(14px, 16px) rotate(1.1deg);
+    opacity: 0.72;
+  }
+  .sheet {
+    position: relative;
+    z-index: 1;
+    border-radius: 3px;
+    background: var(--surface);
+    color: var(--navy-900);
+    font-family: var(--font-doc);
+    line-height: 1.5;
+    box-shadow:
+      0 1px 2px color-mix(in srgb, var(--navy-950) 18%, transparent),
+      0 30px 60px -30px color-mix(in srgb, var(--navy-950) 70%, transparent);
+  }
+  .sheet-band {
+    margin: 0;
+    padding: 0.55em 1.2em;
+    border-radius: 3px 3px 0 0;
+    background: var(--surface-2);
+    color: var(--text-3);
+    font-family: var(--font-ui);
+    font-size: 0.88em;
+    font-weight: 500;
+  }
+  .sheet-body {
+    padding: 1.1em 1.35em 1.3em;
+  }
+  .sheet p {
+    margin: 0;
+    color: var(--navy-900);
+  }
+  .s-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1em;
+  }
+  .s-court {
+    font-size: 1.04em;
+    font-weight: 600;
+  }
+  .s-file {
+    color: var(--text-3) !important;
+    font-family: var(--font-ui);
+    font-size: 0.86em;
+    white-space: nowrap;
+  }
+  .sheet .file {
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+  }
+  .s-meta {
+    margin-top: 0.15em !important;
+    color: var(--text-2) !important;
+    font-family: var(--font-ui);
+    font-size: 0.88em;
+  }
+  .sheet .s-title {
+    margin: 0.85em 0 0.6em;
+    padding: 0.5em 0;
+    border-block: 1px solid var(--line-2);
+    color: var(--navy-900);
+    font-family: var(--font-doc);
+    font-size: 0.98em;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
+  .ledger {
+    margin-bottom: 0.8em;
+  }
+  .ledger li {
+    display: grid;
+    grid-template-columns: 8.2em minmax(0, 1fr);
+    gap: 0.7em;
+    padding: 0.38em 0.5em;
+    border-bottom: 1px solid var(--line);
+    color: var(--navy-900);
+    font-variant-numeric: tabular-nums;
+  }
+  .ledger li:first-child {
+    border-top: 1px solid var(--line);
+  }
+  .ledger .when {
+    color: var(--text-3);
+    font-family: var(--font-ui);
+    font-size: 0.9em;
+  }
+  .ledger .what {
+    font-weight: 500;
+  }
+  .s-text {
+    padding: 0.2em 0.5em;
+  }
+  .s-text ol {
+    margin: 0.35em 0 0;
+    padding-left: 1.25em;
+    list-style: decimal;
+  }
+  .s-text li {
+    margin: 0 0 0.3em;
+    color: var(--navy-900);
+  }
+  .s-sworn {
+    margin-top: 0.6em;
+    padding: 0.3em 0.5em;
+  }
+  .sig {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.8em;
+    margin-top: 0.15em;
+  }
+  .sig svg {
+    width: 8.5em;
+    height: auto;
+    flex: none;
+    overflow: visible;
+  }
+  .sig path {
+    fill: none;
+    stroke: var(--navy-700);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .sig p {
+    flex: 1;
+    margin: 0 0 0.3em;
+    padding-top: 0.3em;
+    border-top: 1px solid var(--line-2);
+    color: var(--text-3) !important;
+    font-family: var(--font-ui);
+    font-size: 0.82em;
+  }
+  .sheet mark {
+    cursor: help;
+    outline-offset: 2px;
+  }
+  .tip {
+    position: absolute;
+    z-index: 6;
+    max-width: 15rem;
+    padding: 0.5em 0.7em;
+    border-radius: 8px;
+    background: var(--navy-900);
+    color: #ffffff;
+    font: 500 0.8125rem/1.4 var(--font-ui);
+    box-shadow: var(--shadow-2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--t-fast);
+  }
+  .tip.on {
+    opacity: 1;
+  }
+  .hero .sheet-wrap {
+    max-width: 31rem;
+    margin-inline: auto;
+  }
+  .sheet-notes {
+    margin-top: var(--s-4);
+    padding-right: 14px;
+    color: var(--fg-2);
+    font-family: var(--font-ui);
+    font-size: 0.95em;
+  }
+  .js .sheet-notes {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .sheet-fade,
+  .sheet-toggle {
+    display: none;
+  }
+
+  /* ---------- Process scene ---------- */
+  .scene-steps,
+  .scene-tabs {
+    display: none;
+  }
+  .scene-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 28rem);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+  }
+  .scene-aside {
+    align-self: stretch;
+  }
+  .scene-sticky {
+    position: sticky;
+    top: calc(var(--header-h) + 1.25rem);
+    padding-bottom: 16px;
+  }
+  .scene .sheet-wrap[data-variant="scene"] {
+    margin-inline: 0 14px;
+  }
+  .stages {
+    position: relative;
+  }
+  /* One rail runs through the four stages: a track, and the accent line down to the stage in focus. */
+  .stages::before,
+  .stages::after {
+    content: "";
+    position: absolute;
+    left: 0.85rem;
+    top: 0.9rem;
+    width: 2px;
+    border-radius: 2px;
+  }
+  .stages::before {
+    bottom: 0.9rem;
+    background: var(--line-2);
+  }
+  .stages::after {
+    height: var(--rail, calc(100% - 1.8rem));
+    background: var(--accent);
+    transition: height 0.6s var(--ease);
+  }
+  .stage {
+    position: relative;
+    min-height: min(46svh, 26rem);
+    padding: 0 0 var(--s-8) 3rem;
+  }
+  .stage:last-child {
+    min-height: 0;
+    padding-bottom: 0;
+  }
+  .stage-node {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease), color 0.4s var(--ease), transform 0.4s var(--ease);
+  }
+  .js .stage:not(.is-reached) .stage-node {
+    border-color: var(--rule);
+    background: var(--surface);
+    color: var(--text-2);
+  }
+  .stage.is-active .stage-node {
+    transform: scale(1.12);
+  }
+  .stage-body > * + * {
+    margin-top: var(--s-4);
+  }
+  .stage h3 {
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: clamp(1.375rem, 1.2rem + 0.75vw, 1.75rem);
+    font-weight: 540;
+    letter-spacing: -0.012em;
+    transition: color 0.4s var(--ease);
+  }
+  .js .stage:not(.is-reached) h3 {
+    color: var(--text-3);
+  }
+  .stage .sub {
+    color: var(--fg);
+    font-size: var(--fs-lead);
+    font-weight: 560;
+    line-height: 1.4;
+    max-width: 32rem;
+  }
+  .stage-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-3);
+  }
+  /* The part of the sheet this stage produces, lit while the stage is in focus */
+  @media (min-width: 62.0625rem) {
+    /* A little room after the last stage, so the pinned sheet stays pinned while the last stage is read. */
+    .stages {
+      padding-bottom: clamp(2rem, 18svh, 9rem);
+    }
+    .scene .sheet [data-part] {
+      border-radius: 6px;
+      transition: background-color 0.45s var(--ease), box-shadow 0.45s var(--ease);
+    }
+    .scene[data-now="1"] .sheet [data-part="1"],
+    .scene[data-now="2"] .sheet [data-part="2"],
+    .scene[data-now="3"] .sheet [data-part="3"],
+    .scene[data-now="4"] .sheet [data-part="4"] {
+      background-color: var(--accent-soft);
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+  }
+  .t24 {
+    max-width: 30rem;
+  }
+  .t24-bar {
+    position: relative;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--line-2);
+    overflow: clip;
+  }
+  .t24-fill {
+    position: absolute;
+    inset: 0;
+    border-radius: 3px;
+    background: var(--accent);
+    transform-origin: left;
+    transition: transform 0.9s var(--ease);
+  }
+  .js .scene[data-now="1"] .t24-fill {
+    transform: scaleX(0.22);
+  }
+  .t24-pts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--s-3);
+    margin-top: var(--s-3);
+  }
+  .t24-pts li {
+    color: var(--fg-3);
+    font-size: var(--fs-xs);
+    line-height: 1.35;
+  }
+  .t24-pts b {
+    display: block;
+    color: var(--fg);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .outcomes {
+    display: grid;
+    gap: var(--s-3);
+    max-width: 32rem;
+  }
+  .outcomes .card {
+    padding: var(--s-4) var(--s-5);
+  }
+  .outcomes h4 {
+    margin-bottom: 0.2rem;
+  }
+
+  /* ---------- Under 1000 px: one column, and a step bar that follows the scroll ---------- */
+  @media (max-width: 62rem) {
+    .scene-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .scene-aside {
+      display: none;
+    }
+    .stage {
+      min-height: 0;
+      padding-bottom: var(--s-8);
+      scroll-margin-top: calc(var(--header-h) + 4.75rem);
+    }
+    .stage:last-child {
+      padding-bottom: 0;
+    }
+    /* The step bar sticks under the header while the stages pass beneath it. The step in focus is filled, the steps behind it
+       are ticked, and a hairline under the bar grows to the step in focus. */
+    .scene.tabs-on .scene-steps {
+      position: sticky;
+      top: calc(var(--header-h) + 0.5rem);
+      z-index: 30;
+      display: block;
+      margin-bottom: var(--s-6);
+      border: 1px solid var(--line-2);
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--surface) 94%, transparent);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-2);
+    }
+    .scene.tabs-on .scene-steps::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 0;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--accent);
+      transform: scaleX(var(--steps-p, 0.25));
+      transform-origin: left;
+      transition: transform 0.7s var(--ease);
+    }
+    .scene.tabs-on .scene-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 2px;
+      padding: 3px;
+    }
+    .scene-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      width: 100%;
+      min-height: 2.75rem;
+      padding: 0 0.3rem;
+      border: 0;
+      border-radius: 9px;
+      background: transparent;
+      color: var(--text-2);
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.2;
+      white-space: nowrap;
+      transition: background-color 0.45s var(--ease), color 0.45s var(--ease), border-color 0.45s var(--ease);
+    }
+    .scene-tab .n {
+      display: grid;
+      place-items: center;
+      flex: none;
+      width: 1.4rem;
+      height: 1.4rem;
+      border: 1px solid var(--rule);
+      border-radius: 50%;
+      font-size: 0.6875rem;
+      transition: background-color 0.45s var(--ease), border-color 0.45s var(--ease), color 0.45s var(--ease);
+    }
+    .scene-tab.is-done {
+      color: var(--accent-text);
+    }
+    .scene-tab.is-done .n {
+      border-color: var(--accent);
+      color: var(--accent-text);
+    }
+    .scene-tab[aria-current="step"] {
+      background: var(--accent);
+      color: #ffffff;
+    }
+    .scene-tab[aria-current="step"] .n {
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+  }
+
+  /* On a phone the step bar is a carousel: roomy pills in a row that swipes, the step in focus always centred, the neighbours
+     fading out at the edges. The scene moves the row; a swipe on it moves it by hand. */
+  @media (max-width: 40rem) {
+    .scene.tabs-on .scene-tabs {
+      --pill: 7.75rem;
+      position: relative;
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.4rem calc(50% - var(--pill) / 2);
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x proximity;
+      scrollbar-width: none;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16%, #000 84%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0, #000 16%, #000 84%, transparent 100%);
+    }
+    .scene.tabs-on .scene-tabs::-webkit-scrollbar {
+      display: none;
+    }
+    .scene.tabs-on .scene-tabs > li {
+      flex: 0 0 var(--pill);
+      scroll-snap-align: center;
+    }
+    .scene-tab {
+      min-height: 2.75rem;
+      padding: 0 0.75rem;
+      border: 1px solid var(--line-2);
+      border-radius: 999px;
+      background: var(--surface);
+      box-shadow: var(--shadow-1);
+    }
+    .scene-tab[aria-current="step"] {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-2);
+    }
+  }
+  .pin-hint {
+    display: none;
+  }
+
+  /* ---------- Phones in portrait: the scene is pinned and each stage fades in over the one before ----------
+     .scene-pin is the scroll track. .scene-pinned is the frame that stays put while the reader scrolls through the track.
+     The stages sit in one grid cell, one on top of the other, and each is a card that fills the frame, so there is no empty
+     band above or below it. Scene.ts writes which stage is in focus from the scroll position and centres its pill in the
+     carousel. The rest is a CSS transition: the old stage lifts away and fades, the new one rises and fades in.
+     With reduced motion, in landscape and on a tablet the scene stays a column under the sticky step bar (the rules above). */
+  @media (max-width: 40rem) and (min-height: 36rem) and (prefers-reduced-motion: no-preference) {
+    .scene.tabs-on .scene-pin {
+      height: calc(100svh - var(--header-h) + 4 * 52svh);
+    }
+    .scene.tabs-on .scene-pinned {
+      /* sizes that follow the window height, so a tall phone gets roomier cards and a short one still fits */
+      --pin-gap: clamp(0.5rem, 1.5svh, 1rem);
+      --pin-pad: clamp(0.875rem, 2.1svh, 1.375rem);
+      --pin-fs: clamp(0.875rem, 0.5rem + 1svh, 1.0625rem);
+      position: sticky;
+      top: var(--header-h);
+      display: flex;
+      flex-direction: column;
+      height: calc(100svh - var(--header-h));
+      padding-block: 0.25rem 0.5rem;
+    }
+    .scene.tabs-on .scene-steps {
+      position: relative;
+      top: auto;
+      flex: none;
+      margin-bottom: var(--pin-gap);
+      padding-bottom: 6px;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+    /* a track under the carousel, and the scroll position filling it */
+    .scene.tabs-on .scene-steps::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--line-2);
+    }
+    .scene.tabs-on .scene-steps::after {
+      left: 0;
+      right: 0;
+      transform: scaleX(var(--pin-p, 0));
+      transition: transform 0.12s linear;
+    }
+    .scene.tabs-on .scene-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr);
+      align-items: stretch;
+      flex: 1;
+      min-height: 0;
+    }
+    .scene.tabs-on .stages {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr);
+      min-height: 0;
+    }
+    .scene.tabs-on .stages::before,
+    .scene.tabs-on .stages::after,
+    .scene.tabs-on .stage-node {
+      display: none;
+    }
+    .scene.tabs-on .stage {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      grid-area: 1 / 1;
+      min-width: 0;
+      min-height: 0;
+      padding: var(--pin-pad);
+      border: 1px solid var(--line-2);
+      border-radius: var(--r-xl);
+      background: var(--surface);
+      box-shadow: var(--shadow-2);
+      overflow: clip;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(18px);
+      pointer-events: none;
+      transition: opacity 0.5s var(--ease), transform 0.7s var(--ease), visibility 0s linear 0.5s;
+    }
+    .scene.tabs-on .stage.is-reached:not(.is-active) {
+      transform: translateY(-14px);
+    }
+    .scene.tabs-on .stage.is-active {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      pointer-events: auto;
+      transition-delay: 0.14s, 0.14s, 0s;
+    }
+    /* the stage number, large and quiet, in the corner of the card */
+    .scene.tabs-on .stage::before {
+      content: "01";
+      content: "01" / "";
+      position: absolute;
+      top: -0.08em;
+      right: 0.1em;
+      color: color-mix(in srgb, var(--teal-600) 12%, transparent);
+      font: 600 clamp(5rem, 15svh, 8rem) / 1 var(--font-heading);
+      pointer-events: none;
+    }
+    .scene.tabs-on .stage[data-stage="2"]::before {
+      content: "02";
+      content: "02" / "";
+    }
+    .scene.tabs-on .stage[data-stage="3"]::before {
+      content: "03";
+      content: "03" / "";
+    }
+    .scene.tabs-on .stage[data-stage="4"]::before {
+      content: "04";
+      content: "04" / "";
+    }
+    .scene.tabs-on .stage-body {
+      position: relative;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      min-height: 0;
+    }
+    .scene.tabs-on .stage-body > * + * {
+      margin-top: var(--pin-gap);
+    }
+    /* Each stage keeps what it needs and loses what is said elsewhere, so it fits the frame on a 640 px screen */
+    .scene.tabs-on .pin-hide {
+      display: none;
+    }
+    .scene.tabs-on .stage h3 {
+      font-size: clamp(1.5rem, 0.9rem + 2.4svh, 1.875rem);
+      color: var(--text);
+    }
+    .scene.tabs-on .stage .sub {
+      font-size: clamp(0.9375rem, 0.5rem + 1.2svh, 1.125rem);
+      line-height: 1.35;
+    }
+    .scene.tabs-on .stage-body > p {
+      font-size: var(--pin-fs);
+      line-height: 1.5;
+    }
+
+    /* Stage 1: the four things to send, as rows that share the height */
+    .scene.tabs-on .checklist {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+    .scene.tabs-on .checklist > li {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      padding: 0 0 0 2rem;
+      font-size: var(--pin-fs);
+      line-height: 1.4;
+    }
+    .scene.tabs-on .checklist > li {
+      --ck-top: 50%;
+    }
+    .scene.tabs-on .checklist > li::before {
+      translate: 0 -50%;
+      left: 0.2rem;
+    }
+
+    /* Stage 2: the attempts as a vertical timeline */
+    .scene.tabs-on .t24 {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      max-width: none;
+    }
+    .scene.tabs-on .t24-bar {
+      display: none;
+    }
+    .scene.tabs-on .t24-pts {
+      position: relative;
+      display: grid;
+      flex: 1;
+      grid-template-columns: minmax(0, 1fr);
+      grid-auto-rows: minmax(0, 1fr);
+      gap: 0;
+      margin: 0;
+      padding-left: 2rem;
+    }
+    .scene.tabs-on .t24-pts::before {
+      content: "";
+      position: absolute;
+      left: 0.5rem;
+      top: 12%;
+      bottom: 12%;
+      width: 2px;
+      border-radius: 2px;
+      background: var(--line-2);
+    }
+    .scene.tabs-on .t24-pts li {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: var(--pin-fs);
+      line-height: 1.35;
+    }
+    .scene.tabs-on .t24-pts li::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -2rem;
+      width: 1.1rem;
+      height: 1.1rem;
+      translate: 0 -50%;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      background: var(--surface);
+    }
+    .scene.tabs-on .t24-pts li:first-child::before {
+      background: var(--accent);
+    }
+    .scene.tabs-on .t24-pts b {
+      font-size: calc(var(--pin-fs) + 0.0625rem);
+    }
+
+    /* Stage 3: the finder fills the card */
+    .scene.tabs-on .finder {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      max-width: none;
+      padding: var(--s-3);
+      border: 0;
+      background: var(--surface-2);
+      box-shadow: none;
+    }
+    .scene.tabs-on .finder .panels {
+      flex: 1;
+    }
+    /* A tall phone has the room: the six document types are tiles, not a row that swipes */
+    @media (min-height: 46rem) {
+      .scene.tabs-on .finder .chips-scroll {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+        margin: var(--s-3) 0 0;
+        padding: 0;
+        overflow: visible;
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+      .scene.tabs-on .finder .chips-scroll .chip {
+        justify-content: center;
+        min-height: 2.75rem;
+        padding-block: 0.35rem;
+        line-height: 1.2;
+        text-align: center;
+        white-space: normal;
+      }
+    }
+    /* A short phone keeps the finder tight */
+    @media (max-height: 44rem) {
+      .scene.tabs-on .finder {
+        padding: var(--s-2) var(--s-3) var(--s-3);
+      }
+      .scene.tabs-on .finder .input {
+        margin-bottom: var(--s-2);
+      }
+      .scene.tabs-on .finder .panels {
+        margin-top: var(--s-2);
+        padding-top: var(--s-2);
+      }
+      .scene.tabs-on .finder .panel p {
+        margin-bottom: 0.25rem;
+        font-size: 0.8125rem;
+        line-height: 1.4;
+      }
+      .scene.tabs-on .finder .panel-title {
+        margin-bottom: 0.15rem;
+        font-size: 0.9375rem;
+      }
+    }
+
+    /* Stage 4: the two outcomes share the height */
+    .scene.tabs-on .outcomes {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: var(--pin-gap);
+      max-width: none;
+    }
+    .scene.tabs-on .outcomes .card {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--s-3) var(--s-4);
+      border: 0;
+      background: var(--surface-2);
+      box-shadow: none;
+    }
+    .scene.tabs-on .outcomes .card p {
+      font-size: var(--pin-fs);
+      line-height: 1.45;
+    }
+
+    /* The action sits at the foot of the card */
+    .scene.tabs-on .stage-actions {
+      margin-top: auto;
+      padding-top: var(--pin-gap);
+    }
+    .scene.tabs-on .pin-hint {
+      display: grid;
+      flex: none;
+      place-items: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      margin: 0.25rem auto 0;
+      color: var(--accent-text);
+      animation: pin-hint 1.8s var(--ease-io) infinite;
+      transition: opacity 0.4s var(--ease);
+    }
+    .scene.tabs-on[data-now="4"] .pin-hint {
+      opacity: 0;
+    }
+    @keyframes pin-hint {
+      50% {
+        transform: translateY(5px);
+      }
+    }
+  }
+
+  /* ---------- Hero, responsive ---------- */
+  @media (max-width: 62rem) {
+    .hero {
+      min-height: 0;
+    }
+    .hero-inner {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .hero-copy h1 {
+      max-width: 18ch;
+    }
+    .sheet-wrap {
+      margin-inline: 0 14px;
+    }
+  }
+
+  /* ---------- Phones ---------- */
+  @media (max-width: 40rem) {
+    .hero {
+      padding-top: calc(var(--header-h) + var(--s-5));
+      padding-bottom: var(--s-8);
+    }
+    .hero-inner {
+      gap: var(--s-7);
+    }
+    .hero-copy > * + * {
+      margin-top: var(--s-4);
+    }
+    .hero-copy .lead {
+      font-size: 1rem;
+    }
+    .facts {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--s-3) var(--s-4);
+      padding-top: var(--s-4);
+    }
+    .facts li {
+      font-size: 0.8125rem;
+    }
+    .stage {
+      padding-left: 2.6rem;
+    }
+    .stage-actions {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .stage-actions .btn {
+      width: 100%;
+    }
+    .t24-pts {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .outcomes .card {
+      padding: var(--s-4);
+    }
+
+    /* The sample sheet starts as a preview and opens on request, so the page opens with less text. */
+    .sheet-wrap {
+      --sf: 0.8125rem;
+      max-width: none;
+      margin-inline: 0 12px;
+    }
+    .sheet-stack::before {
+      transform: translate(5px, 6px) rotate(0.4deg);
+    }
+    .sheet-stack::after {
+      transform: translate(10px, 12px) rotate(0.9deg);
+    }
+    .sheet-toggle {
+      --btn-h: 2.75rem;
+      display: flex;
+      width: min(calc(100% - 12px), 16rem);
+      margin: calc(var(--s-5) + 8px) auto 0;
+      translate: 6px 0; /* the wrap leaves 12 px on the right for the paper stack, so nudge to the true centre */
+    }
+    .sheet-wrap[data-collapsed] .sheet {
+      max-height: 17.5em;
+      overflow: hidden;
+    }
+    .sheet-wrap[data-collapsed] .sheet-fade {
+      display: block;
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 7em;
+      border-radius: 0 0 3px 3px;
+      background: linear-gradient(to bottom, transparent, var(--surface) 78%);
+      pointer-events: none;
+    }
+    .sheet-body {
+      padding-inline: 1.1em;
+    }
+    .ledger li {
+      grid-template-columns: 7.6em minmax(0, 1fr);
+    }
+  }
+}

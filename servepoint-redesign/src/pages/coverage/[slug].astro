@@ -1,0 +1,109 @@
+---
+/**
+ * City page (docs/pages/coverage.md). A city is published only when it holds unique content that passes the six-point
+ * test in docs/03 section 7: unique intro, courts named and linked to official pages, a neighbourhood list, 3 to 5 FAQs,
+ * an access note and a link to the form pre-filled with the city.
+ */
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import PageHero from "../../components/PageHero.astro";
+import SectionNav from "../../components/SectionNav.astro";
+import FaqList from "../../components/FaqList.astro";
+import InstructBand from "../../components/InstructBand.astro";
+import { communityBySlug } from "../../data/coverage";
+import { site } from "../../data/site";
+import { faqPage, breadcrumbs, service } from "../../data/schema";
+
+export async function getStaticPaths() {
+  const cities = (await getCollection("coverage")).filter((c) => c.data.published);
+  return cities.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+const community = communityBySlug(d.slug)!;
+const path = `/coverage/${d.slug}/`;
+const nearby = d.nearby.map((s) => communityBySlug(s)!);
+const q = `?city=${d.slug}&service=process-serving`;
+---
+
+<Base
+  title={`Process server in ${d.name}, BC | ServePoint Canada`}
+  description={d.description}
+  path={path}
+  schema={[
+    service({ name: `Process serving in ${d.name}`, serviceType: "Process serving", description: d.description, path }),
+    breadcrumbs([{ name: "Home", path: "/" }, { name: "Coverage", path: "/coverage/" }, { name: d.name, path }]),
+    faqPage(d.faqs),
+  ]}
+>
+  <PageHero
+    h1={`Process server in ${d.name}, BC`}
+    lead={`We serve legal documents in ${d.name} for law firms. First attempt typically within 24 hours. Every attempt recorded, with a sworn affidavit of service.`}
+    crumbs={[{ name: "Coverage", path: "/coverage/" }, { name: d.name }]}
+    query={q}
+    glance={{
+      title: `Serving in ${d.name}`,
+      rows: [
+        ["Neighbourhoods", String(community.neighbourhoods.length)],
+        ["Courts listed", String(d.courts.length)],
+        ["First attempt", "Typically within 24 hours"],
+        ["Starts from", `$${site.basePrice.amount} ${site.basePrice.currency}`],
+      ],
+    }}
+  />
+
+  <SectionNav query={q} links={[["Serving here", "intro"], ["Courts", "courts"], ["Neighbourhoods", "neighbourhoods"], ["Questions", "faq"]]} />
+
+  <section class="section theme-light" id="intro" aria-label={`Serving in ${d.name}`}>
+    <div class="wrap-wide grid-2 grid-split">
+      <div class="prose" data-fold><Content /></div>
+      <div class="card stack">
+        <h2 style="font-size:var(--fs-h3)">Access notes</h2>
+        <ul class="ruled">{d.access.map((a) => <li>{a}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-light theme-paper" id="courts" aria-labelledby="courts-h">
+    <div class="wrap-wide grid-2">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="courts-h" class="rule-draw">Courts and registries nearby</h2>
+        <ul class="court-list">
+          {d.courts.map((c) => (
+            <li class="card court-card">
+              <a href={c.url}>{c.name}</a>
+              {c.address && <span class="addr">{c.address}</span>}
+              <span class="note">{c.note}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="muted" style="font-size:var(--fs-xs)">Checked against the court sites on {d.updated.toISOString().slice(0, 10)}. Confirm hours and filing rules with the court.</p>
+      </div>
+      <div class="card stack">
+        <h3>Sources</h3>
+        <ul class="ruled">{d.sources.map((s) => <li><a href={s.url}>{s.label}</a></li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-light" id="neighbourhoods" aria-labelledby="hoods-h">
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <h2 id="hoods-h" class="rule-draw">Neighbourhoods we cover in {d.name}</h2>
+        <p>Not listed? Send the address and we confirm the same business day.</p>
+      </div>
+      <ul class="hood-grid" data-clip="12">{community.neighbourhoods.map((n) => <li>{n}</li>)}</ul>
+      <div class="cluster" style="margin-top:var(--s-7);--gap:var(--s-5)">
+        {nearby.map((n) => <a class="go" href={`/coverage/${n.slug}/`}>Process server in {n.name} <Icon name="arrow-right" /></a>)}
+        <a class="go" href="/coverage/">All areas we serve <Icon name="arrow-right" /></a>
+        <a class="go" href="/pricing/">See pricing <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+  </section>
+
+  <FaqList items={d.faqs} heading={`Questions about serving in ${d.name}`} />
+  <InstructBand lead={`Send the service address in ${d.name}, the deadline and any access details. We confirm availability and next steps the same business day.`} />
+</Base>

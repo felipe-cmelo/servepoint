@@ -1,0 +1,31 @@
+---
+/** FAQ (docs/15): the heading and a contact line on the left, native details elements on the right. FAQPage schema is built by the page. */
+import Icon from "./Icon.astro";
+import type { Faq } from "../data/faqs";
+import { site } from "../data/site";
+
+interface Props {
+  items: Pick<Faq, "q" | "a">[];
+  heading?: string;
+  theme?: "light" | "paper";
+}
+const { items, heading = "Common questions", theme = "paper" } = Astro.props;
+---
+
+<section class={`section theme-${theme === "paper" ? "light theme-paper" : "light"}`} id="faq" aria-labelledby="faq-h">
+  <div class="wrap-wide grid-2 grid-split-r">
+    <div class="stack" style="--stack:var(--s-4)">
+      <h2 id="faq-h" class="rule-draw">{heading}</h2>
+      <p class="faq-lede">Short answers. If yours is not here, call or email.</p>
+      <div class="cluster" style="--gap:var(--s-4)">
+        <a class="go" href={`tel:${site.phone.tel}`}><Icon name="phone" /> {site.phone.display}</a>
+        <a class="go" href={site.emailHref}><Icon name="mail" /> Email us</a>
+      </div>
+    </div>
+    <div>
+      {items.map((f) => (
+        <details class="faq"><summary>{f.q}</summary><p>{f.a}</p></details>
+      ))}
+    </div>
+  </div>
+</section>

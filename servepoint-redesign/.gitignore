@@ -1,0 +1,22 @@
+# Dependencies and build output
+node_modules/
+dist/
+.astro/
+.vercel/
+.netlify/
+
+# Test and audit output
+test-results/
+playwright-report/
+blob-report/
+.shots/
+.lighthouseci/
+
+# Local files and secrets
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+*.log
+.DS_Store
+Thumbs.db

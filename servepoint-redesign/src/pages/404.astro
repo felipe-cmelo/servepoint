@@ -1,0 +1,41 @@
+---
+/** Custom 404 (docs/07 section 6.1): links to the main services and the form. noindex. */
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import PageHero from "../components/PageHero.astro";
+import { site } from "../data/site";
+
+const links = [
+  { path: "/process-serving/", name: "Process serving", desc: "Personal service in Vancouver and the Lower Mainland" },
+  { path: "/court-filing/", name: "Court filing", desc: "Filing, issuing and registry attendance" },
+  { path: "/corporate-search/", name: "Corporate search", desc: "BC Registry searches, results by email" },
+  { path: "/pricing/", name: "Pricing", desc: `Each service starts from $${site.basePrice.amount}` },
+];
+---
+
+<Base
+  title="Page not found | ServePoint Canada"
+  description="That page was not found. Go to process serving, court filing, corporate search or the request form, or call ServePoint Canada."
+  path="/404/"
+  noindex
+>
+  <PageHero h1="Page not found" lead="That page is not here. Try one of these, or press the slash key to search." crumbs={[{ name: "Page not found" }]} actions={false} />
+  <section class="section theme-light" aria-label="Where to go" style="padding-top:clamp(2rem,1.5rem + 2vw,3.5rem)">
+    <div class="wrap-wide">
+      <ul class="grid-auto" style="--min:16rem">
+        {links.map((l) => (
+          <li>
+            <a class="card lift stack" href={l.path} style="display:block;color:var(--fg);text-decoration:none">
+              <h2 style="font-size:var(--fs-h3)">{l.name}</h2>
+              <p>{l.desc}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="cluster" style="margin-top:var(--s-7)">
+        <a class="btn lg" href={site.actions.primaryPath}>{site.actions.primary} <Icon name="arrow-right" class="icon-go" /></a>
+        <a class="btn btn-secondary lg" href={`tel:${site.phone.tel}`}><Icon name="phone" /> {site.actions.phoneLabel}</a>
+      </div>
+    </div>
+  </section>
+</Base>

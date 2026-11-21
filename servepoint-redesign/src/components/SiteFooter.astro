@@ -1,0 +1,70 @@
+---
+/**
+ * Footer (docs/04 section 4): brand and the exact disclaimer, three link groups, contact and legal links.
+ * Under 640 px the three link groups are accordions, closed by default. They are open in the HTML, so with no script
+ * and on wide screens every link shows.
+ */
+import { Image } from "astro:assets";
+import logoReversed from "../assets/logo-reversed.png";
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+
+const year = new Date().getFullYear();
+const tier1 = site.areas.filter((a) => a.tier === 1);
+---
+
+<footer class="site-footer theme-dark" id="site-menu">
+  <div class="wrap-wide">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="/" aria-label={`${site.name}, home`}>
+          <Image src={logoReversed} alt="" width={420} height={81} loading="lazy" densities={[1, 2]} format="webp" />
+        </a>
+        <p>{site.disclaimer}</p>
+        <ul class="foot-contact" style="margin-top:var(--s-4)">
+          <li><a href={`tel:${site.phone.tel}`}>{site.phone.display}</a></li>
+          <li><a href={site.emailHref}>{site.email}</a></li>
+          <li><span class="muted" style="font-size:.9375rem">{site.locality}</span></li>
+        </ul>
+      </div>
+      <nav class="foot-col" aria-label="Services">
+        <details open>
+          <summary>Services <Icon name="chevron-down" /></summary>
+          <ul>
+            {site.services.map((s) => <li><a href={s.path}>{s.name}</a></li>)}
+            <li><a href="/pricing/">Pricing</a></li>
+          </ul>
+        </details>
+      </nav>
+      <nav class="foot-col" aria-label="Coverage">
+        <details open>
+          <summary>Coverage <Icon name="chevron-down" /></summary>
+          <ul>
+            {tier1.map((a) => <li><a href={`/coverage/${a.slug}/`}>{a.name}</a></li>)}
+            <li><a href="/coverage/">All areas</a></li>
+          </ul>
+        </details>
+      </nav>
+      <nav class="foot-col" aria-label="Company">
+        <details open>
+          <summary>Company <Icon name="chevron-down" /></summary>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/guides/">Guides</a></li>
+            <li><a href="/out-of-province-and-us/">Out of province</a></li>
+            <li><a href={site.actions.primaryPath}>{site.actions.primary}</a></li>
+          </ul>
+        </details>
+      </nav>
+    </div>
+    <div class="foot-bar">
+      <span>© {year} {site.name}</span>
+      <ul>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/terms/">Terms</a></li>
+        <li><a href="/accessibility/">Accessibility</a></li>
+      </ul>
+      <a href="#top" class="go" style="color:var(--on-dark-2);font-size:var(--fs-xs)">Back to top <Icon name="arrow-up-right" /></a>
+    </div>
+  </div>
+</footer>

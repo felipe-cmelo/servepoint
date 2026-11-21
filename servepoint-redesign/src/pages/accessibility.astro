@@ -1,0 +1,37 @@
+---
+import Legal from "../layouts/Legal.astro";
+import { site } from "../data/site";
+---
+
+{/* Draft for the owner's review (docs/07 section 9.4). Target stated as a target, not as conformance. The response time and
+    the date of the last accessibility review are filled in at the Phase 5 audit. */}
+
+<Legal
+  title="Accessibility | ServePoint Canada"
+  description="Our accessibility target for the ServePoint Canada website, what has been done, known limits and how to report a barrier by email or phone."
+  path="/accessibility/"
+  h1="Accessibility"
+  updated="November 20, 2026"
+>
+  <h2>Our target</h2>
+  <p>We aim for WCAG 2.2 level AA on every page. This is a target. We do not claim full conformance.</p>
+
+  <h2>What has been done</h2>
+  <ul>
+    <li>Native links, buttons, forms and disclosure controls.</li>
+    <li>Everything works from the keyboard, including the coverage map. The list of communities under the map does the same job and works without JavaScript.</li>
+    <li>A visible focus outline on every interactive element.</li>
+    <li>Colour pairs chosen for contrast, with status always stated in words as well as colour.</li>
+    <li>Motion that respects the reduced motion setting. With reduced motion, or with JavaScript off, every page shows its finished state.</li>
+    <li>A page that is complete without JavaScript, and a language set to Canadian English.</li>
+  </ul>
+
+  <h2>Known limits</h2>
+  <ul>
+    <li>The sample affidavit is an illustration with fictional data. On small screens it is not pinned beside the steps.</li>
+    <li>Automated checks run on every page. A manual review with a keyboard and a screen reader is planned before launch.</li>
+  </ul>
+
+  <h2>Report a barrier</h2>
+  <p>If something on this site is hard to use, email <a href={site.emailHref}>{site.email}</a> or call <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>. Tell us the page and what happened.</p>
+</Legal>

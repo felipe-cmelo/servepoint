@@ -1,0 +1,53 @@
+---
+/** Coverage hub (docs/pages/coverage.md). Copy: content/coverage.md. Layout: docs/15. */
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import PageHero from "../../components/PageHero.astro";
+import AreaExplorer from "../../components/AreaExplorer.astro";
+import InstructBand from "../../components/InstructBand.astro";
+import { site } from "../../data/site";
+import { neighbourhoodCount } from "../../data/coverage";
+import { breadcrumbs } from "../../data/schema";
+
+---
+
+<Base
+  title="Areas we serve: Vancouver and Lower Mainland | ServePoint"
+  description="Process serving in Vancouver, Burnaby, Richmond, Surrey, New Westminster, Coquitlam and 9 more communities. Check your neighbourhood and request service."
+  path="/coverage/"
+  schema={[breadcrumbs([{ name: "Home", path: "/" }, { name: "Coverage", path: "/coverage/" }])]}
+>
+  <PageHero
+    h1="Areas we serve: Vancouver and the Lower Mainland"
+    lead={`We serve ${site.areas.length} communities across Vancouver and the Lower Mainland. Choose one to see its neighbourhoods.`}
+    crumbs={[{ name: "Coverage" }]}
+    query="?topic=coverage"
+    glance={{
+      title: "Coverage",
+      rows: [
+        ["Communities", String(site.areas.length)],
+        ["Neighbourhoods listed", String(neighbourhoodCount)],
+        ["City pages", "Vancouver, Burnaby, Surrey, Richmond"],
+      ],
+    }}
+  />
+
+  <section class="section theme-light" id="coverage" aria-label="Coverage map and list">
+    <div class="wrap-wide">
+      <AreaExplorer idp="hub-area" />
+    </div>
+  </section>
+
+  <section class="section-tight theme-light theme-paper" id="not-listed" aria-labelledby="nl-h">
+    <div class="wrap-wide grid-2 grid-split center-y">
+      <div class="stack">
+        <h2 id="nl-h" class="rule-draw">Not on the list?</h2>
+        <p class="lead-text">Send the location and the service you need. We confirm availability the same business day.</p>
+        <p style="font-size:var(--fs-sm)">Rush service, travel and special requests may add to the price. <a href="/pricing/">See pricing</a>.</p>
+      </div>
+      <div><a class="btn lg" href="/request-service/?topic=coverage">Check availability <Icon name="arrow-right" class="icon-go" /></a></div>
+    </div>
+  </section>
+
+  <InstructBand />
+</Base>

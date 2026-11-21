@@ -1,0 +1,33 @@
+# 12. Open questions for the owner
+
+Send this list to ServePoint's founder. Items marked **blocks** stop a phase. For each question the build proceeds on the stated default if no answer arrives.
+
+| # | Question | Default used | Blocks |
+|---|---|---|---|
+| 1 | Is the site for law firms only, or also for individuals and self-represented litigants? The current `/areas/` page says the services are for "law firms, businesses and individuals", while every other page speaks only to law firms. Competitors serve individuals and much of the search demand for "process server Vancouver" is from them | Law-firm-first. No individual-facing pages | Phase 2 copy |
+| 2 | How long has ServePoint been operating? Any number of files served? | Not stated anywhere | none |
+| 3 | Can we have the original files: the logo as SVG or vector (and the two PNGs the site uses today, `logo.png` and the reversed version), the founder headshot (`jasmine.jpg` on the current About page) and any working photos with no personal data? The shell used to prepare this package cannot download from the staging site, so none of the images were seen | Site ships without photos. Logo PNG used. The old image URLs are not hotlinked | Phase 1 logo, Phase 3 About |
+| 4 | Any client testimonials we may publish, with permission and attribution? Any clients who allow their name? | None. No testimonial section | none |
+| 5 | Pricing: amounts for rush within 48 hours, same day, travel beyond the standard area, extra attempts, evening and weekend. Is "from $168" the intended position (it is above commonly cited ranges)? | Table shows "Confirmed before service" for extras | **Phase 2** |
+| 6 | Business hours. Is after-hours or weekend service offered? | Not stated. Footer shows no hours | Phase 2 |
+| 7 | Is there a public office address? If not, the Google Business Profile is a service-area business | Service-area business, city only | Phase 4 |
+| 8 | Coverage: the home page lists 14 communities and the areas page lists 15 (adds Pitt Meadows). Is Pitt Meadows covered? Are Fraser Valley locations (Abbotsford, Chilliwack, Mission) available on request? | 15 communities. Others "on request" | Phase 3 |
+| 9 | Is ServePoint registered to file as an agent through BC Court Services Online? Which registries does it attend (Vancouver, New Westminster, Surrey, Richmond, others)? | No claim about agent status. Registries named as "BC Supreme Court and Provincial Court registries" | Phase 3 |
+| 10 | Corporate search: confirm the six search types published today (company summary, director and officer, registered office confirmation, historical, certificate of status, name and trade name) and the 2 business day turnaround. Are personal property, land title or litigation searches also offered? | Only the published six types | Phase 3 |
+| 11 | Updates and tracking: how are updates sent (email, text)? Is there GPS logging, photo evidence or a client portal? | Email updates only. No GPS or portal claim | Phase 2 |
+| 12 | Document handling: should clients be able to upload documents on the site, or is email the preferred route for confidentiality? | Email after the form | Later |
+| 13 | Insurance, bonding, a confidentiality policy statement the firm can stand behind? | Not stated | none |
+| 14 | Languages spoken by the team (Greater Vancouver is multilingual). Is that a service point? | Not stated | none |
+| 15 | Hague Service Convention: what is in and out of scope for ServePoint? | One FAQ stating the instructing firm determines the method | Phase 3 |
+| 16 | Brand: the logo is navy and teal (Phase 0). Keep the action blue (`--pen`) or move the interface toward the logo teal? Please send the logo as SVG so we can read the exact hex values | Keep `--pen` blue. **Changed 2026-11-20 on the project owner's instruction: teal buttons and links via `--pen-teal`, `--pen-teal-deep` and `--link-teal`. Still ask the founder, and send the SVG.** Original reasoning: teal is already the colour of the "served" status (`--served`), so using it for buttons would blur the two. Logo shown in its own colours. Rule and fallback in `docs/06` section 4 | **Phase 1** |
+| 17 | Who controls the domain DNS, Google Business Profile, Search Console and analytics accounts? Phase 0 found `servepointcanada.com` parked at GoDaddy, so DNS has to move to Netlify at launch. Who does that, and when? | Owner. Developer receives access during Phase 0 | **Phase 0** |
+| 18 | Who reviews guide content before publishing? Can the founder commit to reading each? | The founder. Guides stay `draft` until approved | Phase 4 |
+| 19 | Are the URL changes in `docs/04` acceptable? Phase 0 found `servepointcanada.com` parked at GoDaddy and only the staging site live, so no indexed pages are at risk. Does anything else link to the staging URLs? | Yes, with 301s from the old staging paths | Phase 5 |
+| 20 | Preferred contact methods to promote first: phone, email or form? | Form first, phone second, email third | none |
+| 21 | The current home page says court work includes "same-day registry attendance" and "digital return of stamped copies". The current court services page promises neither. Is same-day attendance offered, and under what conditions? | No "same day" claim for court work. "Stamped" only where the home page already says it | Phase 3 |
+| 22 | The rebuilt corporate search page has a paragraph on what ServePoint adds to the official registry (order with the instruction, keep with the matter reference, deliver alongside the service plan). It is not on the current site. Is it accurate? | Paragraph stays marked `[CONFIRM]` and blocks the production build until approved or removed | Phase 3 |
+| 23 | The current site has no privacy policy, terms or accessibility page in its navigation. Does the owner have any existing wording, and what does the business do with the form data (where it is stored, how long)? | Drafts written from the site's real behaviour, for the owner's legal review | Phase 4 |
+| 24 | Where do submissions from the current form go today? Phase 0 could not confirm that it is registered with Netlify (the live page shows no `data-netlify`, which is normal after a deploy). Please check the Forms tab in the Netlify dashboard, tell us who receives the notification emails, and export the existing submissions as CSV before the new build is deployed. Were any enquiries missed? | The new form is verified with a test submission before launch (`docs/07` section 5.3) | **Phase 0**, Phase 2 |
+
+## Facts to confirm before launch
+Every `[CONFIRM: ...]` marker in `content/` maps to one of these questions. Run `grep -r "\[CONFIRM" content src` to list the open ones. The production build fails while any remain.

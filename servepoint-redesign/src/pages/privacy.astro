@@ -1,0 +1,37 @@
+---
+import Legal from "../layouts/Legal.astro";
+import { site } from "../data/site";
+---
+
+{/* Draft for the owner's legal review (docs/pages/about-request-service-legal.md). Facts come from docs/07 section 9.2.
+    Withheld until the owner answers docs/12 question 23: how long form entries and emails are kept, the response time for
+    requests, and the name of the person responsible for privacy. */}
+
+<Legal
+  title="Privacy | ServePoint Canada"
+  description="What the ServePoint Canada request form collects, why, where it is stored and how to ask for access, correction or deletion of your information."
+  path="/privacy/"
+  h1="Privacy"
+  updated="November 20, 2026"
+>
+  <p>This page explains what {site.name} collects through this website and why. It is written for firms and legal professionals who send us a service instruction.</p>
+
+  <h2>What the request form collects</h2>
+  <p>The form asks for your firm name, your name, your email address and your phone number if you give one. It asks for the court file number, the service you need, the urgency, and a matter or file reference if you give one. Depending on the service, it also asks for the name and address of the person or company to be served, a deadline, and details that help us. The site generates a reference number for your request.</p>
+  <p>The name and address of the person to be served are about someone who is not the person submitting the form. The instructing firm provides them.</p>
+
+  <h2>Why we collect it</h2>
+  <p>To quote, carry out and record the service, and to reply to you.</p>
+
+  <h2>Where it is stored</h2>
+  <p>Form submissions are stored by Netlify, which hosts this site, and are sent to our email inbox. You send documents to us afterwards by email. We do not ask you to upload documents on this site.</p>
+
+  <h2>What stays in your browser</h2>
+  <p>If you tick "Remember my firm details on this device", the site keeps your firm name, name, email and phone number in your browser's local storage so the next form is faster. Use "Forget these details" to remove them. The site never keeps the name or address of the person to be served in your browser. It keeps the reference number for the current session so it can show it to you on the confirmation page.</p>
+
+  <h2>Cookies, analytics and marketing</h2>
+  <p>This site sets no cookies and loads no analytics at the time of writing. We do not send marketing email and we do not collect email addresses for marketing.</p>
+
+  <h2>Access, correction and deletion</h2>
+  <p>To ask what we hold about you, to correct it or to ask us to delete it, email <a href={site.emailHref}>{site.email}</a> or call <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.</p>
+</Legal>

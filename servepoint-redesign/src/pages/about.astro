@@ -1,0 +1,73 @@
+---
+/** About (docs/pages/about-request-service-legal.md). Copy: content/about.md. Holds without a photo; the portrait is optional. */
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import PageHero from "../components/PageHero.astro";
+import InstructBand from "../components/InstructBand.astro";
+import portrait from "../assets/jasmine.jpg";
+import { site } from "../data/site";
+import { aboutPage, breadcrumbs } from "../data/schema";
+
+// Set to false to drop the photo until the owner confirms the original file (docs/12 question 3).
+const showPortrait = true;
+---
+
+<Base
+  title="About ServePoint Canada and founder Jasmine Deo, LLB"
+  description="Why ServePoint was founded by Jasmine Deo, LLB, who handles your file, and how every attempt is recorded and proven with a sworn affidavit of service."
+  path="/about/"
+  schema={[aboutPage(), breadcrumbs([{ name: "Home", path: "/" }, { name: "About", path: "/about/" }])]}
+>
+  <PageHero
+    h1="About ServePoint Canada"
+    lead="Process serving built for law firms. ServePoint Canada serves documents in Vancouver, BC and the Lower Mainland, files court documents and runs BC corporate searches. We focus on dependable service from instruction to completion."
+    crumbs={[{ name: "About" }]}
+    actions={false}
+  />
+
+  <section class="section theme-light" id="founder" aria-labelledby="founder-h">
+    <div class="wrap-wide grid-2 grid-split-r center-y">
+      {showPortrait && (
+        <div class="card" style="padding:var(--s-2);max-width:26rem">
+          <Image src={portrait} alt="Jasmine Deo, founder of ServePoint Canada" width={720} format="webp" loading="lazy" style="border-radius:calc(var(--r-lg) - 6px);width:100%;height:auto" />
+        </div>
+      )}
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="founder-h" class="rule-draw">Founded by a legal professional</h2>
+        <p class="lead-text" style="color:var(--fg)">{site.founder.name}, {site.founder.credential}, founded ServePoint with a legal background and direct experience working with legal professionals. She knows what law firms expect: confidentiality, how a firm's files move, and what accurate proof of service must show.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-light theme-paper" id="handled" aria-labelledby="handled-h">
+    <div class="wrap-wide grid-2 grid-split-r">
+      <div class="stack">
+        <h2 id="handled-h" class="rule-draw">How a file is handled</h2>
+        <p class="lead-text">Four commitments.</p>
+      </div>
+      <dl class="ruled" style="border-top:1px solid var(--rule)">
+        <div class="stack" style="--stack:var(--s-1);padding:var(--s-4) 0;border-bottom:1px solid var(--card-border)"><dt style="color:var(--fg);font-weight:600">Requests are reviewed promptly.</dt><dd>We confirm your deadline before we accept a file.</dd></div>
+        <div class="stack" style="--stack:var(--s-1);padding:var(--s-4) 0;border-bottom:1px solid var(--card-border)"><dt style="color:var(--fg);font-weight:600">One contact knows your file.</dt><dd>One direct contact, from instruction to the affidavit of service.</dd></div>
+        <div class="stack" style="--stack:var(--s-1);padding:var(--s-4) 0;border-bottom:1px solid var(--card-border)"><dt style="color:var(--fg);font-weight:600">Every attempt is recorded.</dt><dd>Date, time, location and the details needed for accurate proof.</dd></div>
+        <div class="stack" style="--stack:var(--s-1);padding:var(--s-4) 0;border-bottom:1px solid var(--card-border)"><dt style="color:var(--fg);font-weight:600">Handled with discretion.</dt><dd>Documents, parties and file information stay confidential.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section theme-light" id="scope" aria-labelledby="scope-h">
+    <div class="wrap-wide grid-2">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="scope-h" class="rule-draw">What we do and what we do not do</h2>
+        <p class="lead-text">We serve documents, file and retrieve court documents, and run BC corporate searches. We do not give legal advice. Your firm decides the method of service.</p>
+      </div>
+      <div class="card stack">
+        <h3>Contact</h3>
+        <p>Call <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a> or email <a href={site.emailHref}>{site.email}</a>. Or request service.</p>
+        <p><a class="btn" href={site.actions.primaryPath}>{site.actions.primary} <Icon name="arrow-right" class="icon-go" /></a></p>
+      </div>
+    </div>
+  </section>
+
+  <InstructBand />
+</Base>

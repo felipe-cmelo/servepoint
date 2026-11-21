@@ -1,0 +1,107 @@
+---
+/**
+ * "How a file progresses" (docs/15 section 5). Four stages. Three layouts, one markup:
+ * - Wide screens: stages in a column with a rail and numbered nodes, the sample sheet pinned beside them, and the part of the
+ *   sheet the stage in focus produces lit.
+ * - Phones in portrait: the whole scene is pinned. The reader keeps scrolling and the page stays put, and each stage fades in
+ *   over the one before it (.scene-pin is the scroll track, .scene-pinned is the sticky frame).
+ * - Tablets, landscape phones and reduced motion: the stages in a column under a step bar that sticks under the header.
+ * Without script every stage shows in turn.
+ */
+import Icon from "./Icon.astro";
+import AttemptLine from "./AttemptLine.astro";
+import DocumentFinder from "./DocumentFinder.astro";
+import AffidavitSheet from "./AffidavitSheet.astro";
+import { site } from "../data/site";
+
+const stages = ["Instruct", "Attempt", "Serve", "Prove"];
+---
+
+<section class="section theme-light scene" id="process" data-scene aria-labelledby="scene-h">
+  <div class="wrap-wide">
+    <div class="sec-head">
+      <h2 id="scene-h" class="rule-draw">How a file progresses</h2>
+      <p class="m-hide">Four stages, one sworn record.</p>
+    </div>
+
+    <div class="scene-pin" data-mbar-hide>
+      <div class="scene-pinned">
+        <div class="scene-steps" data-js>
+          <ol class="scene-tabs" aria-label="Stages">
+            {stages.map((s, i) => (
+              <li><button class="scene-tab" type="button" data-go={i + 1} aria-current={i === 0 ? "step" : undefined}><span class="n">{i + 1}</span><span class="l">{s}</span></button></li>
+            ))}
+          </ol>
+        </div>
+
+        <div class="scene-grid">
+          <div class="stages">
+            <article class="stage" data-stage="1">
+              <span class="stage-node" aria-hidden="true">1</span>
+              <div class="stage-body">
+                <h3>Instruct</h3>
+                <p class="sub">Send the documents, address and deadline</p>
+                <ul class="checklist">
+                  <li>The documents to be served</li>
+                  <li>The service address, with unit or suite number</li>
+                  <li>The deadline</li>
+                  <li>The court file number, if there is one</li>
+                </ul>
+                <p class="pin-hide">Use the request form, then email the documents to <a href={site.emailHref}>{site.email}</a>. We confirm availability and next steps the same business day.</p>
+                <div class="callout pin-hide"><p><strong>Deadline this week?</strong> Choose Rush within 48 hours or Rush same day. Rush requests are prioritized.</p></div>
+                <p class="stage-actions"><a class="btn" href={site.actions.primaryPath}>{site.actions.primary} <Icon name="arrow-right" class="icon-go" /></a></p>
+              </div>
+            </article>
+
+            <article class="stage" data-stage="2">
+              <span class="stage-node" aria-hidden="true">2</span>
+              <div class="stage-body">
+                <h3>Attempt</h3>
+                <p class="sub">The first attempt is typically within 24 hours</p>
+                <p>Up to {site.attemptsIncluded} attempts are included. Each is recorded with date, time and location, and you get updates throughout.</p>
+                <AttemptLine />
+              </div>
+            </article>
+
+            <article class="stage" data-stage="3">
+              <span class="stage-node" aria-hidden="true">3</span>
+              <div class="stage-body">
+                <h3>Serve</h3>
+                <p class="sub">The documents we serve</p>
+                <DocumentFinder id="home-finder" />
+                <p class="pin-hide">We accept documents issued in other Canadian provinces and the US. Your firm chooses the method of service and any court requirements. We carry out the instruction.</p>
+              </div>
+            </article>
+
+            <article class="stage" data-stage="4">
+              <span class="stage-node" aria-hidden="true">4</span>
+              <div class="stage-body">
+                <h3>Prove</h3>
+                <p class="sub">You receive a sworn affidavit of service</p>
+                <div class="outcomes">
+                  <div class="card">
+                    <h4>When service is complete</h4>
+                    <p>A sworn affidavit of service records when, where and how service was made.</p>
+                  </div>
+                  <div class="card">
+                    <h4>If service cannot be completed</h4>
+                    <p>After the included attempts, you receive an affidavit of attempted service and an update on next steps. Your firm decides what comes next.</p>
+                  </div>
+                </div>
+                <p class="stage-actions"><a class="btn" href={site.actions.primaryPath}>{site.actions.primary} <Icon name="arrow-right" class="icon-go" /></a></p>
+              </div>
+            </article>
+          </div>
+
+          <div class="scene-aside">
+            <div class="scene-sticky">
+              <AffidavitSheet variant="scene" />
+            </div>
+          </div>
+        </div>
+
+        <span class="pin-hint" aria-hidden="true"><Icon name="chevron-down" /></span>
+      </div>
+    </div>
+  </div>
+</section>

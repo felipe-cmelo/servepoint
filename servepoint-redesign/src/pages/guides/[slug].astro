@@ -1,0 +1,85 @@
+---
+/** Guide template (docs/pages/guides.md). Article and BreadcrumbList schema, table of contents, rules and forms, next step, author. Layout: docs/15. */
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import PageHero from "../../components/PageHero.astro";
+import InstructBand from "../../components/InstructBand.astro";
+import { visibleGuides, dateLabel } from "../../data/guides";
+import { site } from "../../data/site";
+import { article, breadcrumbs } from "../../data/schema";
+
+export async function getStaticPaths() {
+  const guides = await visibleGuides();
+  return guides.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry, all: guides } }));
+}
+
+const { entry, all } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+const path = `/guides/${d.slug}/`;
+const draft = d.status === "draft";
+const related = d.related.map((s) => all.find((g) => g.data.slug === s)).filter((g) => Boolean(g));
+const reviewed = dateLabel(d.reviewed);
+const svcPath = { "process-serving": "/process-serving/", "court-filing": "/court-filing/", "corporate-search": "/corporate-search/" }[d.service];
+---
+
+<Base
+  title={`${d.title} | ServePoint guides`}
+  description={d.description}
+  path={path}
+  type="article"
+  noindex={draft}
+  schema={[
+    article({ title: d.title, description: d.description, path, modified: d.reviewed, image: "/og-default.png" }),
+    breadcrumbs([{ name: "Home", path: "/" }, { name: "Guides", path: "/guides/" }, { name: d.title, path }]),
+  ]}
+>
+  <PageHero
+    h1={d.title}
+    lead={d.description}
+    crumbs={[{ name: "Guides", path: "/guides/" }, { name: d.title }]}
+    actions={false}
+  />
+
+  <section class="section theme-light" aria-label="Guide" style="padding-top:clamp(2rem,1.5rem + 2vw,3.5rem)">
+    <div class="wrap-wide doc-layout">
+      <article>
+        {draft && <p class="callout" style="margin-bottom:var(--s-5)">Draft for founder review. Not yet verified against the current rules. Not published.</p>}
+        <p class="muted" style="font-size:var(--fs-sm);margin-bottom:var(--s-5)">By {d.author}. {reviewed ? <>Last reviewed {reviewed}.</> : <>Not yet reviewed.</>}</p>
+        <div class="prose" data-toc-source><Content /></div>
+
+        <div class="card rules-box stack" style="margin-top:var(--s-8);max-width:var(--measure)">
+          <h2>Rules and forms</h2>
+          <p style="font-size:var(--fs-sm)">Read these at the source. This guide does not replace them.</p>
+          <ul>{d.sources.map((s) => <li><a href={s.url}>{s.label}</a></li>)}</ul>
+        </div>
+
+        <div class="stack" style="margin-top:var(--s-7);max-width:var(--measure);padding-top:var(--s-5);border-top:1px solid var(--rule)">
+          <h2 style="font-size:var(--fs-h3)">{site.founder.name}, {site.founder.credential}</h2>
+          <p>Founder of ServePoint Canada. <a href="/about/">About ServePoint and the founder</a>.</p>
+          <p class="muted" style="font-size:var(--fs-sm)">This guide gives general information and is not legal advice.</p>
+        </div>
+      </article>
+
+      <aside class="side-stack" style="position:sticky;top:calc(var(--header-h) + 1.5rem)">
+        <nav class="toc" data-toc hidden aria-label="On this page"><h2>On this page</h2></nav>
+        <div class="card stack">
+          <h2 style="font-size:var(--fs-md)">Next step</h2>
+          <p style="font-size:var(--fs-sm)">Need this done in Vancouver or the Lower Mainland?</p>
+          <a class="btn block" href={`/request-service/?service=${d.service}`}>Request service <Icon name="arrow-right" class="icon-go" /></a>
+          <a class="go" href={svcPath}>Read the service page <Icon name="arrow-right" /></a>
+        </div>
+        <div class="card stack">
+          <h2 style="font-size:var(--fs-md)">Related guides</h2>
+          <ul class="ruled">
+            {related.map((g) => <li><a href={`/guides/${g!.data.slug}/`}>{g!.data.title}</a></li>)}
+            <li><a href="/guides/">All guides</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <InstructBand service={d.service} />
+</Base>

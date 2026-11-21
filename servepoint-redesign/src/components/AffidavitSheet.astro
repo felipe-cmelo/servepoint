@@ -1,0 +1,124 @@
+---
+/**
+ * The sample affidavit (docs/15 section 2, the signature): a sheet of paper with the record of service and the sworn
+ * statement of a fictional file. It shows what ServePoint records. It does not copy a court form and does not state what
+ * a court requires. The highlighted phrases open a short note on hover, focus or tap.
+ * "hero": the sheet beside the headline. "scene": the sticky sheet whose parts are lit by the stage in focus.
+ * "static": the sheet inside a page section. Under 640 px the sheet starts as a preview and opens on request.
+ */
+interface Props {
+  variant?: "hero" | "scene" | "static";
+}
+const { variant = "hero" } = Astro.props;
+const log: [string, string, string][] = [
+  ["Mar 3, 4:15 p.m.", "Instructions received", "1"],
+  ["Mar 3, 4:31 p.m.", "Availability confirmed", "1"],
+  ["Mar 4, 9:42 a.m.", "Attempt 1 of 3. Served.", "2"],
+  ["Mar 4, 11:05 a.m.", "Affidavit sworn", "4"],
+];
+const notes = [
+  "When and where: the date, time and address of every attempt are recorded.",
+  "Who: the person served is named, and how they were identified is noted.",
+  "How: how the document was handed over is stated.",
+  "Sworn: the affidavit is sworn before a commissioner.",
+];
+const note = (i: number) => notes[i].split(": ")[1];
+---
+
+<div class="sheet-wrap" data-variant={variant} data-sheet data-collapsible={variant !== "scene" ? "" : undefined}>
+  <div class="sheet-stack">
+  <div class="sheet" id={`sheet-${variant}`}>
+    <div class="tip" data-tip></div>
+    <p class="sheet-band">Sample. Fictional parties, address and file number.</p>
+    <div class="sheet-body">
+      <div class="s-head">
+        <p class="s-court">In the Supreme Court of British Columbia</p>
+        <p class="s-file">File no. <span class="file">S-000000</span></p>
+      </div>
+      <p class="s-meta">Registry: Vancouver</p>
+      <p class="s-meta">Example Holdings Ltd., plaintiff, and Dana Whitfield, defendant</p>
+      <p class="s-title">AFFIDAVIT OF PERSONAL SERVICE</p>
+
+      <ol class="ledger" aria-label="Record of service">
+        {log.map(([when, what, part]) => (
+          <li data-part={part}><span class="when">{when}</span><span class="what">{what}</span></li>
+        ))}
+      </ol>
+
+      <div class="s-text" data-part="3">
+        <p>I, Alex Morgan, of Vancouver, British Columbia, process server, swear that:</p>
+        <ol>
+          <li>On <mark style="--i:0" tabindex="0" data-note={note(0)}>March 4, 2026 at 9:42 a.m.</mark>, at <mark style="--i:1" tabindex="0" data-note={note(0)}>1234 Example Street, Vancouver</mark>, I served Dana Whitfield with the Notice of Civil Claim.</li>
+          <li>The person <mark style="--i:2" tabindex="0" data-note={note(1)}>confirmed their name</mark> when I asked.</li>
+          <li>I <mark style="--i:3" tabindex="0" data-note={note(2)}>handed the document to the person served</mark> and left a true copy with them.</li>
+          <li>A copy of the document I served is attached as Exhibit A. This was attempt 1 of 3.</li>
+        </ol>
+      </div>
+
+      <div class="s-sworn" data-part="4">
+        <p><mark style="--i:4" tabindex="0" data-note={note(3)}>Sworn before me</mark> at Vancouver, British Columbia, on March 4, 2026.</p>
+        <div class="sig">
+          <svg viewBox="0 0 220 70" aria-hidden="true"><path class="draw-in" pathLength="1" style="--i:6" d="M6 54 C12 40 20 12 30 10 C38 8 34 40 36 52 M18 36 C30 32 44 34 56 30 C62 28 60 44 68 42 C76 40 74 26 82 28 C88 30 84 46 92 44 C100 42 104 30 110 34 C114 38 108 48 116 46 C126 44 130 26 142 30 C150 33 146 50 156 46 C168 42 178 34 190 38 C196 40 200 44 214 42 M14 63 C70 54 140 62 214 52"/></svg>
+          <p>Alex Morgan, process server</p>
+        </div>
+      </div>
+    </div>
+    <div class="sheet-fade" aria-hidden="true"></div>
+  </div>
+  </div>
+  {variant !== "scene" && (
+    <button class="sheet-toggle btn btn-secondary sm" type="button" data-sheet-toggle aria-expanded="true" aria-controls={`sheet-${variant}`} data-js>
+      <span data-label>Close the sample</span>
+    </button>
+  )}
+  <ul class="sheet-notes" aria-label="What the sample shows">{notes.map((n) => <li>{n}</li>)}</ul>
+</div>
+
+<script>
+  // Annotation note (one element placed by script and clamped to the sheet) and the open and close control on phones.
+  document.querySelectorAll<HTMLElement>("[data-sheet]").forEach((wrap) => {
+    const sheet = wrap.querySelector<HTMLElement>(".sheet")!;
+    const tip = wrap.querySelector<HTMLElement>("[data-tip]")!;
+    const show = (m: HTMLElement) => {
+      tip.textContent = m.dataset.note ?? "";
+      tip.setAttribute("role", "tooltip");
+      tip.id = tip.id || `tip-${Math.random().toString(36).slice(2, 7)}`;
+      tip.classList.add("on");
+      m.setAttribute("aria-describedby", tip.id);
+      const r = sheet.getBoundingClientRect();
+      const mr = m.getBoundingClientRect();
+      tip.style.left = `${Math.min(Math.max(mr.left - r.left, 8), r.width - tip.offsetWidth - 8)}px`;
+      tip.style.top = `${mr.bottom - r.top + 6}px`;
+    };
+    const hide = (m: HTMLElement) => {
+      tip.classList.remove("on");
+      tip.removeAttribute("role");
+      m.removeAttribute("aria-describedby");
+    };
+    wrap.querySelectorAll<HTMLElement>("mark[data-note]").forEach((m) => {
+      m.addEventListener("mouseenter", () => show(m));
+      m.addEventListener("mouseleave", () => hide(m));
+      m.addEventListener("focus", () => show(m));
+      m.addEventListener("blur", () => hide(m));
+      m.addEventListener("click", () => (tip.classList.contains("on") ? hide(m) : show(m)));
+    });
+
+    const toggle = wrap.querySelector<HTMLButtonElement>("[data-sheet-toggle]");
+    if (toggle && wrap.hasAttribute("data-collapsible")) {
+      const small = matchMedia("(max-width: 40rem)");
+      const label = toggle.querySelector<HTMLElement>("[data-label]")!;
+      const set = (open: boolean) => {
+        wrap.toggleAttribute("data-collapsed", !open);
+        toggle.setAttribute("aria-expanded", String(open));
+        label.textContent = open ? "Close the sample" : "Read the sample";
+      };
+      set(!small.matches);
+      small.addEventListener("change", () => set(!small.matches));
+      toggle.addEventListener("click", () => {
+        const opening = wrap.hasAttribute("data-collapsed");
+        set(opening);
+        if (!opening) wrap.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      });
+    }
+  });
+</script>

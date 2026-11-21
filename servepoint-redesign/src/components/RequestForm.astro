@@ -1,0 +1,169 @@
+---
+/**
+ * Request form (docs/05 section 4, docs/07 section 5, content/request-service.md), restyled for docs/15.
+ * One HTML form holds every field of the three services (plus "not sure") so Netlify registers all of them.
+ * Without script it is a single step with every section visible. With script it is two steps and a summary, with a stepper
+ * and a live summary beside it. Never stores the person to be served in the browser.
+ */
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+
+interface Props {
+  /** Service pre-selected from the page that linked here. */
+  defaultService?: "process-serving" | "court-filing" | "corporate-search" | "not-sure";
+  idPrefix?: string;
+}
+const { defaultService = "process-serving", idPrefix = "rf" } = Astro.props;
+const p = idPrefix;
+const svc = [
+  { v: "process-serving", l: "Process serving" },
+  { v: "court-filing", l: "Court filing" },
+  { v: "corporate-search", l: "Corporate search" },
+  { v: "not-sure", l: "Not sure, please advise" },
+];
+const urg = [
+  { k: "standard", l: "Standard" },
+  { k: "rush-48", l: "Rush within 48 hours" },
+  { k: "rush-same-day", l: "Rush same day" },
+];
+const searches = ["Company summary", "Director and officer search", "Registered office confirmation", "Historical search", "Certificate of status", "Name and trade name search"];
+const detailsHelp = "A description, working hours, vehicle, previous attempts, building access.";
+---
+
+<form id={p} class="request-form" name="request-service" method="POST" action="/request-service/received/" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+  <input type="hidden" name="form-name" value="request-service" />
+  <input type="hidden" name="reference" value="" />
+  <input type="hidden" name="topic" value="" />
+  <input type="hidden" name="city" value="" />
+  <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+  <ol class="stepper" data-js aria-label="Progress">
+    <li data-s="1" aria-current="step"><span class="n">1</span><span class="l">The file</span></li>
+    <li data-s="2"><span class="n">2</span><span class="l">The person and the place</span></li>
+    <li data-s="3"><span class="n">3</span><span class="l">Review</span></li>
+  </ol>
+
+  <div class="formbox" id={`${p}-box`} data-step="1">
+    <p class="status full" id={`${p}-status`} tabindex="-1" aria-live="polite">Step 1 of 2: The file</p>
+    <div class="err-summary full" id={`${p}-errors`} role="alert" tabindex="-1" hidden>
+      <h3>Check these fields</h3>
+      <ul></ul>
+    </div>
+    <p class="callout full" id={`${p}-topic`} hidden></p>
+
+    <!-- Step 1: the file -->
+    <div class="field full step1"><label for={`${p}-firm`}>Firm or organization</label><input class="input" id={`${p}-firm`} name="firm" type="text" autocomplete="organization" autocapitalize="words" enterkeyhint="next" required /></div>
+    <div class="field step1"><label for={`${p}-name`}>Your name</label><input class="input" id={`${p}-name`} name="name" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" required /></div>
+    <div class="field step1"><label for={`${p}-email`}>Email</label><input class="input" id={`${p}-email`} name="email" type="email" autocomplete="email" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="next" required /></div>
+    <div class="field step1 opt"><label for={`${p}-phone`}>Phone <span class="hint">Optional</span></label><input class="input" id={`${p}-phone`} name="phone" type="tel" autocomplete="tel" enterkeyhint="next" /></div>
+    <div class="field step1 opt"><label for={`${p}-court`}>Court file number <span class="hint">Optional</span></label><input class="input" id={`${p}-court`} name="court" type="text" autocapitalize="characters" autocorrect="off" enterkeyhint="next" /></div>
+    <div class="field full step1 opt"><label for={`${p}-matter`}>Matter or file reference <span class="hint">Optional. Shown on your confirmation so you can bill the matter.</span></label><input class="input" id={`${p}-matter`} name="matter" type="text" enterkeyhint="done" /></div>
+
+    <fieldset class="full step1">
+      <legend>Service required</legend>
+      <div class="chips" id={`${p}-svc`}>
+        {svc.map((s) => (
+          <>
+            <input class="chip-input" type="radio" name="service" id={`${p}-svc-${s.v}`} value={s.v} checked={s.v === defaultService} required />
+            <label class="chip" for={`${p}-svc-${s.v}`}>{s.l}</label>
+          </>
+        ))}
+      </div>
+    </fieldset>
+    <fieldset class="full step1">
+      <legend>Urgency</legend>
+      <div class="chips" id={`${p}-urg`}>
+        {urg.map((u, i) => (
+          <>
+            <input class="chip-input" type="radio" name="urgency" id={`${p}-urg-${u.k}`} value={u.l} data-key={u.k} checked={i === 0} required />
+            <label class="chip" for={`${p}-urg-${u.k}`}>{u.l}</label>
+          </>
+        ))}
+      </div>
+    </fieldset>
+    <p class="callout full step1" id={`${p}-urgnote`}>First attempt typically within 24 hours.</p>
+    <div class="full step1">
+      <label class="remember"><input type="checkbox" name="remember" value="yes" id={`${p}-remember`} /> Remember my firm details on this device</label>
+      <p class="hint" style="margin-top:0.35rem">Stores firm, name, email and phone in this browser only. <button type="button" class="link-btn" id={`${p}-forget`}>Forget these details</button></p>
+    </div>
+    <div class="full step1 js-only"><button class="btn lg" type="button" id={`${p}-next`}>Continue to step 2 <Icon name="arrow-right" class="icon-go" /></button></div>
+
+    <!-- Step 2: process serving -->
+    <div class="variant step2" data-v="process-serving" role="group" aria-labelledby={`${p}-h-ps`}>
+      <h3 class="full vh" id={`${p}-h-ps`}>If you chose process serving</h3>
+      <div class="field full"><label for={`${p}-recipient`}>Person or company to be served</label><input class="input" id={`${p}-recipient`} name="recipient" type="text" data-req /></div>
+      <div class="field full"><label for={`${p}-address`}>Service address <span class="hint">Include the unit or suite number. Add a second address if you have one.</span></label><textarea class="input" id={`${p}-address`} name="address" rows="3" data-req></textarea></div>
+      <div class="field"><label for={`${p}-deadline`}>Deadline date <span class="hint">Optional</span></label><input class="input" id={`${p}-deadline`} name="deadline" type="date" data-future /></div>
+      <div class="field full"><label for={`${p}-notes`}>Details that help <span class="hint">{detailsHelp}</span></label><textarea class="input" id={`${p}-notes`} name="notes" rows="4"></textarea></div>
+    </div>
+
+    <!-- Step 2: court filing -->
+    <div class="variant step2" data-v="court-filing" role="group" aria-labelledby={`${p}-h-cf`}>
+      <h3 class="full vh" id={`${p}-h-cf`}>If you chose court filing</h3>
+      <div class="field full"><label for={`${p}-cdocs`}>Documents to file or retrieve</label><textarea class="input" id={`${p}-cdocs`} name="court_documents" rows="3" data-req></textarea></div>
+      <div class="field"><label for={`${p}-creg`}>Registry <span class="hint">Optional</span></label><input class="input" id={`${p}-creg`} name="court_registry" type="text" /></div>
+      <div class="field"><label for={`${p}-cdead`}>Deadline date <span class="hint">Optional</span></label><input class="input" id={`${p}-cdead`} name="court_deadline" type="date" data-future /></div>
+      <fieldset class="full">
+        <legend>How should we return the documents?</legend>
+        <div class="chips">
+          <input class="chip-input" type="radio" name="court_return" id={`${p}-cr-d`} value="Digital copy" checked /><label class="chip" for={`${p}-cr-d`}>Digital copy</label>
+          <input class="chip-input" type="radio" name="court_return" id={`${p}-cr-m`} value="Mail" /><label class="chip" for={`${p}-cr-m`}>Mail</label>
+        </div>
+      </fieldset>
+      <div class="field full"><label for={`${p}-cnotes`}>Details that help <span class="hint">Optional</span></label><textarea class="input" id={`${p}-cnotes`} name="court_notes" rows="4"></textarea></div>
+    </div>
+
+    <!-- Step 2: corporate search -->
+    <div class="variant step2" data-v="corporate-search" role="group" aria-labelledby={`${p}-h-cs`}>
+      <h3 class="full vh" id={`${p}-h-cs`}>If you chose corporate search</h3>
+      <div class="field full"><label for={`${p}-scomp`}>Company name or incorporation number</label><input class="input" id={`${p}-scomp`} name="search_company" type="text" data-req /></div>
+      <fieldset class="full" data-checks>
+        <legend>Searches needed</legend>
+        <div class="chips">
+          {searches.map((s, i) => (
+            <>
+              <input class="chip-input" type="checkbox" name="search_types" id={`${p}-st-${i}`} value={s} /><label class="chip" for={`${p}-st-${i}`}>{s}</label>
+            </>
+          ))}
+        </div>
+      </fieldset>
+      <div class="field"><label for={`${p}-sdead`}>Deadline date <span class="hint">Optional</span></label><input class="input" id={`${p}-sdead`} name="search_deadline" type="date" data-future /></div>
+      <div class="field full"><label for={`${p}-snotes`}>Details that help <span class="hint">Optional</span></label><textarea class="input" id={`${p}-snotes`} name="search_notes" rows="4"></textarea></div>
+    </div>
+
+    <!-- Step 2: not sure -->
+    <div class="variant step2" data-v="not-sure" role="group" aria-labelledby={`${p}-h-ns`}>
+      <h3 class="full vh" id={`${p}-h-ns`}>If you are not sure which service you need</h3>
+      <div class="field full"><label for={`${p}-need`}>What do you need? <span class="hint">Describe the documents or the task. We reply with the right service and the next step.</span></label><textarea class="input" id={`${p}-need`} name="help_need" rows="4" data-req></textarea></div>
+      <div class="field"><label for={`${p}-hparty`}>Person or company involved <span class="hint">Optional</span></label><input class="input" id={`${p}-hparty`} name="help_party" type="text" /></div>
+      <div class="field"><label for={`${p}-hdead`}>Deadline date <span class="hint">Optional</span></label><input class="input" id={`${p}-hdead`} name="help_deadline" type="date" data-future /></div>
+      <div class="field full"><label for={`${p}-haddr`}>Service address, if there is one <span class="hint">Optional</span></label><textarea class="input" id={`${p}-haddr`} name="help_address" rows="3"></textarea></div>
+      <div class="field full"><label for={`${p}-hnotes`}>Details that help <span class="hint">Optional</span></label><textarea class="input" id={`${p}-hnotes`} name="help_notes" rows="4"></textarea></div>
+    </div>
+
+    <div class="full step2 js-only actions-row">
+      <button class="btn btn-secondary lg" type="button" id={`${p}-back`}>Back to step 1</button>
+      <button class="btn lg" type="button" id={`${p}-review`}>Review request <Icon name="arrow-right" class="icon-go" /></button>
+    </div>
+
+    <!-- Step 3: summary (script only) -->
+    <div class="summary-box full step3" id={`${p}-summary`}>
+      <h3 style="margin-bottom:var(--s-3)">Check your request</h3>
+      <dl></dl>
+    </div>
+    <div class="full step3 actions-row">
+      <button class="btn btn-secondary" type="button" id={`${p}-edit1`}>Edit step 1</button>
+      <button class="btn btn-secondary" type="button" id={`${p}-edit2`}>Edit step 2</button>
+    </div>
+
+    <!-- Submit: always present. Without script it is the only button. -->
+    <div class="full submit-row">
+      <button class="btn lg" type="submit" id={`${p}-send`}>Send request <Icon name="arrow-right" class="icon-go" /></button>
+      <p class="hint" style="margin-top:0.7rem">Then email your documents to <a href={site.emailHref}>{site.email}</a>. You can also call <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.</p>
+    </div>
+  </div>
+</form>
+
+<script>
+  import "../scripts/form.ts";
+</script>

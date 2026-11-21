@@ -1,0 +1,73 @@
+---
+/**
+ * Closing band on every page (docs/15 section 4). A plain GET form: choose the service and the urgency, and the request
+ * page opens pre-filled. No personal data goes in the address. Phone and email sit beside it.
+ */
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+
+interface Props {
+  title?: string;
+  lead?: string;
+  service?: "process-serving" | "court-filing" | "corporate-search" | "not-sure";
+}
+const {
+  title = "Request service",
+  lead = "Choose what you need. We confirm availability and next steps the same business day.",
+  service = "process-serving",
+} = Astro.props;
+const services = [
+  { v: "process-serving", l: "Process serving" },
+  { v: "court-filing", l: "Court filing" },
+  { v: "corporate-search", l: "Corporate search" },
+  { v: "not-sure", l: "Not sure" },
+];
+const urgency = [
+  { v: "standard", l: "Standard" },
+  { v: "rush-48", l: "Rush within 48 hours" },
+  { v: "rush-same-day", l: "Rush same day" },
+];
+---
+
+<section class="instruct theme-dark" id="instruct" aria-labelledby="instruct-h" data-mbar-hide>
+  <div class="wrap-wide">
+    <div class="instruct-card">
+      <div>
+        <h2 id="instruct-h">{title}</h2>
+        <p class="m-hide" style="margin-top:var(--s-3);max-width:30rem">{lead}</p>
+        <div class="instruct-contact">
+          <a class="phone-big" href={`tel:${site.phone.tel}`}><Icon name="phone" />{site.phone.display}</a>
+          <a href={site.emailHref}><Icon name="mail" />{site.email}</a>
+        </div>
+      </div>
+      <form class="qs" method="get" action={site.actions.primaryPath}>
+        <fieldset>
+          <legend>Service</legend>
+          <div class="chips">
+            {services.map((s) => (
+              <>
+                <input class="chip-input" type="radio" name="service" id={`qs-s-${s.v}`} value={s.v} checked={s.v === service} />
+                <label class="chip" for={`qs-s-${s.v}`}>{s.l}</label>
+              </>
+            ))}
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Urgency</legend>
+          <div class="chips">
+            {urgency.map((u, i) => (
+              <>
+                <input class="chip-input" type="radio" name="urgency" id={`qs-u-${u.v}`} value={u.v} checked={i === 0} />
+                <label class="chip" for={`qs-u-${u.v}`}>{u.l}</label>
+              </>
+            ))}
+          </div>
+        </fieldset>
+        <div class="cluster" style="--gap:var(--s-4)">
+          <button class="btn lg" type="submit">Continue to the request <Icon name="arrow-right" class="icon-go" /></button>
+        </div>
+        <p class="fine">Only your choices go in the address. Details come next.</p>
+      </form>
+    </div>
+  </div>
+</section>

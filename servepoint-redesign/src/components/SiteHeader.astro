@@ -1,0 +1,102 @@
+---
+/**
+ * Header (docs/15 section 4): navy bar, transparent over the hero and solid once the page moves, always the reversed logo.
+ * Services opens a native popover menu with the three services, who we serve and resources. Under 1060 px it collapses to
+ * the logo and Menu (a full screen dialog). Without script the Menu link goes to the footer links. There is no search field in
+ * the header: the command palette still opens with Ctrl or Cmd K and with the slash key.
+ */
+import { Image } from "astro:assets";
+import logoReversed from "../assets/logo-reversed.png";
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+
+const path = Astro.url.pathname;
+const here = (p: string) => (path === p || (p !== "/" && path.startsWith(p)) ? "page" : undefined);
+const inServices = site.services.some((s) => path.startsWith(s.path));
+const svc = [
+  { path: "/process-serving/", name: "Process serving", desc: "Personal service in Vancouver and the Lower Mainland", icon: "file" as const },
+  { path: "/court-filing/", name: "Court filing", desc: "Filing, issuing and registry attendance", icon: "building" as const },
+  { path: "/corporate-search/", name: "Corporate search", desc: "BC Registry searches, results by email", icon: "search" as const },
+];
+---
+
+<header class="site-header theme-dark" id="site-header">
+  <div class="header-bar wrap-wide">
+    <a class="brand" href="/" aria-label={`${site.name}, home`}>
+      <Image src={logoReversed} alt="" width={420} height={81} loading="eager" fetchpriority="high" densities={[1, 2]} format="webp" />
+    </a>
+
+    <nav class="primary-nav" aria-label="Main">
+      <button class="nav-link" type="button" popovertarget="mega" id="mega-trigger" aria-current={inServices ? "page" : undefined}>
+        Services <Icon name="chevron-down" />
+      </button>
+      <div id="mega" popover class="mega" aria-label="Services menu">
+        <div class="mega-grid">
+          <div class="mega-col">
+            <p class="mega-label">Services</p>
+            {svc.map((s) => (
+              <a class="mega-svc" href={s.path}>
+                <span class="mega-ico"><Icon name={s.icon} /></span>
+                <span><span class="mega-title">{s.name}</span><span class="mega-desc">{s.desc}</span></span>
+                <span class="mega-price">From ${site.basePrice.amount}</span>
+              </a>
+            ))}
+          </div>
+          <div class="mega-col">
+            <p class="mega-label">Who we serve</p>
+            <a class="mega-link" href="/process-serving/">Law firms in BC</a>
+            <a class="mega-link" href="/out-of-province-and-us/">Firms outside BC, in Canada and the US</a>
+            <a class="mega-link" href="/request-service/?topic=community-rate">Legal clinics and community organizations</a>
+            <p class="mega-label">Resources</p>
+            <a class="mega-link" href="/pricing/">Pricing</a>
+            <a class="mega-link" href="/coverage/">Areas we serve</a>
+            <a class="mega-link" href="/guides/">Guides</a>
+          </div>
+        </div>
+        <div class="mega-foot">
+          <span>Deadline this week? <a href={`tel:${site.phone.tel}`}>{site.actions.phoneLabel}</a></span>
+          <a href={site.actions.primaryPath}>Request service</a>
+        </div>
+      </div>
+      <a class="nav-link" href="/pricing/" aria-current={here("/pricing/")}>Pricing</a>
+      <a class="nav-link" href="/coverage/" aria-current={here("/coverage/")}>Coverage</a>
+      <a class="nav-link" href="/guides/" aria-current={here("/guides/")}>Guides</a>
+      <a class="nav-link" href="/about/" aria-current={here("/about/")}>About</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="phone-link" href={`tel:${site.phone.tel}`} aria-label={site.actions.phoneLabel}>
+        <Icon name="phone" /><span class="num">{site.phone.display}</span>
+      </a>
+      <a class="btn sm" href={site.actions.primaryPath}>{site.actions.primary} <Icon name="arrow-right" class="icon-go" /></a>
+      <a class="menu-btn" href="#site-menu" id="menu-open" aria-label="Open menu" aria-controls="mobile-menu" aria-haspopup="dialog">
+        <Icon name="menu" />
+      </a>
+    </div>
+  </div>
+</header>
+
+<dialog class="drawer theme-dark" id="mobile-menu" aria-label="Menu">
+  <div class="wrap">
+    <div class="drawer-bar">
+      <a class="brand" href="/" aria-label={`${site.name}, home`}>
+        <Image src={logoReversed} alt="" width={420} height={81} loading="lazy" densities={[1, 2]} format="webp" />
+      </a>
+      <button class="menu-btn" type="button" id="menu-close" aria-label="Close menu" style="display:inline-flex"><Icon name="x" /></button>
+    </div>
+    <nav class="drawer-nav" aria-label="Menu">
+      <a href="/process-serving/">Process serving <Icon name="arrow-right" /></a>
+      <a class="sub" href="/court-filing/">Court filing</a>
+      <a class="sub" href="/corporate-search/">Corporate search</a>
+      <a href="/pricing/">Pricing <Icon name="arrow-right" /></a>
+      <a href="/coverage/">Coverage <Icon name="arrow-right" /></a>
+      <a href="/out-of-province-and-us/">Out of province <Icon name="arrow-right" /></a>
+      <a href="/guides/">Guides <Icon name="arrow-right" /></a>
+      <a href="/about/">About <Icon name="arrow-right" /></a>
+      <div class="drawer-cta">
+        <a class="btn lg block" href={site.actions.primaryPath}>{site.actions.primary} <Icon name="arrow-right" class="icon-go" /></a>
+        <a class="btn btn-secondary lg block" href={`tel:${site.phone.tel}`}><Icon name="phone" /> {site.actions.phoneLabel}</a>
+      </div>
+    </nav>
+  </div>
+</dialog>

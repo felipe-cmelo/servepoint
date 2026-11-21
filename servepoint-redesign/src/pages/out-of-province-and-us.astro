@@ -1,0 +1,121 @@
+---
+/** Out of province and US (docs/pages/out-of-province-and-us.md). Copy: content/out-of-province-and-us.md. Layout: docs/15. */
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionNav from "../components/SectionNav.astro";
+import VancouverClock from "../components/VancouverClock.astro";
+import FaqList from "../components/FaqList.astro";
+import InstructBand from "../components/InstructBand.astro";
+import { site } from "../data/site";
+import { docCategories } from "../data/documents";
+import { faqsFor } from "../data/faqs";
+import { faqPage, breadcrumbs, service } from "../data/schema";
+
+const faqs = faqsFor("out-of-province", ["speed", "evasion", "proof", "corporation", "hague", "affidavit-records"]);
+const cats = docCategories.map((c) => c.name.toLowerCase()).join(", ").replace(/, ([^,]*)$/, ", and $1");
+---
+
+<Base
+  title="BC process serving for US and Canadian firms | ServePoint"
+  description="US and Canadian law firms can instruct ServePoint directly to serve documents in Vancouver and the Lower Mainland. Pacific Time updates, sworn proof."
+  path="/out-of-province-and-us/"
+  schema={[
+    service({ name: "Process serving for out-of-province and US law firms", serviceType: "Process serving", description: "Firms across Canada and the US instruct ServePoint directly for service in Vancouver and the Lower Mainland.", path: "/out-of-province-and-us/" }),
+    breadcrumbs([{ name: "Home", path: "/" }, { name: "Out of province and US", path: "/out-of-province-and-us/" }]),
+    faqPage(faqs),
+  ]}
+>
+  <PageHero
+    h1="Process serving in BC for US and out-of-province law firms"
+    lead="Firms in Canada and the US instruct us directly for service in Vancouver and the Lower Mainland. You send the documents. We attempt service, record each attempt and return a sworn affidavit. Updates run in Pacific Time."
+    crumbs={[{ name: "Out of province and US" }]}
+    query="?service=process-serving"
+    glance={{
+      title: "For firms outside BC",
+      rows: [
+        ["Instruct", "By form or by email"],
+        ["Updates", "Pacific Time"],
+        ["Invoicing", "USD on request"],
+        ["Proof", "Sworn affidavit of service"],
+      ],
+    }}
+  />
+
+  <SectionNav query="?service=process-serving" links={[["What to send", "send"], ["What happens next", "next"], ["What to expect", "expect"], ["Billing and the Hague Convention", "billing"], ["Questions", "faq"]]} />
+
+  <section class="section theme-light" id="send" aria-labelledby="send-h">
+    <div class="wrap-wide grid-2">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="send-h" class="rule-draw">What to send</h2>
+        <ul class="checklist">
+          <li>The documents</li>
+          <li>The service address</li>
+          <li>The deadline</li>
+          <li>Any requirements set by your court</li>
+        </ul>
+        <p>Use the request form, or email <a href={site.emailHref}>{site.email}</a>. Your firm chooses the method of service and any court requirements. We carry out the instruction locally.</p>
+      </div>
+      <div class="grid-auto" style="--min:16rem">
+        <div class="card stack">
+          <h3>Documents we accept</h3>
+          <p>Documents issued in other Canadian provinces and in the US, in the six categories we serve for BC courts: {cats}. See <a href="/process-serving/">process serving</a>.</p>
+        </div>
+        <div class="card stack">
+          <h3>Serving a company</h3>
+          <p>A BC corporate search can confirm a company's registered office before service. See <a href="/corporate-search/">corporate search</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-light theme-paper" id="next" aria-labelledby="next-h">
+    <div class="wrap-wide grid-2 grid-split center-y">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="next-h" class="rule-draw">What happens next</h2>
+        <ol class="seq">
+          <li>You instruct us by form or email.</li>
+          <li>We confirm availability and next steps the same business day.</li>
+          <li>The first attempt is typically within 24 hours.</li>
+          <li>We record each attempt and keep you informed.</li>
+          <li>You receive proof of service: when, where and how.</li>
+        </ol>
+      </div>
+      <VancouverClock />
+    </div>
+  </section>
+
+  <section class="section theme-light" id="expect" aria-labelledby="expect-h">
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <h2 id="expect-h" class="rule-draw">What to expect</h2>
+      </div>
+      <ul class="grid-3 keep-2 snap-row" data-label="What to expect. Swipe or use the arrow keys.">
+        <li class="card"><h3>Direct updates</h3><p>One line of communication, start to finish.</p></li>
+        <li class="card"><h3>Documented attempts</h3><p>A record of each attempt and its outcome.</p></li>
+        <li class="card"><h3>Documents by email</h3><p>Send documents and instructions to <a href={site.emailHref}>{site.email}</a>.</p></li>
+        <li class="card"><h3>Pacific Time</h3><p>A BC-based provider, so updates arrive in your working day.</p></li>
+        <li class="card"><h3>USD invoicing</h3><p>Available on request for US firms.</p></li>
+        <li class="card"><h3>Proof of service</h3><p>When, where and how service was completed.</p></li>
+      </ul>
+      <p style="margin-top:var(--s-6);max-width:44rem">Your firm decides the method of service and any court requirements. We carry out the instruction and document every attempt.</p>
+    </div>
+  </section>
+
+  <section class="section theme-light theme-paper" id="billing" aria-label="Billing and the Hague Service Convention">
+    <div class="wrap-wide grid-2 even">
+      <div class="card stack">
+        <h2 style="font-size:var(--fs-h3)">Billing</h2>
+        <p>USD invoicing is available on request. Service starts from ${site.startingPrice.amount}.</p>
+        <a class="go" href="/pricing/">See pricing <Icon name="arrow-right" /></a>
+      </div>
+      <div class="card stack">
+        <h2 style="font-size:var(--fs-h3)">Does the Hague Service Convention apply?</h2>
+        <p>Whether it applies depends on the matter. Your firm determines the method of service.</p>
+      </div>
+    </div>
+  </section>
+
+  <FaqList items={faqs} theme="light" />
+  <InstructBand lead="Send the service address, deadline and any court requirements. We confirm availability and next steps the same business day." />
+</Base>

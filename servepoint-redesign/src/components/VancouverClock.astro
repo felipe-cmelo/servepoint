@@ -1,0 +1,31 @@
+---
+/** Live Vancouver clock card (docs/06 section 7.11). No hours and no availability wording. */
+---
+
+<div class="clock" aria-live="off">
+  <p class="t" id="clock">--:--</p>
+  <p class="z">Vancouver, Pacific Time</p>
+  <p class="s" id="clockday"></p>
+</div>
+
+<script>
+  const ce = document.getElementById("clock");
+  const cd = document.getElementById("clockday");
+  if (ce && cd) {
+    const tf = new Intl.DateTimeFormat("en-CA", { hour: "numeric", minute: "2-digit", hour12: true, timeZone: "America/Vancouver" });
+    const df = new Intl.DateTimeFormat("en-CA", { weekday: "long", month: "long", day: "numeric", timeZone: "America/Vancouver" });
+    const tick = () => {
+      const d = new Date();
+      let h = "", m = "", ap = "";
+      tf.formatToParts(d).forEach((p) => {
+        if (p.type === "hour") h = p.value;
+        if (p.type === "minute") m = p.value;
+        if (p.type === "dayPeriod") ap = p.value.replace(/\./g, "").toLowerCase() === "am" ? "a.m." : "p.m.";
+      });
+      ce.innerHTML = `${h}:${m} <small>${ap}</small>`;
+      cd.textContent = df.format(d);
+    };
+    tick();
+    setInterval(tick, 15000);
+  }
+</script>

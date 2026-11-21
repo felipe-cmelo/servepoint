@@ -1,0 +1,92 @@
+/* ServePoint Canada: layout primitives (docs/15). Wrap, sections, grids, stacks. */
+
+@layer layout {
+  .wrap {
+    width: min(100% - 2 * var(--gutter), var(--wrap));
+    margin-inline: auto;
+  }
+  .wrap-wide {
+    width: min(100% - 2 * var(--gutter), var(--wrap-wide));
+    margin-inline: auto;
+  }
+
+  /* Surfaces are flat. Navy sections are navy, with no glow, so the page reads as a printed brief and not as an app. */
+  .section,
+  .section-tight {
+    position: relative;
+    padding-block: var(--section-y);
+    background: var(--surface-bg);
+    color: var(--fg);
+  }
+  .section-tight {
+    padding-block: calc(var(--section-y) * 0.65);
+  }
+  .section[id],
+  [id].anchor {
+    scroll-margin-top: calc(var(--header-h) + 3.5rem);
+  }
+
+  .sec-head {
+    max-width: 40rem;
+    margin-bottom: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+  }
+  .sec-head > * + * {
+    margin-top: var(--s-4);
+  }
+  .sec-head p {
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-8) clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+  .grid-split {
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  }
+  .grid-split-r {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-5);
+  }
+  .grid-auto {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: var(--s-4);
+  }
+  .stack > * + * {
+    margin-top: var(--stack, var(--s-4));
+  }
+  .cluster {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gap, var(--s-3));
+  }
+  .center-y {
+    align-items: center;
+  }
+
+  @media (max-width: 62rem) {
+    .grid-2,
+    .grid-split,
+    .grid-split-r {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--s-6);
+    }
+    .grid-3 {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (min-width: 40rem) and (max-width: 62rem) {
+    .grid-3.keep-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}

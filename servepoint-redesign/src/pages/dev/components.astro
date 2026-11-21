@@ -1,0 +1,84 @@
+---
+/**
+ * Component gallery (docs/10 Phase 1 task 4, docs/15). Every component in its states on the three surfaces.
+ * Excluded from production: the drop-dev-routes integration in astro.config.mjs deletes dist/dev after the build,
+ * and the page is noindex and disallowed in robots.txt.
+ */
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import PageHero from "../../components/PageHero.astro";
+import FaqList from "../../components/FaqList.astro";
+import DocumentFinder from "../../components/DocumentFinder.astro";
+import AttemptLine from "../../components/AttemptLine.astro";
+import VancouverClock from "../../components/VancouverClock.astro";
+import AffidavitSheet from "../../components/AffidavitSheet.astro";
+import PriceExplorer from "../../components/PriceExplorer.astro";
+import { faqsFor } from "../../data/faqs";
+import { site } from "../../data/site";
+
+const surfaces = [
+  { cls: "theme-light", name: "Light" },
+  { cls: "theme-light theme-paper", name: "Paper" },
+  { cls: "theme-dark", name: "Navy" },
+];
+---
+
+<Base title="Components (development only)" description="Component gallery for development. Not part of the production site." path="/dev/components/" noindex>
+  <PageHero h1="Components" lead="Every component in every state. This page is not published." crumbs={[{ name: "Components" }]} actions={false} />
+
+  {surfaces.map((s) => (
+    <section class={`section ${s.cls}`} aria-label={`${s.name} surface`}>
+      <div class="wrap-wide stack" style="--stack:var(--s-6)">
+        <h2>{s.name} surface</h2>
+        <div class="cluster">
+          <a class="btn lg" href="#">{site.actions.primary} <Icon name="arrow-right" class="icon-go" /></a>
+          <a class="btn btn-secondary lg" href="#"><Icon name="phone" /> {site.actions.phoneLabel}</a>
+          <a class="btn" href="#">Default</a>
+          <a class="btn sm" href="#">Small</a>
+          <a class="btn btn-ghost" href="#">Ghost</a>
+          <button class="btn" type="button" disabled>Disabled</button>
+          <a class="go" href="#">Text link <Icon name="arrow-right" /></a>
+        </div>
+        <div class="cluster">
+          <button class="chip" type="button" aria-pressed="true">Pressed chip</button>
+          <button class="chip" type="button" aria-pressed="false">Chip</button>
+          <span class="tag">Tag</span><span class="tag ok"><span class="dot"></span>Served</span>
+        </div>
+        <div class="seg" role="group" aria-label="Segmented control">
+          <button class="seg-item" type="button" aria-pressed="true">One</button>
+          <button class="seg-item" type="button" aria-pressed="false">Two</button>
+          <button class="seg-item" type="button" aria-pressed="false">Three</button>
+        </div>
+        <div class="grid-3 keep-2">
+          <div class="card lift"><h3>Card with hover</h3><p>Hover to see the border and the shadow deepen.</p></div>
+          <div class="card"><h3>Plain card</h3><p>A bordered surface with a quiet shadow.</p></div>
+          <div class="card callout"><p>A callout carries one line that matters.</p></div>
+        </div>
+        <div class="table-wrap">
+          <table class="stack-table">
+            <caption>Table caption</caption>
+            <thead><tr><th scope="col">Service</th><th scope="col">Included</th></tr></thead>
+            <tbody><tr><th scope="row">Row</th><td data-l="Included">Cell text</td></tr><tr><th scope="row">Row two</th><td data-l="Included">Cell text</td></tr></tbody>
+          </table>
+        </div>
+        <p>Body text with a <a href="#">link</a>, a <mark>marked phrase</mark> and <strong>strong text</strong>. Tab through the page to see focus on this surface.</p>
+      </div>
+    </section>
+  ))}
+
+  <section class="section theme-light" aria-label="Form controls">
+    <div class="wrap-wide stack" style="--stack:var(--s-5)">
+      <h2>Form controls</h2>
+      <div class="formbox" style="box-shadow:none">
+        <div class="field"><label for="d-text">Text field</label><input class="input" id="d-text" type="text" /></div>
+        <div class="field err"><label for="d-err">Field with an error</label><input class="input" id="d-err" type="text" value="maya@firm" aria-invalid="true" aria-describedby="d-err-m" /><p class="msg" id="d-err-m">Enter an email address we can reply to, like name@firm.ca.</p></div>
+        <fieldset class="full"><legend>Choice chips</legend><div class="chips"><input class="chip-input" type="radio" name="d-r" id="d-r1" checked /><label class="chip" for="d-r1">Selected</label><input class="chip-input" type="radio" name="d-r" id="d-r2" /><label class="chip" for="d-r2">Not selected</label></div></fieldset>
+        <p class="callout full">A callout inside a form.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-dark" aria-label="Sample sheet"><div class="wrap-wide grid-2"><AffidavitSheet variant="static" /><PriceExplorer idp="dev-px" /></div></section>
+  <section class="section theme-light" aria-label="Finder, attempt line, clock"><div class="wrap-wide grid-2"><DocumentFinder id="dev-finder" /><div class="stack"><AttemptLine /><VancouverClock /></div></div></section>
+  <FaqList items={faqsFor("home", ["speed", "proof"])} heading="FAQ list" />
+</Base>

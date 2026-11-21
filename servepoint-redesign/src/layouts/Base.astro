@@ -1,0 +1,78 @@
+---
+/**
+ * Base layout (docs/10 Phase 1, docs/15): lang en-CA, skip link, Seo, JsonLd, header, command palette, footer and mobile bar.
+ * The scroll engine is compiled from src/scripts/scroll-engine.ts and inlined with the html.js flag (docs/07 section 3.1).
+ * Both inline scripts are hashed into the Content-Security-Policy by scripts/csp-headers.mjs.
+ */
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { transformSync } from "esbuild";
+import "../styles/fonts.css";
+import "../styles/tokens.css";
+import "../styles/base.css";
+import "../styles/layout.css";
+import "../styles/components.css";
+import "../styles/chrome.css";
+import "../styles/home.css";
+import "../styles/hero.css";
+import "../styles/pages.css";
+import "../styles/mobile.css";
+import "../styles/motion.css";
+import sansFont from "../../node_modules/@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2?url";
+import serifFont from "../../node_modules/@fontsource-variable/source-serif-4/files/source-serif-4-latin-wght-normal.woff2?url";
+import Seo from "../components/Seo.astro";
+import JsonLd from "../components/JsonLd.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import CommandPalette from "../components/CommandPalette.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import MobileBar from "../components/MobileBar.astro";
+import { site } from "../data/site";
+import { organization } from "../data/schema";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  noindex?: boolean;
+  ogImage?: string;
+  type?: "website" | "article";
+  /** Extra JSON-LD objects for the page. The organization block is always included. */
+  schema?: Record<string, unknown>[];
+  /** Hide the phone bottom bar, for a page that is itself the form. */
+  noMobileBar?: boolean;
+}
+const { title, description, path, noindex, ogImage, type, schema = [], noMobileBar } = Astro.props;
+
+const engineJs = transformSync(readFileSync(join(process.cwd(), "src/scripts/scroll-engine.ts"), "utf8"), {
+  loader: "ts",
+  minify: true,
+  target: "es2020",
+}).code;
+---
+
+<!doctype html>
+<html lang={site.locale} id="top">
+  <head>
+    <script is:inline>document.documentElement.classList.add("js");</script>
+    <Seo {title} {description} {path} {noindex} {ogImage} {type} />
+    <link rel="preload" href={sansFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={serifFont} as="font" type="font/woff2" crossorigin />
+    <JsonLd data={[organization(), ...schema]} />
+  </head>
+  <body data-no-mbar={noMobileBar ? "" : undefined}>
+    <a class="skip" href="#main">Skip to content</a>
+    <SiteHeader />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
+    <MobileBar />
+    <CommandPalette />
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script is:inline set:html={engineJs} />
+    <script>
+      import "../scripts/chrome.ts";
+      import "../scripts/palette.ts";
+    </script>
+  </body>
+</html>

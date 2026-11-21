@@ -1,0 +1,129 @@
+---
+/** Court filing (docs/pages/court-filing.md). Copy: content/court-filing.md. Layout: docs/15. */
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionNav from "../components/SectionNav.astro";
+import FaqList from "../components/FaqList.astro";
+import InstructBand from "../components/InstructBand.astro";
+import { site } from "../data/site";
+import { faqsFor } from "../data/faqs";
+import { faqPage, breadcrumbs, service } from "../data/schema";
+import { sources } from "../data/sources";
+
+const faqs = faqsFor("court-filing", ["filing-scope", "filing-return", "filing-with-service", "filing-outside-bc"]);
+const q = "?service=court-filing";
+---
+
+<Base
+  title="Court filing and registry services in Vancouver | ServePoint"
+  description="Filing and issuing at BC Supreme Court and Provincial Court registries, file searches and document retrieval, with digital return of filed documents."
+  path="/court-filing/"
+  schema={[
+    service({ name: "Court filing and registry attendance", serviceType: "Court filing", description: "Filing and issuing of court documents, registry attendance, court file searches and document retrieval in British Columbia.", path: "/court-filing/" }),
+    breadcrumbs([{ name: "Home", path: "/" }, { name: "Court filing", path: "/court-filing/" }]),
+    faqPage(faqs),
+  ]}
+>
+  <PageHero
+    h1="Court filing and registry services in Vancouver, BC"
+    lead="We file and issue documents at BC Supreme Court and Provincial Court registries, search court files, retrieve copies and return filed documents digitally. Firms inside and outside BC instruct us directly."
+    crumbs={[{ name: "Court filing" }]}
+    query={q}
+    glance={{
+      title: "At a glance",
+      rows: [
+        ["Registries", "BC Supreme Court and Provincial Court"],
+        ["Return of filed documents", "Digital copy or mail"],
+        ["Instruct from", "Inside or outside BC"],
+        ["Starts from", `$${site.basePrice.amount} ${site.basePrice.currency}`],
+      ],
+      cta: { label: "See pricing", href: "/pricing/" },
+    }}
+  />
+
+  <SectionNav query={q} links={[["Filing and issuing", "filing"], ["Searches", "searches"], ["File and serve", "file-and-serve"], ["How to instruct", "how"], ["Price", "price"], ["Questions", "faq"]]} />
+
+  <section class="section theme-light" id="filing" aria-labelledby="filing-h">
+    <div class="wrap-wide grid-2 grid-split">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="filing-h" class="rule-draw">Filing and issuing</h2>
+        <p class="lead-text">Filing, issuing and registry attendance at BC courts.</p>
+      </div>
+      <ul class="checklist card">
+        <li>Filing pleadings, applications and affidavits</li>
+        <li>Issuing Notices of Civil Claim and petitions</li>
+        <li>Filing at BC Supreme Court and Provincial Court registries</li>
+        <li>Registry attendance</li>
+        <li>Digital return of filed documents, or by mail</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section theme-light theme-paper" id="searches" aria-labelledby="search-h">
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <h2 id="search-h" class="rule-draw">Searches and retrieval</h2>
+        <p>What you can ask for, and what you receive.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="stack-table">
+          <caption class="sr-only">What you can ask for and what you receive</caption>
+          <thead><tr><th scope="col">What you can ask for</th><th scope="col">What you receive</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Court file search</th><td data-l="What you receive">The result of the search</td></tr>
+            <tr><th scope="row">Copies of pleadings, orders and entered judgments</th><td data-l="What you receive">The copies, delivered digitally or by mail</td></tr>
+            <tr><th scope="row">Confirmation that a document is on a court file</th><td data-l="What you receive">A confirmation</td></tr>
+            <tr><th scope="row">Retrieval of available court documents</th><td data-l="What you receive">The documents</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight theme-dark" id="file-and-serve" aria-labelledby="fs-h">
+    <div class="wrap-wide grid-2 grid-split center-y">
+      <div class="stack">
+        <h2 id="fs-h" class="rule-draw">File and serve on one instruction</h2>
+        <p class="lead-text">Filing and service can be one instruction, so filed documents go straight to service.</p>
+      </div>
+      <div><a class="btn lg" href="/process-serving/">See process serving <Icon name="arrow-right" class="icon-go" /></a></div>
+    </div>
+  </section>
+
+  <section class="section theme-light" id="how" aria-labelledby="how-h">
+    <div class="wrap-wide grid-2">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="how-h" class="rule-draw">How to instruct</h2>
+        <ol class="seq">
+          <li>Send the documents, the service you need and the deadline, by form or email.</li>
+          <li>We confirm availability and next steps.</li>
+          <li>We return filed documents digitally or by mail.</li>
+        </ol>
+      </div>
+      <div class="card stack">
+        <h3>Registries</h3>
+        <p>We file at BC Supreme Court and Provincial Court registries. The courts publish each registry's address, hours and filing rules.</p>
+        <ul class="ruled">
+          <li><a href={sources.courthouses.url}>{sources.courthouses.label}</a></li>
+          <li><a href={sources.courtRegistry.url}>{sources.courtRegistry.label}</a></li>
+          <li><a href={sources.bcscLocations.url}>{sources.bcscLocations.label}</a></li>
+          <li><a href={sources.provincialLocations.url}>{sources.provincialLocations.label}</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight theme-light theme-paper" id="price" aria-labelledby="price-h">
+    <div class="wrap-wide grid-2 grid-split center-y">
+      <div class="stack">
+        <h2 id="price-h" class="rule-draw">Price</h2>
+        <p class="lead-text">Court filing and registry attendance starts from ${site.startingPrice.amount}. Pricing is confirmed before service.</p>
+      </div>
+      <div><a class="btn btn-secondary" href="/pricing/">See pricing <Icon name="arrow-right" class="icon-go" /></a></div>
+    </div>
+  </section>
+
+  <FaqList items={faqs} theme="light" />
+  <InstructBand service="court-filing" lead="Send the documents, the court service you need and the deadline. We confirm availability and next steps." />
+</Base>

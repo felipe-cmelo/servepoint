@@ -1,0 +1,85 @@
+---
+/** Home (docs/15 section 5). Copy: content/home.md. */
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import HeroHome from "../components/HeroHome.astro";
+import ProcessScene from "../components/ProcessScene.astro";
+import ServiceShowcase from "../components/ServiceShowcase.astro";
+import AreaExplorer from "../components/AreaExplorer.astro";
+import PriceExplorer from "../components/PriceExplorer.astro";
+import VancouverClock from "../components/VancouverClock.astro";
+import FaqList from "../components/FaqList.astro";
+import InstructBand from "../components/InstructBand.astro";
+import { site } from "../data/site";
+import { faqsFor } from "../data/faqs";
+import { faqPage } from "../data/schema";
+
+const faqs = faqsFor("home", ["speed", "proof", "evasion", "out-of-province", "registered-office", "pricing"]);
+---
+
+<Base
+  title="Process server in Vancouver, BC | ServePoint Canada"
+  description="Process serving, court filing and BC corporate searches for law firms in Vancouver and the Lower Mainland. First attempt within 24 hours."
+  path="/"
+  schema={[faqPage(faqs)]}
+>
+  <HeroHome />
+  <ProcessScene />
+
+  <section class="section theme-dark" id="services" aria-labelledby="services-h">
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <h2 id="services-h" class="rule-draw">What we do</h2>
+        <p class="m-hide">Three services. Choose one to see what you receive.</p>
+      </div>
+      <ServiceShowcase />
+    </div>
+  </section>
+
+  <section class="section theme-light" id="coverage" aria-labelledby="coverage-h">
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <h2 id="coverage-h" class="rule-draw">Vancouver and the Lower Mainland</h2>
+        <p>We serve {site.areas.length} communities. Not listed? Send the address and we confirm availability the same business day.</p>
+      </div>
+      <AreaExplorer idp="home-area" />
+    </div>
+  </section>
+
+  <section class="section theme-dark" id="pricing" aria-labelledby="price-h">
+    <div class="wrap-wide grid-2">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="price-h" class="rule-draw">Pricing: each service starts from</h2>
+        <p class="figure" aria-label={`${site.basePrice.amount} dollars`}>${site.basePrice.amount}<span class="cur">{site.basePrice.currency}</span></p>
+        <p><a class="go" href="/pricing/">See all pricing <Icon name="arrow-right" /></a></p>
+      </div>
+      <PriceExplorer idp="home-px" />
+    </div>
+  </section>
+
+  <section class="section theme-light theme-paper" id="outside" aria-labelledby="outside-h">
+    <div class="wrap-wide grid-2 grid-split center-y">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="outside-h" class="rule-draw">Instructing from outside BC</h2>
+        <p class="lead-text">Firms across Canada and the US instruct us directly. Updates run in Pacific Time. USD invoicing on request.</p>
+        <p><a class="btn" href="/out-of-province-and-us/">Read for firms outside BC <Icon name="arrow-right" class="icon-go" /></a></p>
+      </div>
+      <VancouverClock />
+    </div>
+  </section>
+
+  <section class="section-tight theme-light" id="founder" aria-labelledby="who-h">
+    <div class="wrap-wide">
+      <div class="card grid-2 grid-split-r founder-card" style="padding:clamp(1.25rem,1rem + 1.6vw,2.5rem)">
+        <h2 id="who-h" style="font-size:var(--fs-h2)">Who handles your file</h2>
+        <div class="stack">
+          <p style="font-size:var(--fs-lead);color:var(--fg)">{site.founder.name}, {site.founder.credential}, founded ServePoint with a legal background. One contact knows your file from instruction to affidavit. Every attempt is recorded.</p>
+          <p><a class="go" href="/about/">About ServePoint and the founder <Icon name="arrow-right" /></a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FaqList items={faqs} theme="light" />
+  <InstructBand />
+</Base>

@@ -1,0 +1,53 @@
+---
+/**
+ * Inner page hero (docs/15 section 3): breadcrumb, serif H1, lead, actions, and an optional "at a glance" card with the
+ * facts that matter for the page. Flat navy, no art. On phones a long lead is clamped to three lines with a Read more control.
+ */
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+
+interface Props {
+  h1: string;
+  lead?: string;
+  crumbs: { name: string; path?: string }[];
+  /** Show the Request service and phone actions. Default true. */
+  actions?: boolean;
+  /** Query string for the Request service link, for example "?service=process-serving". */
+  query?: string;
+  /** Facts for the glance card. */
+  glance?: { title: string; rows: [string, string][]; cta?: { label: string; href: string } };
+}
+const { h1, lead, crumbs, actions = true, query = "", glance } = Astro.props;
+---
+
+<section class="page-hero theme-dark">
+  <div class="wrap-wide">
+    <div class:list={["ph-grid", { solo: !glance }]}>
+      <div class="ph-copy">
+        <nav class="crumbs rise" aria-label="Breadcrumb" style="--d:0">
+          <ol>
+            <li><a href="/">Home</a></li>
+            {crumbs.map((c, i) => (c.path && i < crumbs.length - 1 ? <li><a href={c.path}>{c.name}</a></li> : <li><span aria-current="page">{c.name}</span></li>))}
+          </ol>
+        </nav>
+        <h1 class="rise-t" style="--d:60">{h1}</h1>
+        {lead && <p class="lead rise-t" style="--d:130" data-collapse="3">{lead}</p>}
+        {actions && (
+          <div class="hero-cta rise" style="--d:200" data-mbar-hide>
+            <a class="btn lg" href={`${site.actions.primaryPath}${query}`}>{site.actions.primary} <Icon name="arrow-right" class="icon-go" /></a>
+            <a class="btn btn-secondary lg" href={`tel:${site.phone.tel}`}><Icon name="phone" /> {site.actions.phoneLabel}</a>
+          </div>
+        )}
+      </div>
+      {glance && (
+        <aside class="glance rise" style="--d:240" aria-label={glance.title}>
+          <h2>{glance.title}</h2>
+          <dl>
+            {glance.rows.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+          </dl>
+          {glance.cta && <a class="go" href={glance.cta.href}>{glance.cta.label} <Icon name="arrow-right" /></a>}
+        </aside>
+      )}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+---
+/**
+ * Home hero (docs/15 section 3). A calm navy page for a law firm reader: the promise set in a serif, two actions, the
+ * founder's name, and one sheet of paper that shows what the firm receives. Copy: content/home.md.
+ * No grid, no glow, no network art. On phones the sheet starts as a preview and opens on request.
+ */
+import Icon from "./Icon.astro";
+import AffidavitSheet from "./AffidavitSheet.astro";
+import { site } from "../data/site";
+---
+
+<section class="hero theme-dark" id="hero" aria-labelledby="h1">
+  <div class="wrap-wide hero-inner">
+    <div class="hero-copy">
+      <h1 id="h1" class="rise-t" style="--d:40">Process serving in {site.locality}</h1>
+      <p class="lead rise-t" style="--d:120">We serve legal documents for law firms in Vancouver and the Lower Mainland. Every attempt is recorded.</p>
+      <div class="hero-cta rise" style="--d:200" data-mbar-hide>
+        <a class="btn lg" href={site.actions.primaryPath}>{site.actions.primary} <Icon name="arrow-right" class="icon-go" /></a>
+        <a class="btn btn-secondary lg" href={`tel:${site.phone.tel}`}><Icon name="phone" /> {site.actions.phoneLabel}</a>
+      </div>
+      <p class="byline rise" style="--d:260">Founded by <strong>{site.founder.name}, {site.founder.credential}</strong>, a legal professional.</p>
+      <ul class="facts rise" style="--d:320">
+        <li><Icon name="check" />First attempt typically within 24 hours</li>
+        <li><Icon name="check" />Up to {site.attemptsIncluded} attempts included</li>
+        <li><Icon name="check" />Sworn affidavit of service</li>
+        <li><Icon name="check" />Same business day confirmation</li>
+      </ul>
+    </div>
+    <div class="hero-sheet rise" style="--d:160">
+      <AffidavitSheet variant="hero" />
+    </div>
+  </div>
+</section>

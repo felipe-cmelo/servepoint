@@ -1,0 +1,311 @@
+/* ServePoint Canada: phones and touch (docs/15 section 9).
+   The rule for small screens: show less, let the reader open more. One stage at a time, one swipe row instead of a stack of
+   cards, the long sentence clamped to three lines, the optional fields folded away. Tap targets are 44 px. */
+
+@layer pages {
+  /* ---------- Touch ---------- */
+  a,
+  button,
+  summary,
+  label.chip,
+  label.seg-item {
+    -webkit-tap-highlight-color: color-mix(in srgb, var(--teal-500) 20%, transparent);
+    touch-action: manipulation;
+  }
+  .opt-toggle {
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.4rem;
+    min-height: 2.75rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--accent-text);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-align: left;
+  }
+  @media (pointer: coarse) {
+    .subnav a:not(.btn) {
+      height: 2.5rem;
+    }
+    .foot-col a,
+    .foot-bar a {
+      padding-block: 0.5rem;
+    }
+    .toc a {
+      padding-block: 0.55rem;
+    }
+    .go {
+      min-height: 2.5rem;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    /* A sentence that only repeats its neighbour is dropped on a phone */
+    .m-hide {
+      display: none;
+    }
+
+    /* ---------- Rhythm ---------- */
+    .sec-head {
+      margin-bottom: var(--s-5);
+    }
+    .sec-head > * + * {
+      margin-top: var(--s-3);
+    }
+    .rule-draw {
+      padding-bottom: var(--s-3);
+    }
+    .lead-text {
+      font-size: 1.0625rem;
+    }
+
+    /* ---------- Page hero ---------- */
+    .page-hero {
+      padding-top: calc(var(--header-h) + var(--s-4));
+      padding-bottom: var(--s-6);
+    }
+    .page-hero h1 {
+      max-width: none;
+      font-size: 1.8125rem;
+    }
+    .page-hero .lead {
+      font-size: 1.0625rem;
+    }
+    .crumbs ol {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+    .crumbs ol::-webkit-scrollbar {
+      display: none;
+    }
+    /* The two hero actions stack, centred, at a comfortable width rather than edge to edge, with a little air between them */
+    .page-hero .hero-cta,
+    .hero .hero-cta {
+      display: grid;
+      grid-template-columns: minmax(0, min(100%, 16rem));
+      justify-content: center;
+      gap: 0.875rem;
+    }
+    .glance {
+      padding: var(--s-4);
+    }
+
+    /* ---------- Section nav: a swipe row of anchors, no button ---------- */
+    .subnav-in {
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2rem), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 2rem), transparent);
+    }
+    .subnav .spacer,
+    .subnav .btn {
+      display: none;
+    }
+
+    /* ---------- Lists that were a long column ---------- */
+    .links-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 var(--s-5);
+    }
+    .links-grid a,
+    .links-grid span {
+      padding: 0.8rem 0;
+      font-size: 0.9375rem;
+    }
+    .hood-grid {
+      gap: var(--s-1);
+    }
+    .hood-grid li {
+      padding: 0.3rem 0.7rem;
+      font-size: 0.875rem;
+    }
+    .checklist > li {
+      padding-block: 0.6rem;
+    }
+    .checklist > li::before {
+      top: var(--ck-top, 0.9rem);
+    }
+
+    /* Neighbourhood pills: eight, then Show all */
+    .clip:not(.all) > li.over:not(.hit) {
+      display: none;
+    }
+    .cpanel .hoods {
+      gap: 0.3rem;
+    }
+
+    /* ---------- Cards ---------- */
+    .card {
+      --pad: var(--s-4);
+    }
+    .card.stack > * + * {
+      margin-top: var(--s-3);
+    }
+    .finder .chips-scroll {
+      --bleed: var(--s-3);
+    }
+    .card .chips-scroll {
+      --bleed: var(--pad);
+    }
+
+    /* ---------- FAQ ---------- */
+    .faq-lede {
+      display: none;
+    }
+    details.faq > summary {
+      padding-block: var(--s-4);
+      font-size: 1.0625rem;
+    }
+
+    /* ---------- Closing band ---------- */
+    .instruct {
+      padding-block: var(--s-8) var(--s-4);
+    }
+    .instruct-card {
+      gap: var(--s-6);
+      padding: var(--s-5) var(--s-4);
+      border-radius: var(--r-lg);
+    }
+    .instruct-contact {
+      margin-top: var(--s-4);
+    }
+    .qs {
+      padding: var(--s-4);
+    }
+    .qs .btn {
+      width: 100%;
+    }
+
+    /* ---------- Footer ---------- */
+    .site-footer {
+      padding-block: var(--s-8) var(--s-5);
+    }
+    .foot-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+    }
+    .foot-brand {
+      margin-bottom: var(--s-5);
+    }
+    .foot-col {
+      border-top: 1px solid color-mix(in srgb, #ffffff 12%, transparent);
+    }
+    .foot-col:last-of-type {
+      border-bottom: 1px solid color-mix(in srgb, #ffffff 12%, transparent);
+    }
+    .foot-col summary {
+      min-height: 3rem;
+      margin: 0;
+      color: var(--on-dark-2);
+      font-size: 0.9375rem;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+    .foot-col summary .icon {
+      display: block;
+    }
+    .foot-col ul {
+      padding-bottom: var(--s-3);
+    }
+    .foot-brand p {
+      margin-top: var(--s-3);
+    }
+    .foot-bar {
+      margin-top: var(--s-6);
+    }
+
+    /* ---------- Request page ---------- */
+    .req-grid {
+      gap: var(--s-5);
+    }
+    .formbox {
+      padding: var(--s-4);
+      border-radius: var(--r-lg);
+      box-shadow: none;
+    }
+    .formbox .actions-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .formbox .actions-row .btn,
+    .formbox .step1 .btn,
+    .formbox .submit-row .btn {
+      width: 100%;
+    }
+    .live-sum {
+      display: none;
+    }
+    .field.opt:not(.shown) {
+      display: none;
+    }
+    html:not(.js) .field.opt:not(.shown) {
+      display: block;
+    }
+    .opt-toggle {
+      display: inline-flex;
+    }
+    .stepper {
+      margin-bottom: var(--s-4);
+    }
+    .req-aside .card h2 {
+      font-size: 1.0625rem;
+    }
+
+    /* ---------- Guides and legal pages: the contents fold away ---------- */
+    .toc {
+      padding: 0;
+    }
+    .toc > h2 {
+      display: none;
+    }
+    .doc-layout .toc {
+      order: -1;
+    }
+  }
+
+  /* The contents list is a disclosure on phones and tablets, and open on desktop */
+  .toc details > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-3);
+    min-height: 2.75rem;
+    padding: 0 var(--s-4);
+    color: var(--fg);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    list-style: none;
+    cursor: pointer;
+  }
+  .toc details > summary::-webkit-details-marker {
+    display: none;
+  }
+  .toc details > summary .icon {
+    transition: transform var(--t-base) var(--ease);
+  }
+  .toc details[open] > summary .icon {
+    transform: rotate(180deg);
+  }
+  .toc details > ul {
+    padding: 0 var(--s-4) var(--s-3);
+  }
+  @media (min-width: 62.0625rem) {
+    .toc details > summary {
+      min-height: 0;
+      margin-bottom: var(--s-3);
+      padding: 0;
+      color: var(--fg-3);
+      font-size: var(--fs-xs);
+      pointer-events: none;
+    }
+    .toc details > summary .icon {
+      display: none;
+    }
+    .toc details > ul {
+      padding: 0;
+    }
+  }
+}

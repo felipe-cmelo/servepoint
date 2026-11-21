@@ -1,0 +1,19 @@
+---
+/** Sticky section nav (docs/15 section 4): pills that follow the reader and mark the section in view. */
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+
+interface Props {
+  links: [string, string][]; // [label, id]
+  query?: string;
+}
+const { links, query = "" } = Astro.props;
+---
+
+<nav class="subnav" aria-label="On this page">
+  <div class="wrap-wide subnav-in">
+    {links.map(([label, id]) => <a href={`#${id}`}>{label}</a>)}
+    <span class="spacer"></span>
+    <a class="btn sm" href={`${site.actions.primaryPath}${query}`} style="color:#fff;flex:none">{site.actions.primary} <Icon name="arrow-right" class="icon-go" /></a>
+  </div>
+</nav>

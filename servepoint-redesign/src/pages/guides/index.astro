@@ -1,0 +1,52 @@
+---
+/** Guides hub (docs/pages/guides.md). Draft guides are listed only while ALLOW_INDEXING is not "true". Layout: docs/15. */
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import PageHero from "../../components/PageHero.astro";
+import InstructBand from "../../components/InstructBand.astro";
+import { visibleGuides, dateLabel } from "../../data/guides";
+import { breadcrumbs } from "../../data/schema";
+
+const guides = await visibleGuides();
+const hasDrafts = guides.some((g) => g.data.status === "draft");
+---
+
+<Base
+  title="Guides to serving documents in BC | ServePoint Canada"
+  description="Practical guides to personal service, proof of service and court filing in British Columbia, reviewed by founder Jasmine Deo, LLB."
+  path="/guides/"
+  noindex={hasDrafts}
+  schema={[breadcrumbs([{ name: "Home", path: "/" }, { name: "Guides", path: "/guides/" }])]}
+>
+  <PageHero
+    h1="Guides to serving documents in BC"
+    lead="Written by Jasmine Deo, LLB. Practical, linked to the official rules and forms, and not legal advice."
+    crumbs={[{ name: "Guides" }]}
+    actions={false}
+  />
+
+  <section class="section theme-light" aria-label="Guides" style="padding-top:clamp(2rem,1.5rem + 2vw,3.5rem)">
+    <div class="wrap-wide">
+      {hasDrafts && <p class="callout" style="margin-bottom:var(--s-6);max-width:44rem">Draft guides are shown here for review. They are not published until the founder approves them.</p>}
+      <ul class="guide-list">
+        {guides.map((g) => (
+          <li>
+            <a class="card lift guide-card" href={`/guides/${g.data.slug}/`}>
+              <span>
+                <h2>{g.data.title}</h2>
+                <p>{g.data.description}</p>
+                <span class="meta">
+                  {g.data.status === "draft" ? <span class="tag">Draft</span> : null}
+                  <span>{g.data.reviewed ? <>Last reviewed {dateLabel(g.data.reviewed)}</> : <>Not yet reviewed</>}</span>
+                </span>
+              </span>
+              <Icon name="arrow-right" class="icon-go" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <InstructBand />
+</Base>

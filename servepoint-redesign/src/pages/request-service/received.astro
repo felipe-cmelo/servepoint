@@ -1,0 +1,61 @@
+---
+/** Request received (noindex). Reads ?ref= first, then sessionStorage. With neither, it says to quote the date and firm name. */
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import PageHero from "../../components/PageHero.astro";
+import { site } from "../../data/site";
+---
+
+<Base
+  title="Request received | ServePoint Canada"
+  description="Your service request has been received by ServePoint Canada. Email your documents and include your reference."
+  path="/request-service/received/"
+  noindex
+>
+  <PageHero h1="Request received" crumbs={[{ name: "Request service", path: "/request-service/" }, { name: "Request received" }]} actions={false} />
+
+  <section class="section theme-light" id="received" aria-label="What to do next" style="padding-top:clamp(2rem,1.5rem + 2vw,3.5rem)">
+    <div class="wrap-wide grid-2">
+      <div class="stack" style="--stack:var(--s-5)">
+        <div class="card stack" id="ref-block" hidden>
+          <p style="color:var(--fg-2)">Your reference is</p>
+          <p class="mono" id="ref" style="font-size:clamp(1.75rem,1.4rem + 1.4vw,2.5rem);color:var(--fg);letter-spacing:-0.01em"></p>
+          <div class="cluster">
+            <button class="btn btn-secondary" type="button" data-copy-target="#ref"><Icon name="copy" /> Copy reference</button>
+            <a class="btn" id="mail-docs" href={site.emailHref}><Icon name="mail" /> Email documents</a>
+          </div>
+        </div>
+        <p id="no-ref" class="lead-text">Quote the date and your firm name when you email your documents.</p>
+        <p class="lead-text">Email your documents to <a href={site.emailHref}>{site.email}</a> with the reference, the service address and the deadline.</p>
+        <p>If it is urgent, call <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.</p>
+        <p><a class="go" href="/">Back to the home page <Icon name="arrow-right" /></a></p>
+      </div>
+      <div class="card stack">
+        <h2 style="font-size:var(--fs-h3)">What happens next</h2>
+        <ol class="seq">
+          <li>We confirm availability and next steps the same business day.</li>
+          <li>The first attempt is typically within 24 hours.</li>
+          <li>You receive updates on each attempt.</li>
+          <li>You receive a sworn affidavit of service.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script define:vars={{ email: site.email }}>
+  // Inline so the address comes from site.ts. The reference is read from the query string, then sessionStorage.
+  (function () {
+    var valid = /^SP-\d{6}-[A-Z0-9]{4}$/;
+    var ref = new URLSearchParams(location.search).get("ref") || "";
+    try {
+      if (!valid.test(ref)) ref = sessionStorage.getItem("sp-reference") || "";
+    } catch (e) {}
+    if (!valid.test(ref)) return;
+    document.getElementById("ref").textContent = ref;
+    document.getElementById("ref-block").hidden = false;
+    document.getElementById("no-ref").hidden = true;
+    var body = "Reference: " + ref + "\nService address:\nDeadline:\nCourt file number:\n";
+    document.getElementById("mail-docs").href = "mailto:" + email + "?subject=" + encodeURIComponent("Documents for " + ref) + "&body=" + encodeURIComponent(body);
+  })();
+</script>

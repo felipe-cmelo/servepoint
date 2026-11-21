@@ -1,0 +1,10 @@
+---
+/** One JSON-LD block. A data block is not governed by script-src, so it needs no hash (docs/07 section 6.2). */
+interface Props {
+  data: Record<string, unknown> | Record<string, unknown>[];
+}
+const { data } = Astro.props;
+const json = JSON.stringify(data).replace(/</g, "\\u003c");
+---
+
+<script type="application/ld+json" set:html={json} />

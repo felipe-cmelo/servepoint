@@ -1,0 +1,108 @@
+---
+/**
+ * "What we do" (docs/15 section 5): a tabbed showcase of the three deliverables. Each panel shows a sample of what the firm
+ * receives (fictional data, labelled) with the published facts for that service. Without script every panel shows in turn.
+ */
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+
+const price = site.basePrice.amount;
+---
+
+<div class="showcase" data-tabs>
+  <div class="show-tabs" role="tablist" aria-label="Services" aria-orientation="vertical">
+    <button class="show-tab" type="button" role="tab" id="sv-t0" aria-controls="sv-p0" aria-selected="true">
+      <span class="mega-ico"><Icon name="file" /></span>
+      <span><span class="t">Process serving</span><span class="d">Every attempt recorded</span></span>
+    </button>
+    <button class="show-tab" type="button" role="tab" id="sv-t1" aria-controls="sv-p1" aria-selected="false">
+      <span class="mega-ico"><Icon name="building" /></span>
+      <span><span class="t">Court filing</span><span class="d">Filing and registry attendance</span></span>
+    </button>
+    <button class="show-tab" type="button" role="tab" id="sv-t2" aria-controls="sv-p2" aria-selected="false">
+      <span class="mega-ico"><Icon name="search" /></span>
+      <span><span class="t">Corporate search</span><span class="d">BC Registry searches</span></span>
+    </button>
+  </div>
+
+  <div class="show-panels">
+    <div class="show-panel" role="tabpanel" id="sv-p0" aria-labelledby="sv-t0">
+      <div class="doc-mini" aria-label="Sample attempt log">
+        <p class="cap">Sample attempt log. Fictional file.</p>
+        <p class="doc-title">Attempt record</p>
+        <ul class="log">
+          <li><span>Mar 3, 4:31 p.m.</span><span>Availability confirmed</span></li>
+          <li><span>Mar 4, 9:42 a.m.</span><span>Attempt 1 of 3. Served.</span></li>
+          <li><span>Mar 4, 11:05 a.m.</span><span>Affidavit sworn</span></li>
+        </ul>
+      </div>
+      <div class="copy">
+        <h3>Process serving</h3>
+        <p>Personal service of civil, family, commercial, witness, residential tenancy and corporate documents.</p>
+        <ul class="checklist">
+          <li>First attempt typically within 24 hours</li>
+          <li>Up to {site.attemptsIncluded} attempts, each recorded</li>
+          <li>Sworn affidavit of service</li>
+        </ul>
+        <p class="price-tag">From <b>${price}</b> {site.basePrice.currency}</p>
+        <div class="cluster">
+          <a class="btn" href="/request-service/?service=process-serving">Request this service <Icon name="arrow-right" class="icon-go" /></a>
+          <a class="go" href="/process-serving/">Process serving in Vancouver <Icon name="arrow-right" /></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="show-panel" role="tabpanel" id="sv-p1" aria-labelledby="sv-t1">
+      <div class="doc-mini" aria-label="Sample filing log">
+        <p class="cap">Sample filing log. Fictional file.</p>
+        <p class="doc-title">Filing record</p>
+        <ul class="log">
+          <li><span>Mar 4, 8:50 a.m.</span><span>Documents received</span></li>
+          <li><span>Mar 4, 10:20 a.m.</span><span>Filed at the registry</span></li>
+          <li><span>Mar 4, 10:45 a.m.</span><span>Returned digitally</span></li>
+        </ul>
+      </div>
+      <div class="copy">
+        <h3>Court filing</h3>
+        <p>Filing and issuing at BC Supreme Court and Provincial Court registries. Stamped copies returned digitally.</p>
+        <ul class="checklist">
+          <li>Pleadings, applications and affidavits</li>
+          <li>Notices of Civil Claim and petitions issued</li>
+          <li>Filing and service on one instruction</li>
+        </ul>
+        <p class="price-tag">From <b>${price}</b> {site.basePrice.currency}</p>
+        <div class="cluster">
+          <a class="btn" href="/request-service/?service=court-filing">Request this service <Icon name="arrow-right" class="icon-go" /></a>
+          <a class="go" href="/court-filing/">Court filing in Vancouver <Icon name="arrow-right" /></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="show-panel" role="tabpanel" id="sv-p2" aria-labelledby="sv-t2">
+      <div class="doc-mini" aria-label="Sample registered office confirmation">
+        <p class="cap">Sample search result. Fictional company.</p>
+        <p class="doc-title">Registered office confirmation</p>
+        <dl>
+          <dt>Company</dt><dd>Example Holdings Ltd.</dd>
+          <dt>Registered office</dt><dd>1234 Example Street, Vancouver, BC</dd>
+          <dt>Searched</dt><dd>Company summary</dd>
+          <dt>Delivered</dt><dd>By email</dd>
+        </dl>
+      </div>
+      <div class="copy">
+        <h3>Corporate search</h3>
+        <p>Company summary, directors, registered office and status from the BC Registry.</p>
+        <ul class="checklist">
+          <li>Six search types</li>
+          <li>Results by email, typically within 2 business days</li>
+          <li>Search and service on one instruction</li>
+        </ul>
+        <p class="price-tag">From <b>${price}</b> {site.basePrice.currency}</p>
+        <div class="cluster">
+          <a class="btn" href="/request-service/?service=corporate-search">Request this service <Icon name="arrow-right" class="icon-go" /></a>
+          <a class="go" href="/corporate-search/">BC corporate search <Icon name="arrow-right" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

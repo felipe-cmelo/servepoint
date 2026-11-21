@@ -1,0 +1,539 @@
+/* ServePoint Canada: inner pages (docs/15). Page hero, prose, table of contents, guides, city pages, the request page, legal pages. */
+
+@layer pages {
+  /* ---------- Page hero ---------- */
+  .page-hero {
+    position: relative;
+    padding-top: calc(var(--header-h) + clamp(1.5rem, 3.5vw, 3rem));
+    padding-bottom: clamp(1.75rem, 4vw, 3.5rem);
+    background: var(--navy-900);
+    color: var(--fg);
+  }
+  .ph-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: end;
+  }
+  .ph-grid.solo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ph-copy > * + * {
+    margin-top: var(--s-4);
+  }
+  .page-hero h1 {
+    max-width: 21ch;
+    font-size: clamp(1.875rem, 1.45rem + 1.7vw, 2.875rem);
+  }
+  .page-hero .lead {
+    max-width: 40rem;
+    color: var(--fg-2);
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+  }
+  .page-hero .hero-cta {
+    padding-top: var(--s-2);
+  }
+  .crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 0.5rem;
+    color: var(--fg-3);
+    font-size: var(--fs-xs);
+  }
+  .crumbs li {
+    display: inline-flex;
+    gap: 0.5rem;
+  }
+  .crumbs li + li::before {
+    content: "/";
+    color: var(--on-dark-3);
+  }
+  .crumbs a {
+    color: var(--fg-2);
+    text-decoration: none;
+  }
+  .crumbs a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  .crumbs [aria-current] {
+    color: #ffffff;
+  }
+  /* The facts of the page, set like a file note: hairlines, no glass, no shadow. */
+  .glance {
+    padding: var(--s-5);
+    border: 1px solid var(--card-border);
+    border-radius: var(--r-lg);
+    background: var(--card);
+  }
+  .glance h2 {
+    margin-bottom: var(--s-2);
+    color: var(--fg-2);
+    font-family: var(--font-ui);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+  .glance dl {
+    display: grid;
+    gap: 0;
+  }
+  .glance dl > div {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--s-4);
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--card-border);
+    font-size: 0.9375rem;
+  }
+  .glance dt {
+    color: var(--fg-2);
+  }
+  .glance dd {
+    color: var(--fg);
+    font-weight: 600;
+    text-align: right;
+  }
+  .glance .go {
+    margin-top: var(--s-3);
+  }
+
+  /* ---------- Prose, table of contents and long pages ---------- */
+  .prose {
+    max-width: var(--measure);
+    font-size: 1.0625rem;
+    line-height: 1.68;
+  }
+  .prose > * + * {
+    margin-top: 1em;
+  }
+  .prose h2 {
+    margin-top: 2.2em;
+    font-size: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+    scroll-margin-top: calc(var(--header-h) + 3.5rem);
+  }
+  .prose h3 {
+    margin-top: 1.8em;
+  }
+  .prose p,
+  .prose li {
+    color: var(--fg-2);
+  }
+  .prose ul {
+    list-style: disc;
+    padding-left: 1.3rem;
+  }
+  .prose ol {
+    list-style: decimal;
+    padding-left: 1.3rem;
+  }
+  .prose li + li {
+    margin-top: 0.4em;
+  }
+  .prose li::marker {
+    color: var(--accent-text);
+  }
+  .doc-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 15rem;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+  }
+  .toc {
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
+    padding-left: var(--s-4);
+    border-left: 1px solid var(--rule);
+    font-size: var(--fs-sm);
+  }
+  .toc h2 {
+    margin-bottom: var(--s-3);
+    color: var(--fg-3);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+  .toc li + li {
+    margin-top: 0.1rem;
+  }
+  .toc a {
+    display: block;
+    padding: 0.28rem 0;
+    color: var(--fg-2);
+    text-decoration: none;
+  }
+  .toc a:hover,
+  .toc a[aria-current="true"] {
+    color: var(--accent-text);
+  }
+  .toc a[aria-current="true"] {
+    font-weight: 600;
+  }
+  .side-stack {
+    display: grid;
+    gap: var(--s-4);
+  }
+  .rules-box h2,
+  .rules-box h3 {
+    margin-bottom: var(--s-3);
+    font-size: var(--fs-md);
+  }
+  .rules-box li + li {
+    margin-top: 0.5rem;
+  }
+  .rules-box ul {
+    list-style: none;
+  }
+  .rules-box a {
+    font-size: 0.9375rem;
+  }
+
+  /* ---------- Guides ---------- */
+  .guide-list {
+    display: grid;
+    gap: var(--s-4);
+  }
+  .guide-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--s-4);
+    color: var(--fg);
+    text-decoration: none;
+  }
+  .guide-card:hover {
+    color: var(--fg);
+  }
+  .guide-card h2,
+  .guide-card h3 {
+    font-size: clamp(1.1875rem, 1.1rem + 0.4vw, 1.4375rem);
+    letter-spacing: -0.015em;
+    transition: color var(--t-fast);
+  }
+  .guide-card:hover h2,
+  .guide-card:hover h3 {
+    color: var(--accent-text);
+  }
+  .guide-card p {
+    margin-top: 0.35rem;
+    max-width: 44rem;
+    font-size: 0.9375rem;
+  }
+  .guide-card .meta {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    margin-top: var(--s-3);
+    color: var(--fg-3);
+    font-size: var(--fs-xs);
+  }
+
+  /* ---------- City pages and coverage ---------- */
+  .court-list {
+    display: grid;
+    gap: var(--s-3);
+  }
+  .court-card {
+    display: grid;
+    gap: 0.2rem;
+    padding: var(--s-4) var(--s-5);
+  }
+  .court-card a {
+    color: var(--fg);
+    font-weight: 600;
+    text-decoration-color: var(--accent);
+  }
+  .court-card .addr {
+    color: var(--fg-2);
+    font-size: 0.9375rem;
+  }
+  .court-card .note {
+    color: var(--fg-3);
+    font-size: var(--fs-sm);
+  }
+  .hood-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+  }
+  .hood-grid li {
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--fg);
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  /* ---------- Request page ---------- */
+  .req-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 40rem) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
+  }
+  .req-aside {
+    position: sticky;
+    top: calc(var(--header-h) + 1.25rem);
+    display: grid;
+    gap: var(--s-4);
+  }
+  .stepper {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    margin-bottom: var(--s-5);
+    color: var(--fg-3);
+    font-size: var(--fs-sm);
+  }
+  .stepper li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 550;
+  }
+  .stepper li + li::before {
+    content: "";
+    width: 1.5rem;
+    height: 1px;
+    background: var(--rule);
+  }
+  .stepper .n {
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .stepper li[aria-current="step"] {
+    color: var(--fg);
+  }
+  .stepper li[aria-current="step"] .n {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #ffffff;
+  }
+  .stepper li.done .n {
+    border-color: var(--accent);
+    color: var(--accent-text);
+  }
+  .formbox {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-5) var(--s-4);
+    padding: clamp(1.1rem, 0.8rem + 1.4vw, 2rem);
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    background: var(--surface);
+    box-shadow: var(--shadow-2);
+  }
+  .formbox .full {
+    grid-column: 1 / -1;
+  }
+  .formbox legend {
+    margin-bottom: var(--s-2);
+    color: var(--fg);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .status {
+    color: var(--fg-3);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+  }
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .err-summary {
+    padding: var(--s-4);
+    border: 1px solid var(--alert);
+    border-radius: var(--r-md);
+    background: color-mix(in srgb, var(--alert) 7%, transparent);
+  }
+  .err-summary h3 {
+    margin-bottom: 0.3rem;
+    color: var(--alert);
+    font-size: 1rem;
+  }
+  .err-summary a {
+    color: var(--alert);
+    font-weight: 600;
+  }
+  .summary-box {
+    padding: var(--s-4) var(--s-5);
+    border-radius: var(--r-md);
+    background: var(--surface-2);
+  }
+  .summary-box dl {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 0.4rem var(--s-4);
+    font-size: 0.9375rem;
+  }
+  .summary-box dt {
+    color: var(--text-2);
+    font-weight: 600;
+  }
+  .summary-box dd {
+    margin: 0;
+    color: var(--text);
+    overflow-wrap: anywhere;
+  }
+  .remember {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    margin: 0 !important;
+    font-weight: 500 !important;
+  }
+  .remember input {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.2rem;
+    accent-color: var(--teal-600);
+  }
+  .link-btn {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--accent-text);
+    font-size: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+  }
+  /* One form holds every field. Without script every section shows and the form is one step. */
+  .vh {
+    margin: var(--s-2) 0 0;
+    font-size: 1rem;
+  }
+  .js .vh {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    margin: 0;
+  }
+  .variant {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    gap: var(--s-5) var(--s-4);
+  }
+  .variant > .full {
+    grid-column: 1 / -1;
+  }
+  .js-only {
+    display: none;
+  }
+  .js .js-only {
+    display: block;
+  }
+  .js .actions-row.js-only {
+    display: flex;
+  }
+  html:not(.js) .step3 {
+    display: none;
+  }
+  .js .formbox[data-step="1"] :is(.step2, .step3),
+  .js .formbox[data-step="2"] :is(.step1, .step3),
+  .js .formbox[data-step="3"] :is(.step1, .step2) {
+    display: none;
+  }
+  .js .formbox .variant:not(.on) {
+    display: none;
+  }
+  .js .formbox:not([data-step="3"]) .submit-row {
+    display: none;
+  }
+  .live-sum dl {
+    display: grid;
+    gap: 0;
+  }
+  .live-sum dl > div {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--s-4);
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--card-border);
+    font-size: 0.9375rem;
+  }
+  .live-sum dt {
+    color: var(--fg-2);
+  }
+  .live-sum dd {
+    color: var(--fg);
+    font-weight: 600;
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+  .live-sum .empty {
+    color: var(--fg-3);
+    font-weight: 400;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 62rem) {
+    .ph-grid,
+    .doc-layout,
+    .req-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .toc {
+      position: static;
+      padding: var(--s-4);
+      border: 1px solid var(--card-border);
+      border-radius: var(--r-md);
+      background: var(--card);
+    }
+    .req-aside {
+      position: static;
+    }
+    .doc-layout .toc,
+    .side-stack .toc {
+      order: -1;
+    }
+    /* On the guide page the contents list moves above the article. The side stack lets its children join the page grid. */
+    .doc-layout > .side-stack {
+      display: contents;
+    }
+  }
+  @media (max-width: 40rem) {
+    .formbox {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .guide-card {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .stepper li:not([aria-current="step"]) span.l {
+      display: none;
+    }
+  }
+}
+
+@layer pages {
+  .lead-text {
+    max-width: 34rem;
+    color: var(--fg-2);
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+  }
+  .grid-auto {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--min, 15rem)), 1fr));
+  }
+}

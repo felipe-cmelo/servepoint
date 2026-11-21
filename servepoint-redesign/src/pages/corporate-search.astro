@@ -1,0 +1,107 @@
+---
+/** Corporate search (docs/pages/corporate-search.md). Copy: content/corporate-search.md. Layout: docs/15. */
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionNav from "../components/SectionNav.astro";
+import FaqList from "../components/FaqList.astro";
+import InstructBand from "../components/InstructBand.astro";
+import { site } from "../data/site";
+import { faqsFor } from "../data/faqs";
+import { faqPage, breadcrumbs, service } from "../data/schema";
+import { sources } from "../data/sources";
+
+const faqs = faqsFor("corporate-search", ["registered-office", "search-types", "search-inputs", "search-turnaround", "search-with-service"]);
+const q = "?service=corporate-search";
+const searches = [
+  ["Company summary", "You need the overall picture", "Current registered office, directors, incorporation details and status"],
+  ["Director and officer search", "You need to know who runs it", "Current directors and officers, with available address details"],
+  ["Registered office confirmation", "You are about to serve a company", "The company's current registered office address"],
+  ["Historical search", "You need to see what changed over time", "Historical corporate information and changes recorded over time"],
+  ["Certificate of status", "You need to confirm current status", "A certificate of the current status"],
+  ["Name and trade name search", "You know an operating name but not the legal entity", "The legal entity behind the business or operating name"],
+];
+---
+
+<Base
+  title="BC corporate search for law firms | ServePoint Canada"
+  description="BC Registry searches: company summary, directors, registered office, certificate of status. Typically delivered within 2 business days."
+  path="/corporate-search/"
+  schema={[
+    service({ name: "BC corporate search", serviceType: "Corporate search", description: "BC Registry searches to confirm a company's legal entity, registered office, directors and status.", path: "/corporate-search/" }),
+    breadcrumbs([{ name: "Home", path: "/" }, { name: "Corporate search", path: "/corporate-search/" }]),
+    faqPage(faqs),
+  ]}
+>
+  <PageHero
+    h1="BC corporate search for law firms"
+    lead="We run BC Registry searches to confirm a company's legal entity, registered office, directors and status before you file or serve. Send a name, incorporation number or trade name. Results by email, typically within 2 business days."
+    crumbs={[{ name: "Corporate search" }]}
+    query={q}
+    glance={{
+      title: "At a glance",
+      rows: [
+        ["Searches", "Six types"],
+        ["Send us", "Company name, number or trade name"],
+        ["Delivery", "By email, typically within 2 business days"],
+        ["Starts from", `$${site.basePrice.amount} ${site.basePrice.currency}`],
+      ],
+      cta: { label: "See pricing", href: "/pricing/" },
+    }}
+  />
+
+  <SectionNav query={q} links={[["Choose the search", "searches"], ["Search first, serve second", "search-first"], ["Turnaround", "turnaround"], ["Questions", "faq"]]} />
+
+  <section class="section theme-light" id="searches" aria-labelledby="choose-h">
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <h2 id="choose-h" class="rule-draw">Choose the search</h2>
+        <p>Six searches: what each is for, and what you receive.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="stack-table">
+          <caption class="sr-only">Searches, when you need them and what you receive</caption>
+          <thead><tr><th scope="col">Search</th><th scope="col">When you need it</th><th scope="col">What you receive</th></tr></thead>
+          <tbody>
+            {searches.map(([name, when, get]) => (
+              <tr><th scope="row">{name}</th><td data-l="When you need it">{when}</td><td data-l="What you receive">{get}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight theme-dark" id="search-first" aria-labelledby="sf-h">
+    <div class="wrap-wide grid-2 grid-split center-y">
+      <div class="stack">
+        <h2 id="sf-h" class="rule-draw">Search first, serve second</h2>
+        <p class="lead-text">Confirm the registered office before service. Order the search and the service on one instruction.</p>
+      </div>
+      <div><a class="btn lg" href="/process-serving/">See process serving <Icon name="arrow-right" class="icon-go" /></a></div>
+    </div>
+  </section>
+
+  <section class="section theme-light theme-paper" id="turnaround" aria-labelledby="turn-h">
+    <div class="wrap-wide grid-2">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="turn-h" class="rule-draw">Turnaround and delivery</h2>
+        <p class="lead-text">Searches run through BC Registry Services. Results arrive by email, typically within 2 business days.</p>
+      </div>
+      <div class="grid-auto" style="--min:15rem">
+        <div class="card stack">
+          <h3>The official registry</h3>
+          <p>The BC Registry also offers searches directly. <a href={sources.bcRegistry.url}>{sources.bcRegistry.label}</a>.</p>
+        </div>
+        <div class="card stack">
+          <h3>Price</h3>
+          <p>Corporate search starts from ${site.startingPrice.amount}. Pricing is confirmed before service.</p>
+          <a class="go" href="/pricing/">See pricing <Icon name="arrow-right" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FaqList items={faqs} theme="light" />
+  <InstructBand service="corporate-search" lead="Send the company name or incorporation number, the searches you need and the deadline." />
+</Base>

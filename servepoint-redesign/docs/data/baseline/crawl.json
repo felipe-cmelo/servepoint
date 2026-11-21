@@ -1,0 +1,2174 @@
+{
+  "origin": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app",
+  "auditedAt": "2026-11-20T22:48:51.224Z",
+  "sitemap": {
+    "status": 200,
+    "urls": [
+      "https://servepointcanada.com/",
+      "https://servepointcanada.com/about/",
+      "https://servepointcanada.com/areas/",
+      "https://servepointcanada.com/contact/",
+      "https://servepointcanada.com/for-us-law-firms/",
+      "https://servepointcanada.com/pricing/",
+      "https://servepointcanada.com/services/corporate-search/",
+      "https://servepointcanada.com/services/court-services/",
+      "https://servepointcanada.com/services/process-serving/"
+    ],
+    "headers": {
+      "accept-ranges": "bytes",
+      "age": "1",
+      "cache-control": "public,max-age=0,must-revalidate",
+      "cache-status": "\"Netlify Edge\"; fwd=miss; fwd-status=200; stored",
+      "content-length": "932",
+      "content-security-policy": "frame-ancestors https://*.netlify.com",
+      "content-type": "application/xml",
+      "date": "Fri, 20 Nov 2026 22:47:48 GMT",
+      "etag": "\"252214ea553514fb51554b504168d31c-ssl\"",
+      "permissions-policy": "geolocation=(), microphone=(), camera=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "server": "Netlify",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "x-content-type-options": "nosniff",
+      "x-nf-request-id": "01M7XJ9ZE07GXWWA7M6B4TYM9S",
+      "x-robots-tag": "noindex"
+    }
+  },
+  "robots": {
+    "status": 200,
+    "body": "User-agent: *\nAllow: /\n\nSitemap: https://servepointcanada.com/sitemap.xml\n"
+  },
+  "checks": [
+    {
+      "label": "path /services/",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/services/",
+      "status": 301,
+      "location": "/services/process-serving/"
+    },
+    {
+      "label": "path /services/process-serving/",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/services/process-serving/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "label": "path /services/court-services/",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/services/court-services/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "label": "path /services/corporate-search/",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/services/corporate-search/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "label": "path /areas/",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/areas/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "label": "path /pricing/",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/pricing/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "label": "path /for-us-law-firms/",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/for-us-law-firms/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "label": "path /about/",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/about/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "label": "path /contact/",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/contact/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "label": "path /index.html",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/index.html",
+      "status": 301,
+      "location": "/"
+    },
+    {
+      "label": "path /process-serving",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/process-serving",
+      "status": 404,
+      "location": null
+    },
+    {
+      "label": "path /pricing",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/pricing",
+      "status": 301,
+      "location": "/pricing/"
+    },
+    {
+      "label": "path /this-page-does-not-exist/",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/this-page-does-not-exist/",
+      "status": 404,
+      "location": null
+    },
+    {
+      "label": "path /privacy/",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/privacy/",
+      "status": 404,
+      "location": null
+    },
+    {
+      "label": "path /terms/",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/terms/",
+      "status": 404,
+      "location": null
+    },
+    {
+      "label": "path /accessibility/",
+      "url": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/accessibility/",
+      "status": 404,
+      "location": null
+    }
+  ],
+  "pages": [
+    {
+      "sitemapUrl": "https://servepointcanada.com/",
+      "auditedUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/",
+      "status": 200,
+      "headers": {
+        "age": "0",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "content-security-policy": "frame-ancestors https://*.netlify.com",
+        "content-type": "text/html; charset=UTF-8",
+        "etag": "W/\"bb75675ab001d5c6ba9ab71b53e2e4bd-ssl\"",
+        "permissions-policy": "geolocation=(), microphone=(), camera=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Netlify",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-nf-request-id": "01M7XJAFH1SFQ9H34157AP40SN",
+        "x-robots-tag": "noindex"
+      },
+      "consoleErrors": [],
+      "requestCount": 22,
+      "requestsByType": {
+        "document": 1,
+        "script": 2,
+        "stylesheet": 2,
+        "image": 1,
+        "font": 5
+      },
+      "declaredBytes": 392489,
+      "horizontalOverflowAt375": false,
+      "finalUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/",
+      "lang": "en-CA",
+      "title": "Process Serving Vancouver | ServePoint Canada",
+      "description": "Process serving, court filing and corporate searches for law firms across Vancouver and the Lower Mainland. First attempt within 24 hours. Sworn Affidavit of Service with every file.",
+      "canonical": "https://servepointcanada.com/",
+      "robotsMeta": "index,follow",
+      "viewport": "width=device-width,initial-scale=1",
+      "themeColor": null,
+      "icons": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png"
+      ],
+      "og": {
+        "og:type": "website",
+        "og:site_name": "ServePoint Canada",
+        "og:title": "Process Serving Vancouver | ServePoint Canada",
+        "og:description": "Process serving, court filing and corporate searches for law firms across Vancouver and the Lower Mainland. First attempt within 24 hours. Sworn Affidavit of Service with every file.",
+        "og:url": "https://servepointcanada.com/",
+        "og:image": "https://servepointcanada.com/assets/logo.png",
+        "og:locale": "en_CA"
+      },
+      "twitter": {
+        "twitter:card": "summary_large_image"
+      },
+      "hreflang": [],
+      "h1s": [
+        "Your Documents Served. Your Service Proven."
+      ],
+      "headings": [
+        "h2: One instruction. Every step handled.",
+        "h3: Process Serving",
+        "h3: Court Services",
+        "h3: Corporate Search",
+        "h2: Pricing for our core legal support services.",
+        "h2: Informed At Every Step",
+        "h3: Send the Documents",
+        "h3: Service Is Attempted and Documented",
+        "h3: You’re Kept Informed",
+        "h3: Proof of Service Is Provided",
+        "h3: Deadline this week?",
+        "h2: Built for the way law firms work.",
+        "h3: A consistent point of contact",
+        "h3: Every attempt accounted for",
+        "h3: Built with law firms in mind",
+        "h2: Vancouver & the Lower Mainland",
+        "h2: Need Documents Served in BC?",
+        "h3: What Your Firm Can Expect",
+        "h2: Common Questions",
+        "h2: Let’s Move Your File Forward",
+        "h4: Services",
+        "h4: Service Areas",
+        "h4: Contact"
+      ],
+      "wordCount": 966,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          "@id": "https://servepointcanada.com/#business",
+          "name": "ServePoint Canada",
+          "description": "Process serving, court services and corporate searches for law firms across Vancouver and the Lower Mainland.",
+          "url": "https://servepointcanada.com/",
+          "logo": "https://servepointcanada.com/assets/logo.png",
+          "image": "https://servepointcanada.com/assets/logo.png",
+          "telephone": "+1-778-238-2797",
+          "email": "serve@servepointcanada.com",
+          "priceRange": "From $168",
+          "founder": {
+            "@type": "Person",
+            "name": "Jasmine Deo",
+            "jobTitle": "Founder"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Vancouver",
+            "addressRegion": "BC",
+            "addressCountry": "CA"
+          },
+          "areaServed": [
+            {
+              "@type": "City",
+              "name": "Vancouver"
+            },
+            {
+              "@type": "City",
+              "name": "Burnaby"
+            },
+            {
+              "@type": "City",
+              "name": "Richmond"
+            },
+            {
+              "@type": "City",
+              "name": "Surrey"
+            },
+            {
+              "@type": "City",
+              "name": "New Westminster"
+            },
+            {
+              "@type": "City",
+              "name": "Coquitlam"
+            },
+            {
+              "@type": "City",
+              "name": "Port Coquitlam"
+            },
+            {
+              "@type": "City",
+              "name": "Port Moody"
+            },
+            {
+              "@type": "City",
+              "name": "North Vancouver"
+            },
+            {
+              "@type": "City",
+              "name": "West Vancouver"
+            },
+            {
+              "@type": "City",
+              "name": "Delta"
+            },
+            {
+              "@type": "City",
+              "name": "Langley"
+            },
+            {
+              "@type": "City",
+              "name": "White Rock"
+            },
+            {
+              "@type": "City",
+              "name": "Maple Ridge"
+            }
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Legal support services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Process serving"
+                },
+                "price": "168",
+                "priceCurrency": "CAD"
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Court filing and registry attendance"
+                },
+                "price": "168",
+                "priceCurrency": "CAD"
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Corporate search"
+                },
+                "price": "168",
+                "priceCurrency": "CAD"
+              }
+            ]
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How quickly can documents be served?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Service is typically attempted within 24 hours of receiving your documents and instructions. Rush requests are prioritized on receipt."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What proof of service do I receive?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You'll receive a sworn Affidavit of Service detailing when and where service occurred, the person served, and the documents served. Attempt notes are also maintained where applicable."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What happens if the recipient evades service?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Attempts may be made at different times and on different days. If the recipient appears to be evading service or the address appears incorrect, you'll be notified promptly with a record of the attempts made."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you serve court documents from outside BC?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. ServePoint accepts documents issued by courts in other Canadian provinces and by US courts for service in Vancouver and the Lower Mainland. Proof of service is prepared according to the requirements provided by the instructing firm."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can you confirm a company's registered office before service?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. A BC corporate search can confirm the company's registered office and other available corporate information before service, helping avoid attempts at outdated addresses."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How is pricing structured?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Flat rates are available by service type, with preferred pricing available for law firms and high-volume clients. Any additional charges are confirmed before service is attempted."
+              }
+            }
+          ]
+        }
+      ],
+      "jsonldTypes": [
+        "ProfessionalService",
+        "FAQPage"
+      ],
+      "linkCount": 57,
+      "internalLinkCount": 52,
+      "linkHosts": {
+        "agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app": 52,
+        "": 5
+      },
+      "images": [
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada — process serving",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        },
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        }
+      ],
+      "scripts": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/main.js?v=2",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/.netlify/scripts/ar"
+      ],
+      "inlineScripts": 0,
+      "stylesheets": [
+        "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/style.css?v=2"
+      ],
+      "inlineStyleBlocks": 0,
+      "skipLink": true,
+      "landmarks": {
+        "header": 1,
+        "nav": 1,
+        "main": 1,
+        "footer": 1
+      },
+      "forms": [],
+      "computed": {
+        "bodyFont": "\"Public Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "bodySize": "17px",
+        "bodyLineHeight": "28.9px",
+        "bodyColor": "rgb(22, 32, 43)",
+        "bodyBackground": "rgb(244, 246, 248)",
+        "h1Font": "Newsreader, Georgia, serif",
+        "h1Size": "57.6px",
+        "h1Weight": "600",
+        "h1Color": "rgb(255, 255, 255)",
+        "h1Style": "normal",
+        "headerBackground": "rgb(0, 22, 48)",
+        "firstButton": {
+          "text": "Menu",
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "radius": "2px",
+          "font": "Arial"
+        }
+      },
+      "fontsLoaded": [
+        "IBM Plex Mono 400 normal",
+        "IBM Plex Mono 500 normal",
+        "IBM Plex Mono 600 normal",
+        "Newsreader 600 normal",
+        "Public Sans 400 normal",
+        "Public Sans 500 normal",
+        "Public Sans 600 normal"
+      ],
+      "hasGradient": false,
+      "hasBoxShadow": 2,
+      "animatedElements": 41,
+      "bodyTextSample": "Skip to content\nVancouver & the Lower Mainland · First Attempt Within 24 Hours\n778-238-2797 · serve@servepointcanada.com\nServices\nAreas We Serve\nPricing\nFor US Law Firms\nAbout\nRequest Service\n\nVANCOUVER & THE LOWER MAINLAND\n\nYour Documents Served. Your Service Proven.\n\nProcess Serving, Court Filing,"
+    },
+    {
+      "sitemapUrl": "https://servepointcanada.com/about/",
+      "auditedUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/about/",
+      "status": 200,
+      "headers": {
+        "age": "0",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "content-security-policy": "frame-ancestors https://*.netlify.com",
+        "content-type": "text/html; charset=UTF-8",
+        "etag": "W/\"2eb7777d5a65a0456ddaaf90ed37c2d9-ssl\"",
+        "permissions-policy": "geolocation=(), microphone=(), camera=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Netlify",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-nf-request-id": "01M7XJAN0YFMQ9N2B60F0JBPCE",
+        "x-robots-tag": "noindex"
+      },
+      "consoleErrors": [],
+      "requestCount": 22,
+      "requestsByType": {
+        "document": 1,
+        "stylesheet": 2,
+        "image": 2,
+        "script": 2,
+        "font": 4
+      },
+      "declaredBytes": 435709,
+      "horizontalOverflowAt375": false,
+      "finalUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/about/",
+      "lang": "en-CA",
+      "title": "About ServePoint Canada | Built with Law Firms in Mind",
+      "description": "ServePoint Canada provides process serving across Vancouver and the Lower Mainland, founded by Jasmine Deo, LLB, with legal experience behind every file.",
+      "canonical": "https://servepointcanada.com/about/",
+      "robotsMeta": "index,follow",
+      "viewport": "width=device-width,initial-scale=1",
+      "themeColor": null,
+      "icons": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png"
+      ],
+      "og": {
+        "og:type": "website",
+        "og:site_name": "ServePoint Canada",
+        "og:title": "About ServePoint Canada | Built with Law Firms in Mind",
+        "og:description": "ServePoint Canada provides process serving across Vancouver and the Lower Mainland, founded by Jasmine Deo, LLB, with legal experience behind every file.",
+        "og:url": "https://servepointcanada.com/about/",
+        "og:image": "https://servepointcanada.com/assets/logo.png",
+        "og:locale": "en_CA"
+      },
+      "twitter": {
+        "twitter:card": "summary_large_image"
+      },
+      "hreflang": [],
+      "h1s": [
+        "Built with Law Firms in Mind"
+      ],
+      "headings": [
+        "h2: Legal Experience Behind ServePoint",
+        "h2: The Commitments Behind Every File",
+        "h3: Prompt service",
+        "h3: A point of contact who knows your file",
+        "h3: Reliable proof of service",
+        "h3: Handled with discretion",
+        "h2: The Legal Perspective Behind ServePoint",
+        "h2: Let’s Move Your File Forward",
+        "h4: Services",
+        "h4: Service Areas",
+        "h4: Contact"
+      ],
+      "wordCount": 357,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "mainEntity": {
+            "@type": "Person",
+            "name": "Jasmine Deo",
+            "honorificSuffix": "LLB",
+            "jobTitle": "Founder",
+            "image": "https://servepointcanada.com/assets/jasmine.jpg",
+            "worksFor": {
+              "@type": "ProfessionalService",
+              "name": "ServePoint Canada",
+              "url": "https://servepointcanada.com/"
+            }
+          }
+        }
+      ],
+      "jsonldTypes": [
+        "AboutPage"
+      ],
+      "linkCount": 29,
+      "internalLinkCount": 24,
+      "linkHosts": {
+        "agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app": 24,
+        "": 5
+      },
+      "images": [
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada — process serving",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        },
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/jasmine.jpg",
+          "alt": "Jasmine Deo, founder of ServePoint Canada",
+          "w": 747,
+          "h": 1118,
+          "loading": "auto",
+          "width": "747",
+          "height": "1118"
+        },
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        }
+      ],
+      "scripts": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/main.js?v=2",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/.netlify/scripts/ar"
+      ],
+      "inlineScripts": 0,
+      "stylesheets": [
+        "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/style.css?v=2"
+      ],
+      "inlineStyleBlocks": 0,
+      "skipLink": true,
+      "landmarks": {
+        "header": 1,
+        "nav": 2,
+        "main": 1,
+        "footer": 1
+      },
+      "forms": [],
+      "computed": {
+        "bodyFont": "\"Public Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "bodySize": "17px",
+        "bodyLineHeight": "28.9px",
+        "bodyColor": "rgb(22, 32, 43)",
+        "bodyBackground": "rgb(244, 246, 248)",
+        "h1Font": "Newsreader, Georgia, serif",
+        "h1Size": "57.6px",
+        "h1Weight": "600",
+        "h1Color": "rgb(255, 255, 255)",
+        "h1Style": "normal",
+        "headerBackground": "rgb(0, 22, 48)",
+        "firstButton": {
+          "text": "Menu",
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "radius": "2px",
+          "font": "Arial"
+        }
+      },
+      "fontsLoaded": [
+        "IBM Plex Mono 400 normal",
+        "IBM Plex Mono 500 normal",
+        "Newsreader 400 normal",
+        "Newsreader 600 normal",
+        "Public Sans 400 normal",
+        "Public Sans 500 normal",
+        "Public Sans 600 normal"
+      ],
+      "hasGradient": false,
+      "hasBoxShadow": 1,
+      "animatedElements": 15,
+      "bodyTextSample": "Skip to content\nVancouver & the Lower Mainland · First Attempt Within 24 Hours\n778-238-2797 · serve@servepointcanada.com\nServices\nAreas We Serve\nPricing\nFor US Law Firms\nAbout\nRequest Service\nHome/About\nBuilt with Law Firms in Mind\n\nProfessional process serving backed by legal experience.\n\nServePoin"
+    },
+    {
+      "sitemapUrl": "https://servepointcanada.com/areas/",
+      "auditedUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/areas/",
+      "status": 200,
+      "headers": {
+        "age": "0",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "content-security-policy": "frame-ancestors https://*.netlify.com",
+        "content-type": "text/html; charset=UTF-8",
+        "etag": "W/\"d9a231423937b9dce851766b309c686b-ssl\"",
+        "permissions-policy": "geolocation=(), microphone=(), camera=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Netlify",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-nf-request-id": "01M7XJB5KSCEWSZY8291ZM6KEY",
+        "x-robots-tag": "noindex"
+      },
+      "consoleErrors": [],
+      "requestCount": 20,
+      "requestsByType": {
+        "document": 1,
+        "script": 2,
+        "image": 1,
+        "stylesheet": 2,
+        "font": 4
+      },
+      "declaredBytes": 376901,
+      "horizontalOverflowAt375": false,
+      "finalUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/areas/",
+      "lang": "en-CA",
+      "title": "Areas We Serve | Vancouver & the Lower Mainland — ServePoint Canada",
+      "description": "Process serving, court services and corporate searches across Vancouver, Burnaby, Richmond, Surrey, New Westminster, Coquitlam, the North Shore, Delta, Langley and White Rock.",
+      "canonical": "https://servepointcanada.com/areas/",
+      "robotsMeta": "index,follow",
+      "viewport": "width=device-width,initial-scale=1",
+      "themeColor": null,
+      "icons": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png"
+      ],
+      "og": {
+        "og:type": "website",
+        "og:site_name": "ServePoint Canada",
+        "og:title": "Areas We Serve | Vancouver & the Lower Mainland — ServePoint Canada",
+        "og:description": "Process serving, court services and corporate searches across Vancouver, Burnaby, Richmond, Surrey, New Westminster, Coquitlam, the North Shore, Delta, Langley and White Rock.",
+        "og:url": "https://servepointcanada.com/areas/",
+        "og:image": "https://servepointcanada.com/assets/logo.png",
+        "og:locale": "en_CA"
+      },
+      "twitter": {
+        "twitter:card": "summary_large_image"
+      },
+      "hreflang": [],
+      "h1s": [
+        "Legal Support Services across Vancouver and the Lower Mainland"
+      ],
+      "headings": [
+        "h2: Serving Vancouver and the Lower Mainland",
+        "h2: Neighbourhoods",
+        "h3: Vancouver",
+        "h3: Burnaby",
+        "h3: Richmond",
+        "h3: Surrey",
+        "h3: New Westminster",
+        "h3: Coquitlam",
+        "h3: Port Coquitlam",
+        "h3: Port Moody",
+        "h3: North Vancouver",
+        "h3: West Vancouver",
+        "h3: Delta",
+        "h3: Langley",
+        "h3: Maple Ridge",
+        "h3: Pitt Meadows",
+        "h3: White Rock",
+        "h2: Need Service Elsewhere?",
+        "h2: Need Documents Served in Vancouver?",
+        "h4: Services",
+        "h4: Service Areas",
+        "h4: Contact"
+      ],
+      "wordCount": 457,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Process serving across Vancouver and the Lower Mainland",
+          "serviceType": "Process serving, court services and corporate searches",
+          "provider": {
+            "@type": "ProfessionalService",
+            "name": "ServePoint Canada",
+            "url": "https://servepointcanada.com/"
+          },
+          "areaServed": [
+            {
+              "@type": "City",
+              "name": "Vancouver"
+            },
+            {
+              "@type": "City",
+              "name": "Burnaby"
+            },
+            {
+              "@type": "City",
+              "name": "Richmond"
+            },
+            {
+              "@type": "City",
+              "name": "Surrey"
+            },
+            {
+              "@type": "City",
+              "name": "New Westminster"
+            },
+            {
+              "@type": "City",
+              "name": "Coquitlam"
+            },
+            {
+              "@type": "City",
+              "name": "Port Coquitlam"
+            },
+            {
+              "@type": "City",
+              "name": "Port Moody"
+            },
+            {
+              "@type": "City",
+              "name": "North Vancouver"
+            },
+            {
+              "@type": "City",
+              "name": "West Vancouver"
+            },
+            {
+              "@type": "City",
+              "name": "Delta"
+            },
+            {
+              "@type": "City",
+              "name": "Langley"
+            },
+            {
+              "@type": "City",
+              "name": "Maple Ridge"
+            },
+            {
+              "@type": "City",
+              "name": "Pitt Meadows"
+            },
+            {
+              "@type": "City",
+              "name": "White Rock"
+            }
+          ],
+          "description": "Process serving, court services and corporate searches throughout Vancouver and the Lower Mainland."
+        }
+      ],
+      "jsonldTypes": [
+        "Service"
+      ],
+      "linkCount": 30,
+      "internalLinkCount": 25,
+      "linkHosts": {
+        "agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app": 25,
+        "": 5
+      },
+      "images": [
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada — process serving",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        },
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        }
+      ],
+      "scripts": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/main.js?v=2",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/.netlify/scripts/ar"
+      ],
+      "inlineScripts": 0,
+      "stylesheets": [
+        "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/style.css?v=2"
+      ],
+      "inlineStyleBlocks": 0,
+      "skipLink": true,
+      "landmarks": {
+        "header": 1,
+        "nav": 2,
+        "main": 1,
+        "footer": 1
+      },
+      "forms": [],
+      "computed": {
+        "bodyFont": "\"Public Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "bodySize": "17px",
+        "bodyLineHeight": "28.9px",
+        "bodyColor": "rgb(22, 32, 43)",
+        "bodyBackground": "rgb(244, 246, 248)",
+        "h1Font": "Newsreader, Georgia, serif",
+        "h1Size": "57.6px",
+        "h1Weight": "600",
+        "h1Color": "rgb(255, 255, 255)",
+        "h1Style": "normal",
+        "headerBackground": "rgb(0, 22, 48)",
+        "firstButton": {
+          "text": "Menu",
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "radius": "2px",
+          "font": "Arial"
+        }
+      },
+      "fontsLoaded": [
+        "IBM Plex Mono 400 normal",
+        "IBM Plex Mono 500 normal",
+        "Newsreader 600 normal",
+        "Public Sans 400 normal",
+        "Public Sans 500 normal",
+        "Public Sans 600 normal",
+        "Public Sans 700 normal"
+      ],
+      "hasGradient": false,
+      "hasBoxShadow": 1,
+      "animatedElements": 12,
+      "bodyTextSample": "Skip to content\nVancouver & the Lower Mainland · First Attempt Within 24 Hours\n778-238-2797 · serve@servepointcanada.com\nServices\nAreas We Serve\nPricing\nFor US Law Firms\nAbout\nRequest Service\nHome/Areas We Serve\nLegal Support Services across Vancouver and the Lower Mainland\n\nServePoint provides proc"
+    },
+    {
+      "sitemapUrl": "https://servepointcanada.com/contact/",
+      "auditedUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/contact/",
+      "status": 200,
+      "headers": {
+        "age": "0",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "content-security-policy": "frame-ancestors https://*.netlify.com",
+        "content-type": "text/html; charset=UTF-8",
+        "etag": "W/\"d2d090737ecd382159ef9c346fdfa216-ssl\"",
+        "permissions-policy": "geolocation=(), microphone=(), camera=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Netlify",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-nf-request-id": "01M7XJB8SQWV2GSDVX7D06ENHK",
+        "x-robots-tag": "noindex"
+      },
+      "consoleErrors": [],
+      "requestCount": 20,
+      "requestsByType": {
+        "document": 1,
+        "script": 2,
+        "image": 1,
+        "stylesheet": 2,
+        "font": 4
+      },
+      "declaredBytes": 376896,
+      "horizontalOverflowAt375": false,
+      "finalUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/contact/",
+      "lang": "en-CA",
+      "title": "Request Service | ServePoint Canada",
+      "description": "Request process serving, court services or a corporate search in Vancouver and the Lower Mainland. We confirm availability and next steps the same business day.",
+      "canonical": "https://servepointcanada.com/contact/",
+      "robotsMeta": "index,follow",
+      "viewport": "width=device-width,initial-scale=1",
+      "themeColor": null,
+      "icons": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png"
+      ],
+      "og": {
+        "og:type": "website",
+        "og:site_name": "ServePoint Canada",
+        "og:title": "Request Service | ServePoint Canada",
+        "og:description": "Request process serving, court services or a corporate search in Vancouver and the Lower Mainland. We confirm availability and next steps the same business day.",
+        "og:url": "https://servepointcanada.com/contact/",
+        "og:image": "https://servepointcanada.com/assets/logo.png",
+        "og:locale": "en_CA"
+      },
+      "twitter": {
+        "twitter:card": "summary_large_image"
+      },
+      "hreflang": [],
+      "h1s": [
+        "Request Service"
+      ],
+      "headings": [
+        "h2: Service Instructions",
+        "h3: Prefer to email?",
+        "h3: What happens next?",
+        "h4: Services",
+        "h4: Service Areas",
+        "h4: Contact"
+      ],
+      "wordCount": 319,
+      "jsonld": [],
+      "jsonldTypes": [],
+      "linkCount": 31,
+      "internalLinkCount": 23,
+      "linkHosts": {
+        "agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app": 23,
+        "": 8
+      },
+      "images": [
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada — process serving",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        },
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        }
+      ],
+      "scripts": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/main.js?v=2",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/.netlify/scripts/ar"
+      ],
+      "inlineScripts": 0,
+      "stylesheets": [
+        "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/style.css?v=2"
+      ],
+      "inlineStyleBlocks": 0,
+      "skipLink": true,
+      "landmarks": {
+        "header": 1,
+        "nav": 2,
+        "main": 1,
+        "footer": 1
+      },
+      "forms": [
+        {
+          "action": "/thank-you/",
+          "method": "post",
+          "name": "service-request",
+          "netlify": false,
+          "honeypot": null,
+          "enctype": "application/x-www-form-urlencoded",
+          "fields": [
+            {
+              "name": "form-name",
+              "tag": "input",
+              "type": "hidden",
+              "required": false,
+              "label": null,
+              "hidden": true
+            },
+            {
+              "name": "bot-field",
+              "tag": "input",
+              "type": "text",
+              "required": false,
+              "label": "Leave this empty:",
+              "hidden": true
+            },
+            {
+              "name": "firm",
+              "tag": "input",
+              "type": "text",
+              "required": true,
+              "label": "Firm or Organization *",
+              "hidden": false
+            },
+            {
+              "name": "name",
+              "tag": "input",
+              "type": "text",
+              "required": true,
+              "label": "Name *",
+              "hidden": false
+            },
+            {
+              "name": "email",
+              "tag": "input",
+              "type": "email",
+              "required": true,
+              "label": "Email *",
+              "hidden": false
+            },
+            {
+              "name": "phone",
+              "tag": "input",
+              "type": "tel",
+              "required": false,
+              "label": "Phone Number",
+              "hidden": false
+            },
+            {
+              "name": "court",
+              "tag": "input",
+              "type": "text",
+              "required": false,
+              "label": "Court File Number",
+              "hidden": false
+            },
+            {
+              "name": "service",
+              "tag": "select",
+              "type": "select-one",
+              "required": true,
+              "label": "Service Required *",
+              "hidden": false,
+              "options": [
+                "Select…",
+                "Process Serving",
+                "Court Services",
+                "Corporate Search",
+                "Not Sure — Please Advise"
+              ]
+            },
+            {
+              "name": "recipient",
+              "tag": "input",
+              "type": "text",
+              "required": true,
+              "label": "Person or Company to Be Served *",
+              "hidden": false
+            },
+            {
+              "name": "address",
+              "tag": "input",
+              "type": "text",
+              "required": true,
+              "label": "Service Address *",
+              "hidden": false
+            },
+            {
+              "name": "urgency",
+              "tag": "select",
+              "type": "select-one",
+              "required": true,
+              "label": "Urgency *",
+              "hidden": false,
+              "options": [
+                "Select…",
+                "Standard",
+                "Rush — Within 48 Hours",
+                "Rush — Same Day"
+              ]
+            },
+            {
+              "name": "deadline",
+              "tag": "input",
+              "type": "date",
+              "required": false,
+              "label": "Deadline Date",
+              "hidden": false
+            },
+            {
+              "name": "notes",
+              "tag": "textarea",
+              "type": "textarea",
+              "required": false,
+              "label": "Additional Service Details",
+              "hidden": false
+            }
+          ],
+          "submit": [
+            "Submit Instructions"
+          ]
+        }
+      ],
+      "computed": {
+        "bodyFont": "\"Public Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "bodySize": "17px",
+        "bodyLineHeight": "28.9px",
+        "bodyColor": "rgb(22, 32, 43)",
+        "bodyBackground": "rgb(244, 246, 248)",
+        "h1Font": "Newsreader, Georgia, serif",
+        "h1Size": "57.6px",
+        "h1Weight": "600",
+        "h1Color": "rgb(255, 255, 255)",
+        "h1Style": "normal",
+        "headerBackground": "rgb(0, 22, 48)",
+        "firstButton": {
+          "text": "Menu",
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "radius": "2px",
+          "font": "Arial"
+        }
+      },
+      "fontsLoaded": [
+        "IBM Plex Mono 400 normal",
+        "IBM Plex Mono 500 normal",
+        "Newsreader 600 normal",
+        "Public Sans 400 normal",
+        "Public Sans 500 normal",
+        "Public Sans 600 normal"
+      ],
+      "hasGradient": false,
+      "hasBoxShadow": 1,
+      "animatedElements": 11,
+      "bodyTextSample": "Skip to content\nVancouver & the Lower Mainland · First Attempt Within 24 Hours\n778-238-2797 · serve@servepointcanada.com\nServices\nAreas We Serve\nPricing\nFor US Law Firms\nAbout\nRequest Service\nHome/Request Service\nRequest Service\n\nSend us the service address, deadline, and applicable instructions. We"
+    },
+    {
+      "sitemapUrl": "https://servepointcanada.com/for-us-law-firms/",
+      "auditedUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/for-us-law-firms/",
+      "status": 200,
+      "headers": {
+        "age": "0",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "content-security-policy": "frame-ancestors https://*.netlify.com",
+        "content-type": "text/html; charset=UTF-8",
+        "etag": "W/\"626bc3d58177da4b3f2328c4eaab8e1f-ssl\"",
+        "permissions-policy": "geolocation=(), microphone=(), camera=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Netlify",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-nf-request-id": "01M7XJBBYATP2EH1KYKKW4Q59Z",
+        "x-robots-tag": "noindex"
+      },
+      "consoleErrors": [],
+      "requestCount": 20,
+      "requestsByType": {
+        "document": 1,
+        "script": 2,
+        "stylesheet": 2,
+        "image": 1,
+        "font": 4
+      },
+      "declaredBytes": 376901,
+      "horizontalOverflowAt375": false,
+      "finalUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/for-us-law-firms/",
+      "lang": "en-CA",
+      "title": "Process Serving in BC for US Law Firms | ServePoint Canada",
+      "description": "US law firms can instruct ServePoint directly for service of documents in Vancouver and the Lower Mainland. Documented attempts, Pacific time zone, USD invoicing on request.",
+      "canonical": "https://servepointcanada.com/for-us-law-firms/",
+      "robotsMeta": "index,follow",
+      "viewport": "width=device-width,initial-scale=1",
+      "themeColor": null,
+      "icons": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png"
+      ],
+      "og": {
+        "og:type": "website",
+        "og:site_name": "ServePoint Canada",
+        "og:title": "Process Serving in BC for US Law Firms | ServePoint Canada",
+        "og:description": "US law firms can instruct ServePoint directly for service of documents in Vancouver and the Lower Mainland. Documented attempts, Pacific time zone, USD invoicing on request.",
+        "og:url": "https://servepointcanada.com/for-us-law-firms/",
+        "og:image": "https://servepointcanada.com/assets/logo.png",
+        "og:locale": "en_CA"
+      },
+      "twitter": {
+        "twitter:card": "summary_large_image"
+      },
+      "hreflang": [],
+      "h1s": [
+        "Process Serving in BC for US Law Firms"
+      ],
+      "headings": [
+        "h2: Local Service for US Firms",
+        "h2: Service Instructions",
+        "h3: What US Firms Can Expect",
+        "h2: Working with ServePoint from the US",
+        "h3: How quickly can service be attempted?",
+        "h3: Can you serve a corporation in BC?",
+        "h3: What if the recipient evades service?",
+        "h3: What proof of service will we receive?",
+        "h3: Does the Hague Service Convention apply?",
+        "h2: Need Documents Served in Vancouver, BC?",
+        "h4: Services",
+        "h4: Service Areas",
+        "h4: Contact"
+      ],
+      "wordCount": 445,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How quickly can service be attempted?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Service is typically attempted within 24 hours of receiving your documents and instructions."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can you serve a corporation in BC?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, in Vancouver and across the Lower Mainland. We can also conduct a corporate search to confirm the company's registered office before service."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What if the recipient evades service?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We document each attempt and adjust the approach where appropriate. You'll be kept informed throughout."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What proof of service will we receive?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You'll receive clear proof of service documenting when, where, and how service was completed."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does the Hague Service Convention apply?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Whether it applies depends on your matter. Your firm determines the appropriate method of service, and ServePoint carries out service locally according to your instructions."
+              }
+            }
+          ]
+        }
+      ],
+      "jsonldTypes": [
+        "FAQPage"
+      ],
+      "linkCount": 32,
+      "internalLinkCount": 26,
+      "linkHosts": {
+        "agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app": 26,
+        "": 6
+      },
+      "images": [
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada — process serving",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        },
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        }
+      ],
+      "scripts": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/main.js?v=2",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/.netlify/scripts/ar"
+      ],
+      "inlineScripts": 0,
+      "stylesheets": [
+        "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/style.css?v=2"
+      ],
+      "inlineStyleBlocks": 0,
+      "skipLink": true,
+      "landmarks": {
+        "header": 1,
+        "nav": 2,
+        "main": 1,
+        "footer": 1
+      },
+      "forms": [],
+      "computed": {
+        "bodyFont": "\"Public Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "bodySize": "17px",
+        "bodyLineHeight": "28.9px",
+        "bodyColor": "rgb(22, 32, 43)",
+        "bodyBackground": "rgb(244, 246, 248)",
+        "h1Font": "Newsreader, Georgia, serif",
+        "h1Size": "57.6px",
+        "h1Weight": "600",
+        "h1Color": "rgb(255, 255, 255)",
+        "h1Style": "normal",
+        "headerBackground": "rgb(0, 22, 48)",
+        "firstButton": {
+          "text": "Menu",
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "radius": "2px",
+          "font": "Arial"
+        }
+      },
+      "fontsLoaded": [
+        "IBM Plex Mono 400 normal",
+        "IBM Plex Mono 500 normal",
+        "Newsreader 600 normal",
+        "Public Sans 400 normal",
+        "Public Sans 500 normal",
+        "Public Sans 600 normal"
+      ],
+      "hasGradient": false,
+      "hasBoxShadow": 1,
+      "animatedElements": 12,
+      "bodyTextSample": "Skip to content\nVancouver & the Lower Mainland · First Attempt Within 24 Hours\n778-238-2797 · serve@servepointcanada.com\nServices\nAreas We Serve\nPricing\nFor US Law Firms\nAbout\nRequest Service\nHome/For US Law Firms\nProcess Serving in BC for US Law Firms\n\nDirect service. Clear communication. Reliable "
+    },
+    {
+      "sitemapUrl": "https://servepointcanada.com/pricing/",
+      "auditedUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/pricing/",
+      "status": 200,
+      "headers": {
+        "age": "0",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "content-security-policy": "frame-ancestors https://*.netlify.com",
+        "content-type": "text/html; charset=UTF-8",
+        "etag": "W/\"15433834c3b458ced146fd2be6320c36-ssl\"",
+        "permissions-policy": "geolocation=(), microphone=(), camera=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Netlify",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-nf-request-id": "01M7XJBEP9S5EXEQ5N2E9YVM00",
+        "x-robots-tag": "noindex"
+      },
+      "consoleErrors": [],
+      "requestCount": 20,
+      "requestsByType": {
+        "document": 1,
+        "script": 2,
+        "stylesheet": 2,
+        "image": 1,
+        "font": 4
+      },
+      "declaredBytes": 376899,
+      "horizontalOverflowAt375": false,
+      "finalUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/pricing/",
+      "lang": "en-CA",
+      "title": "Pricing | Process Serving, Court Filing & Corporate Searches — ServePoint Canada",
+      "description": "Clear rates for process serving, court filing and corporate searches in Vancouver and the Lower Mainland. From $168, with preferred pricing for law firms and legal clinics.",
+      "canonical": "https://servepointcanada.com/pricing/",
+      "robotsMeta": "index,follow",
+      "viewport": "width=device-width,initial-scale=1",
+      "themeColor": null,
+      "icons": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png"
+      ],
+      "og": {
+        "og:type": "website",
+        "og:site_name": "ServePoint Canada",
+        "og:title": "Pricing | Process Serving, Court Filing & Corporate Searches — ServePoint Canada",
+        "og:description": "Clear rates for process serving, court filing and corporate searches in Vancouver and the Lower Mainland. From $168, with preferred pricing for law firms and legal clinics.",
+        "og:url": "https://servepointcanada.com/pricing/",
+        "og:image": "https://servepointcanada.com/assets/logo.png",
+        "og:locale": "en_CA"
+      },
+      "twitter": {
+        "twitter:card": "summary_large_image"
+      },
+      "hreflang": [],
+      "h1s": [
+        "Pricing"
+      ],
+      "headings": [
+        "h2: Services and Rates",
+        "h3: Process Serving",
+        "h3: Court Filing and Registry Attendance",
+        "h3: Corporate Searches",
+        "h2: Pricing for Law Firms and Legal Organizations",
+        "h3: Law Firms and High Volume Clients",
+        "h3: Free Legal and Community Clinics",
+        "h3: Pricing Information",
+        "h2: Ready to Get Started?",
+        "h4: Services",
+        "h4: Service Areas",
+        "h4: Contact"
+      ],
+      "wordCount": 391,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "OfferCatalog",
+          "name": "ServePoint Canada pricing",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Process Serving",
+              "price": "168",
+              "priceCurrency": "CAD",
+              "description": "Standard process serving in Vancouver and the Lower Mainland, including up to 3 service attempts and a sworn affidavit on completion.",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Process serving"
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Court Filing and Registry Attendance",
+              "price": "168",
+              "priceCurrency": "CAD",
+              "description": "Court filing and registry attendance at BC Supreme Court and Provincial Court registries.",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Court filing and registry attendance"
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Corporate Searches",
+              "price": "168",
+              "priceCurrency": "CAD",
+              "description": "BC corporate searches for current and historical company information.",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Corporate search"
+              }
+            }
+          ]
+        }
+      ],
+      "jsonldTypes": [
+        "OfferCatalog"
+      ],
+      "linkCount": 33,
+      "internalLinkCount": 28,
+      "linkHosts": {
+        "agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app": 28,
+        "": 5
+      },
+      "images": [
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada — process serving",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        },
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        }
+      ],
+      "scripts": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/main.js?v=2",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/.netlify/scripts/ar"
+      ],
+      "inlineScripts": 0,
+      "stylesheets": [
+        "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/style.css?v=2"
+      ],
+      "inlineStyleBlocks": 0,
+      "skipLink": true,
+      "landmarks": {
+        "header": 1,
+        "nav": 2,
+        "main": 1,
+        "footer": 1
+      },
+      "forms": [],
+      "computed": {
+        "bodyFont": "\"Public Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "bodySize": "17px",
+        "bodyLineHeight": "28.9px",
+        "bodyColor": "rgb(22, 32, 43)",
+        "bodyBackground": "rgb(244, 246, 248)",
+        "h1Font": "Newsreader, Georgia, serif",
+        "h1Size": "57.6px",
+        "h1Weight": "600",
+        "h1Color": "rgb(255, 255, 255)",
+        "h1Style": "normal",
+        "headerBackground": "rgb(0, 22, 48)",
+        "firstButton": {
+          "text": "Menu",
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "radius": "2px",
+          "font": "Arial"
+        }
+      },
+      "fontsLoaded": [
+        "IBM Plex Mono 400 normal",
+        "IBM Plex Mono 500 normal",
+        "Newsreader 600 normal",
+        "Public Sans 400 normal",
+        "Public Sans 500 normal",
+        "Public Sans 600 normal",
+        "Public Sans 700 normal"
+      ],
+      "hasGradient": false,
+      "hasBoxShadow": 1,
+      "animatedElements": 18,
+      "bodyTextSample": "Skip to content\nVancouver & the Lower Mainland · First Attempt Within 24 Hours\n778-238-2797 · serve@servepointcanada.com\nServices\nAreas We Serve\nPricing\nFor US Law Firms\nAbout\nRequest Service\nHome/Pricing\nPricing\n\nClear rates for process serving, court services, and corporate searches.\n\nRATES\n\nServi"
+    },
+    {
+      "sitemapUrl": "https://servepointcanada.com/services/corporate-search/",
+      "auditedUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/services/corporate-search/",
+      "status": 200,
+      "headers": {
+        "age": "0",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "content-security-policy": "frame-ancestors https://*.netlify.com",
+        "content-type": "text/html; charset=UTF-8",
+        "etag": "W/\"e123fe528d1ce1904957cef1d45348a3-ssl\"",
+        "permissions-policy": "geolocation=(), microphone=(), camera=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Netlify",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-nf-request-id": "01M7XJBHGBDFCXSXJYENTQ9WE9",
+        "x-robots-tag": "noindex"
+      },
+      "consoleErrors": [],
+      "requestCount": 20,
+      "requestsByType": {
+        "document": 1,
+        "script": 2,
+        "stylesheet": 2,
+        "image": 1,
+        "font": 4
+      },
+      "declaredBytes": 376901,
+      "horizontalOverflowAt375": false,
+      "finalUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/services/corporate-search/",
+      "lang": "en-CA",
+      "title": "BC Corporate Searches for Law Firms | ServePoint Canada",
+      "description": "BC Registry corporate searches: company summaries, director and officer information, registered office confirmation, historical searches and certificates of status.",
+      "canonical": "https://servepointcanada.com/services/corporate-search/",
+      "robotsMeta": "index,follow",
+      "viewport": "width=device-width,initial-scale=1",
+      "themeColor": null,
+      "icons": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png"
+      ],
+      "og": {
+        "og:type": "website",
+        "og:site_name": "ServePoint Canada",
+        "og:title": "BC Corporate Searches for Law Firms | ServePoint Canada",
+        "og:description": "BC Registry corporate searches: company summaries, director and officer information, registered office confirmation, historical searches and certificates of status.",
+        "og:url": "https://servepointcanada.com/services/corporate-search/",
+        "og:image": "https://servepointcanada.com/assets/logo.png",
+        "og:locale": "en_CA"
+      },
+      "twitter": {
+        "twitter:card": "summary_large_image"
+      },
+      "hreflang": [],
+      "h1s": [
+        "Corporate Searches in BC"
+      ],
+      "headings": [
+        "h2: Corporate Information You Can Rely On",
+        "h2: Search Types",
+        "h3: Company Summary",
+        "h3: Director and Officer Search",
+        "h3: Registered Office Confirmation",
+        "h3: Historical Search",
+        "h3: Certificate of Status",
+        "h3: Name and Trade Name Search",
+        "h3: Search First, Serve Second",
+        "h2: How It Works",
+        "h3: At a Glance",
+        "h2: Need a Corporate Search in BC?",
+        "h4: Services",
+        "h4: Service Areas",
+        "h4: Contact"
+      ],
+      "wordCount": 379,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "BC corporate search",
+          "serviceType": "Corporate registry search",
+          "provider": {
+            "@type": "ProfessionalService",
+            "name": "ServePoint Canada",
+            "url": "https://servepointcanada.com/"
+          },
+          "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "Vancouver and the Lower Mainland, British Columbia"
+          },
+          "url": "https://servepointcanada.com/services/corporate-search/",
+          "offers": {
+            "@type": "Offer",
+            "price": "168",
+            "priceCurrency": "CAD",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "168",
+              "priceCurrency": "CAD"
+            }
+          },
+          "description": "BC Registry searches confirming legal entities, registered offices, directors and corporate status."
+        }
+      ],
+      "jsonldTypes": [
+        "Service"
+      ],
+      "linkCount": 30,
+      "internalLinkCount": 25,
+      "linkHosts": {
+        "agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app": 25,
+        "": 5
+      },
+      "images": [
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada — process serving",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        },
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        }
+      ],
+      "scripts": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/main.js?v=2",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/.netlify/scripts/ar"
+      ],
+      "inlineScripts": 0,
+      "stylesheets": [
+        "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/style.css?v=2"
+      ],
+      "inlineStyleBlocks": 0,
+      "skipLink": true,
+      "landmarks": {
+        "header": 1,
+        "nav": 2,
+        "main": 1,
+        "footer": 1
+      },
+      "forms": [],
+      "computed": {
+        "bodyFont": "\"Public Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "bodySize": "17px",
+        "bodyLineHeight": "28.9px",
+        "bodyColor": "rgb(22, 32, 43)",
+        "bodyBackground": "rgb(244, 246, 248)",
+        "h1Font": "Newsreader, Georgia, serif",
+        "h1Size": "57.6px",
+        "h1Weight": "600",
+        "h1Color": "rgb(255, 255, 255)",
+        "h1Style": "normal",
+        "headerBackground": "rgb(0, 22, 48)",
+        "firstButton": {
+          "text": "Menu",
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "radius": "2px",
+          "font": "Arial"
+        }
+      },
+      "fontsLoaded": [
+        "IBM Plex Mono 400 normal",
+        "IBM Plex Mono 500 normal",
+        "Newsreader 600 normal",
+        "Public Sans 400 normal",
+        "Public Sans 500 normal",
+        "Public Sans 600 normal",
+        "Public Sans 700 normal"
+      ],
+      "hasGradient": false,
+      "hasBoxShadow": 1,
+      "animatedElements": 12,
+      "bodyTextSample": "Skip to content\nVancouver & the Lower Mainland · First Attempt Within 24 Hours\n778-238-2797 · serve@servepointcanada.com\nServices\nAreas We Serve\nPricing\nFor US Law Firms\nAbout\nRequest Service\nHome/Services/Corporate Search\nCorporate Searches in BC\n\nBC corporate searches to confirm legal entities, re"
+    },
+    {
+      "sitemapUrl": "https://servepointcanada.com/services/court-services/",
+      "auditedUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/services/court-services/",
+      "status": 200,
+      "headers": {
+        "age": "0",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "content-security-policy": "frame-ancestors https://*.netlify.com",
+        "content-type": "text/html; charset=UTF-8",
+        "etag": "W/\"6ad929c441f8460174c9019a027d4d1f-ssl\"",
+        "permissions-policy": "geolocation=(), microphone=(), camera=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Netlify",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-nf-request-id": "01M7XJBMF58H8FZ386XM65MP7J",
+        "x-robots-tag": "noindex"
+      },
+      "consoleErrors": [],
+      "requestCount": 20,
+      "requestsByType": {
+        "document": 1,
+        "script": 2,
+        "stylesheet": 2,
+        "image": 1,
+        "font": 4
+      },
+      "declaredBytes": 376897,
+      "horizontalOverflowAt375": false,
+      "finalUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/services/court-services/",
+      "lang": "en-CA",
+      "title": "Court Filing & Registry Services Vancouver | ServePoint Canada",
+      "description": "Court filing, document retrieval and registry attendance at BC Supreme Court and Provincial Court registries throughout Vancouver and the Lower Mainland.",
+      "canonical": "https://servepointcanada.com/services/court-services/",
+      "robotsMeta": "index,follow",
+      "viewport": "width=device-width,initial-scale=1",
+      "themeColor": null,
+      "icons": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png"
+      ],
+      "og": {
+        "og:type": "website",
+        "og:site_name": "ServePoint Canada",
+        "og:title": "Court Filing & Registry Services Vancouver | ServePoint Canada",
+        "og:description": "Court filing, document retrieval and registry attendance at BC Supreme Court and Provincial Court registries throughout Vancouver and the Lower Mainland.",
+        "og:url": "https://servepointcanada.com/services/court-services/",
+        "og:image": "https://servepointcanada.com/assets/logo.png",
+        "og:locale": "en_CA"
+      },
+      "twitter": {
+        "twitter:card": "summary_large_image"
+      },
+      "hreflang": [],
+      "h1s": [
+        "Court Services in Vancouver and the Lower Mainland"
+      ],
+      "headings": [
+        "h2: Filing and Registry Services",
+        "h3: Filing and Issuing",
+        "h3: Document Retrieval and Searches",
+        "h3: Filing and Service on One Instruction",
+        "h3: Instructing from Outside BC?",
+        "h3: At a Glance",
+        "h2: Need Court Services in Vancouver or the Lower Mainland?",
+        "h4: Services",
+        "h4: Service Areas",
+        "h4: Contact"
+      ],
+      "wordCount": 359,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Court filing and registry services in Vancouver and the Lower Mainland",
+          "serviceType": "Court filing and registry attendance",
+          "provider": {
+            "@type": "ProfessionalService",
+            "name": "ServePoint Canada",
+            "url": "https://servepointcanada.com/"
+          },
+          "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "Vancouver and the Lower Mainland, British Columbia"
+          },
+          "url": "https://servepointcanada.com/services/court-services/",
+          "offers": {
+            "@type": "Offer",
+            "price": "168",
+            "priceCurrency": "CAD",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "168",
+              "priceCurrency": "CAD"
+            }
+          },
+          "description": "Court filing, document retrieval and registry attendance at BC Supreme Court and Provincial Court registries throughout Vancouver and the Lower Mainland."
+        }
+      ],
+      "jsonldTypes": [
+        "Service"
+      ],
+      "linkCount": 31,
+      "internalLinkCount": 25,
+      "linkHosts": {
+        "agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app": 25,
+        "": 6
+      },
+      "images": [
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada — process serving",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        },
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        }
+      ],
+      "scripts": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/main.js?v=2",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/.netlify/scripts/ar"
+      ],
+      "inlineScripts": 0,
+      "stylesheets": [
+        "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/style.css?v=2"
+      ],
+      "inlineStyleBlocks": 0,
+      "skipLink": true,
+      "landmarks": {
+        "header": 1,
+        "nav": 2,
+        "main": 1,
+        "footer": 1
+      },
+      "forms": [],
+      "computed": {
+        "bodyFont": "\"Public Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "bodySize": "17px",
+        "bodyLineHeight": "28.9px",
+        "bodyColor": "rgb(22, 32, 43)",
+        "bodyBackground": "rgb(244, 246, 248)",
+        "h1Font": "Newsreader, Georgia, serif",
+        "h1Size": "57.6px",
+        "h1Weight": "600",
+        "h1Color": "rgb(255, 255, 255)",
+        "h1Style": "normal",
+        "headerBackground": "rgb(0, 22, 48)",
+        "firstButton": {
+          "text": "Menu",
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "radius": "2px",
+          "font": "Arial"
+        }
+      },
+      "fontsLoaded": [
+        "IBM Plex Mono 400 normal",
+        "IBM Plex Mono 500 normal",
+        "Newsreader 600 normal",
+        "Public Sans 400 normal",
+        "Public Sans 500 normal",
+        "Public Sans 600 normal"
+      ],
+      "hasGradient": false,
+      "hasBoxShadow": 1,
+      "animatedElements": 12,
+      "bodyTextSample": "Skip to content\nVancouver & the Lower Mainland · First Attempt Within 24 Hours\n778-238-2797 · serve@servepointcanada.com\nServices\nAreas We Serve\nPricing\nFor US Law Firms\nAbout\nRequest Service\nHome/Services/Court Services\nCourt Services in Vancouver and the Lower Mainland\n\nCourt filing, document retr"
+    },
+    {
+      "sitemapUrl": "https://servepointcanada.com/services/process-serving/",
+      "auditedUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/services/process-serving/",
+      "status": 200,
+      "headers": {
+        "age": "0",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "content-security-policy": "frame-ancestors https://*.netlify.com",
+        "content-type": "text/html; charset=UTF-8",
+        "etag": "W/\"adef713142f86ddc21627ce1e3e50451-ssl\"",
+        "permissions-policy": "geolocation=(), microphone=(), camera=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Netlify",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-nf-request-id": "01M7XJBQE2C3D8Y70PHW7Z6NMW",
+        "x-robots-tag": "noindex"
+      },
+      "consoleErrors": [],
+      "requestCount": 22,
+      "requestsByType": {
+        "document": 1,
+        "script": 2,
+        "stylesheet": 2,
+        "image": 1,
+        "font": 5
+      },
+      "declaredBytes": 392504,
+      "horizontalOverflowAt375": false,
+      "finalUrl": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/services/process-serving/",
+      "lang": "en-CA",
+      "title": "Process Serving Vancouver & Lower Mainland | ServePoint Canada",
+      "description": "Personal service of civil, family and commercial documents across Vancouver and the Lower Mainland. First attempt within 24 hours, documented attempts, sworn Affidavit of Service.",
+      "canonical": "https://servepointcanada.com/services/process-serving/",
+      "robotsMeta": "index,follow",
+      "viewport": "width=device-width,initial-scale=1",
+      "themeColor": null,
+      "icons": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/favicon.png"
+      ],
+      "og": {
+        "og:type": "website",
+        "og:site_name": "ServePoint Canada",
+        "og:title": "Process Serving Vancouver & Lower Mainland | ServePoint Canada",
+        "og:description": "Personal service of civil, family and commercial documents across Vancouver and the Lower Mainland. First attempt within 24 hours, documented attempts, sworn Affidavit of Service.",
+        "og:url": "https://servepointcanada.com/services/process-serving/",
+        "og:image": "https://servepointcanada.com/assets/logo.png",
+        "og:locale": "en_CA"
+      },
+      "twitter": {
+        "twitter:card": "summary_large_image"
+      },
+      "hreflang": [],
+      "h1s": [
+        "Process Serving in Vancouver and the Lower Mainland"
+      ],
+      "headings": [
+        "h2: Documents We Serve",
+        "h2: How Service Attempts Are Handled",
+        "h3: Why Attempt Records Matter",
+        "h2: Difficult to Serve",
+        "h2: What You Receive on Completion",
+        "h3: Instructing from Outside BC?",
+        "h3: At a Glance",
+        "h2: Service Information",
+        "h3: How quickly can service be attempted?",
+        "h3: What happens if service cannot be completed?",
+        "h3: Can you serve documents issued outside BC?",
+        "h3: Can you confirm a company’s registered office?",
+        "h3: What do you need to get started?",
+        "h3: What proof of service will I receive?",
+        "h2: Need Documents Served in Vancouver or the Lower Mainland?",
+        "h4: Services",
+        "h4: Service Areas",
+        "h4: Contact"
+      ],
+      "wordCount": 661,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Process Serving in Vancouver and the Lower Mainland",
+          "serviceType": "Process serving",
+          "provider": {
+            "@type": "ProfessionalService",
+            "name": "ServePoint Canada",
+            "url": "https://servepointcanada.com/"
+          },
+          "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "Vancouver and the Lower Mainland, British Columbia"
+          },
+          "url": "https://servepointcanada.com/services/process-serving/",
+          "offers": {
+            "@type": "Offer",
+            "price": "168",
+            "priceCurrency": "CAD",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "168",
+              "priceCurrency": "CAD"
+            }
+          },
+          "description": "Personal service of civil, family and commercial documents throughout Vancouver and the Lower Mainland, with documented attempts and a sworn Affidavit of Service on completion."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How quickly can service be attempted?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Service is typically attempted within 24 hours of receiving your documents and instructions. Rush service is available on request."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What happens if service cannot be completed?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You'll receive an update outlining the attempts made and any relevant information that may assist with determining next steps."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can you serve documents issued outside BC?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. ServePoint accepts documents issued in other Canadian provinces and the US for service in Vancouver and the Lower Mainland."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can you confirm a company's registered office?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. A BC corporate search can help confirm the current registered office before service is attempted."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What do you need to get started?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Send us the documents, service address, deadline, and any specific instructions."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What proof of service will I receive?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Once service is completed, you'll receive a sworn Affidavit of Service documenting when, where, and how service was completed."
+              }
+            }
+          ]
+        }
+      ],
+      "jsonldTypes": [
+        "Service",
+        "FAQPage"
+      ],
+      "linkCount": 34,
+      "internalLinkCount": 27,
+      "linkHosts": {
+        "agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app": 27,
+        "": 7
+      },
+      "images": [
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada — process serving",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        },
+        {
+          "src": "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/logo-reversed.png",
+          "alt": "ServePoint Canada",
+          "w": 1198,
+          "h": 232,
+          "loading": "auto",
+          "width": "1198",
+          "height": "232"
+        }
+      ],
+      "scripts": [
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/main.js?v=2",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/.netlify/scripts/ar"
+      ],
+      "inlineScripts": 0,
+      "stylesheets": [
+        "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
+        "https://agent-6af447cc3107871e--fascinating-kulfi-be8328.netlify.app/assets/style.css?v=2"
+      ],
+      "inlineStyleBlocks": 0,
+      "skipLink": true,
+      "landmarks": {
+        "header": 1,
+        "nav": 2,
+        "main": 1,
+        "footer": 1
+      },
+      "forms": [],
+      "computed": {
+        "bodyFont": "\"Public Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "bodySize": "17px",
+        "bodyLineHeight": "28.9px",
+        "bodyColor": "rgb(22, 32, 43)",
+        "bodyBackground": "rgb(244, 246, 248)",
+        "h1Font": "Newsreader, Georgia, serif",
+        "h1Size": "57.6px",
+        "h1Weight": "600",
+        "h1Color": "rgb(255, 255, 255)",
+        "h1Style": "normal",
+        "headerBackground": "rgb(0, 22, 48)",
+        "firstButton": {
+          "text": "Menu",
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(255, 255, 255)",
+          "radius": "2px",
+          "font": "Arial"
+        }
+      },
+      "fontsLoaded": [
+        "IBM Plex Mono 400 normal",
+        "IBM Plex Mono 500 normal",
+        "IBM Plex Mono 600 normal",
+        "Newsreader 600 normal",
+        "Public Sans 400 normal",
+        "Public Sans 500 normal",
+        "Public Sans 600 normal",
+        "Public Sans 700 normal"
+      ],
+      "hasGradient": false,
+      "hasBoxShadow": 1,
+      "animatedElements": 12,
+      "bodyTextSample": "Skip to content\nVancouver & the Lower Mainland · First Attempt Within 24 Hours\n778-238-2797 · serve@servepointcanada.com\nServices\nAreas We Serve\nPricing\nFor US Law Firms\nAbout\nRequest Service\nHome/Services/Process Serving\nProcess Serving in Vancouver and the Lower Mainland\n\nReliable service of civil"
+    }
+  ]
+}

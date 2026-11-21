@@ -1,0 +1,78 @@
+---
+/**
+ * Price explorer (docs/15 section 5): choose a service and an urgency and see what is included, what happens and the
+ * request link, pre-filled. It shows only published facts: "From $168" and "pricing is confirmed before service".
+ * Rush amounts are not published, so the explorer never shows one. The first state is rendered in the HTML.
+ */
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+import { services, rushTiming, urgencyOptions } from "../data/pricing";
+
+interface Props {
+  idp?: string;
+}
+const { idp = "px" } = Astro.props;
+const first = services[0];
+const data = { services: services.map((s) => ({ slug: s.slug, name: s.name, list: s.list, timing: s.timing })), rush: rushTiming, from: site.basePrice.amount, cur: site.basePrice.currency };
+---
+
+<div class="explorer card" data-explorer>
+  <fieldset>
+    <legend>Service</legend>
+    <div class="seg" role="radiogroup" aria-label="Service">
+      {services.map((s, i) => (
+        <>
+          <input class="seg-input" type="radio" name={`${idp}-svc`} id={`${idp}-s-${s.slug}`} value={s.slug} checked={i === 0} />
+          <label class="seg-item" for={`${idp}-s-${s.slug}`}>{s.slug === "court-filing" ? "Court filing" : s.name}</label>
+        </>
+      ))}
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Urgency</legend>
+    <div class="seg" role="radiogroup" aria-label="Urgency">
+      {urgencyOptions.map((u, i) => (
+        <>
+          <input class="seg-input" type="radio" name={`${idp}-urg`} id={`${idp}-u-${u.v}`} value={u.v} checked={i === 0} />
+          <label class="seg-item" for={`${idp}-u-${u.v}`}>{u.l}</label>
+        </>
+      ))}
+    </div>
+  </fieldset>
+
+  <div class="price-out" aria-live="polite">
+    <p class="price-from m-hide">From <span class="amt tnum">${site.basePrice.amount}</span> <span class="muted">{site.basePrice.currency}</span></p>
+    <p style="color:var(--fg);font-weight:600" data-title>{first.name}, standard</p>
+    <ul class="checklist" data-list>{first.list.map((l) => <li>{l}</li>)}</ul>
+    <p data-timing>{first.timing}</p>
+    <p class="muted" style="font-size:var(--fs-sm)">Pricing is confirmed before service. Rush, travel and special requests may add to the price.</p>
+    <a class="btn" href={`/request-service/?service=${first.slug}&urgency=standard`} data-cta>Request this service <Icon name="arrow-right" class="icon-go" /></a>
+  </div>
+  <script type="application/json" set:html={JSON.stringify(data)} />
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-explorer]").forEach((root) => {
+    const data = JSON.parse(root.querySelector<HTMLScriptElement>("script[type='application/json']")!.textContent || "{}");
+    const title = root.querySelector<HTMLElement>("[data-title]")!;
+    const list = root.querySelector<HTMLElement>("[data-list]")!;
+    const timing = root.querySelector<HTMLElement>("[data-timing]")!;
+    const cta = root.querySelector<HTMLAnchorElement>("[data-cta]")!;
+    const val = (name: string) => root.querySelector<HTMLInputElement>(`input[name$='-${name}']:checked`)!;
+    const labels: Record<string, string> = { standard: "standard", "rush-48": "rush within 48 hours", "rush-same-day": "rush same day" };
+    const update = () => {
+      const s = data.services.find((x: { slug: string }) => x.slug === val("svc").value);
+      const u = val("urg").value;
+      title.textContent = `${s.name}, ${labels[u]}`;
+      list.innerHTML = "";
+      s.list.forEach((t: string) => {
+        const li = document.createElement("li");
+        li.textContent = t;
+        list.appendChild(li);
+      });
+      timing.textContent = u === "standard" ? s.timing : data.rush;
+      cta.href = `/request-service/?service=${s.slug}&urgency=${u}`;
+    };
+    root.addEventListener("change", update);
+  });
+</script>

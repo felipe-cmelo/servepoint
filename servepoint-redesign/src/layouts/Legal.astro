@@ -1,0 +1,35 @@
+---
+/** Shared layout for /privacy/, /terms/ and /accessibility/: hero, a prose column with a table of contents, and the contact line. */
+import Base from "./Base.astro";
+import PageHero from "../components/PageHero.astro";
+import InstructBand from "../components/InstructBand.astro";
+import { site } from "../data/site";
+import { breadcrumbs } from "../data/schema";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  h1: string;
+  updated: string;
+}
+const { title, description, path, h1, updated } = Astro.props;
+---
+
+<Base {title} {description} {path} schema={[breadcrumbs([{ name: "Home", path: "/" }, { name: h1, path }])]}>
+  <PageHero {h1} crumbs={[{ name: h1 }]} actions={false} />
+  <section class="section theme-light" aria-label={h1} style="padding-top:clamp(2rem,1.5rem + 2vw,3.5rem)">
+    <div class="wrap-wide doc-layout">
+      <div>
+        <p class="muted" style="font-size:var(--fs-sm);margin-bottom:var(--s-5)">Last updated {updated}.</p>
+        <div class="prose" data-toc-source>
+          <slot />
+          <h2>Contact</h2>
+          <p>Call <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a> or email <a href={site.emailHref}>{site.email}</a>.</p>
+        </div>
+      </div>
+      <nav class="toc" data-toc hidden aria-label="On this page"><h2>On this page</h2></nav>
+    </div>
+  </section>
+  <InstructBand />
+</Base>

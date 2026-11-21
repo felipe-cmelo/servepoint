@@ -1,0 +1,33 @@
+---
+import Legal from "../layouts/Legal.astro";
+import { site } from "../data/site";
+---
+
+{/* Draft for the owner's legal review. Only what the business already states (docs/07 section 9.3). Liability, payment terms,
+    cancellation and governing law are not drafted here: they need the owner or a lawyer. */}
+
+<Legal
+  title="Terms | ServePoint Canada"
+  description="Terms of use for the ServePoint Canada website: who we are, what the site offers, price and timing as published, and that the site gives no legal advice."
+  path="/terms/"
+  h1="Terms"
+  updated="November 20, 2026"
+>
+  <h2>Who we are</h2>
+  <p>{site.name} is a process serving and legal support company in {site.locality}. The founder is {site.founder.name}, {site.founder.credential}.</p>
+
+  <h2>No legal advice</h2>
+  <p>{site.disclaimer} The instructing firm decides the method of service. We carry out the instruction.</p>
+
+  <h2>What this site offers</h2>
+  <p>The site describes and takes instructions for process serving, court filing and registry attendance, and BC corporate searches for law firms. Its content is for information and for sending instructions.</p>
+
+  <h2>Price and timing</h2>
+  <p>Each service starts from ${site.basePrice.amount} {site.basePrice.currency}. Rush service, travel and special requests may add to the price. Pricing is confirmed before service. The first attempt is typically within 24 hours of receiving documents and instructions, and up to {site.attemptsIncluded} attempts are included in process serving.</p>
+
+  <h2>Proof of service</h2>
+  <p>When service is complete you receive a sworn affidavit of service. If service cannot be completed after the included attempts, you receive an affidavit of attempted service.</p>
+
+  <h2>Use of the site</h2>
+  <p>Use the site to learn about our services and to send a service instruction. Nothing on it is legal advice, and guides on law and procedure are general information.</p>
+</Legal>

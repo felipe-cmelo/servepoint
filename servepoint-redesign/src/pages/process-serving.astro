@@ -1,0 +1,169 @@
+---
+/** Process serving (docs/pages/process-serving.md). Copy: content/process-serving.md. Layout: docs/15. */
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionNav from "../components/SectionNav.astro";
+import DocumentFinder from "../components/DocumentFinder.astro";
+import AttemptLine from "../components/AttemptLine.astro";
+import AffidavitSheet from "../components/AffidavitSheet.astro";
+import FaqList from "../components/FaqList.astro";
+import InstructBand from "../components/InstructBand.astro";
+import { site } from "../data/site";
+import { faqsFor } from "../data/faqs";
+import { faqPage, breadcrumbs, service } from "../data/schema";
+import { sources } from "../data/sources";
+
+const faqs = faqsFor("process-serving", ["speed", "proof", "evasion", "out-of-province", "registered-office", "pricing", "get-started", "fails"]);
+const q = "?service=process-serving";
+---
+
+<Base
+  title="Process serving in Vancouver and Lower Mainland | ServePoint"
+  description="Personal service of civil, family, commercial and tenancy documents. Up to 3 attempts, every attempt documented, sworn affidavit on completion."
+  path="/process-serving/"
+  schema={[
+    service({ name: "Process serving", serviceType: "Process serving", description: "Personal service of legal documents in Vancouver, BC and the Lower Mainland, with every attempt recorded and a sworn affidavit of service.", path: "/process-serving/" }),
+    breadcrumbs([{ name: "Home", path: "/" }, { name: "Process serving", path: "/process-serving/" }]),
+    faqPage(faqs),
+  ]}
+>
+  <PageHero
+    h1="Process serving in Vancouver and the Lower Mainland"
+    lead="We serve legal documents on people and companies in Vancouver, BC and the Lower Mainland. First attempt typically within 24 hours. Up to 3 attempts, each recorded, and a sworn affidavit on completion."
+    crumbs={[{ name: "Process serving" }]}
+    query={q}
+    glance={{
+      title: "At a glance",
+      rows: [
+        ["First attempt", "Typically within 24 hours"],
+        ["Attempts included", `Up to ${site.attemptsIncluded}`],
+        ["Proof", "Sworn affidavit of service"],
+        ["Starts from", `$${site.basePrice.amount} ${site.basePrice.currency}`],
+      ],
+      cta: { label: "See pricing", href: "/pricing/" },
+    }}
+  />
+
+  <SectionNav
+    query={q}
+    links={[["What we serve", "what-we-serve"], ["How an attempt works", "attempts"], ["What you receive", "sample"], ["Hard to reach", "difficult"], ["Rush", "rush"], ["Where", "where"], ["Questions", "faq"]]}
+  />
+
+  <section class="section theme-light" id="what-we-serve" aria-labelledby="serve-h">
+    <div class="wrap-wide grid-2 grid-split">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="serve-h" class="rule-draw">What we serve</h2>
+        <p class="lead-text">Personal service of civil, family, commercial and other legal documents, including documents issued outside BC. Choose a type to see what to send.</p>
+        <DocumentFinder id="ps-finder" />
+      </div>
+      <div class="card stack">
+        <h3>What to send for every category</h3>
+        <ul class="checklist">
+          <li>The documents to be served</li>
+          <li>The service address, with unit or suite number</li>
+          <li>The deadline</li>
+          <li>The court file number, if any</li>
+          <li>Anything that helps: a description, working hours, vehicle, previous attempts, building access</li>
+        </ul>
+        <p>Your firm chooses the method of service and any court requirements. We carry out the instruction.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-light theme-paper" id="attempts" aria-labelledby="attempt-h">
+    <div class="wrap-wide grid-2 grid-split">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="attempt-h" class="rule-draw">How an attempt is handled</h2>
+        <ol class="seq">
+          <li>We confirm availability the same business day.</li>
+          <li>The first attempt is typically within 24 hours. We plan around the address and the file, and try different times of day where appropriate.</li>
+          <li>We record each attempt with date, time, location and details.</li>
+          <li>We update you throughout the file.</li>
+          <li>On completion, we prepare a sworn affidavit of service.</li>
+        </ol>
+        <p>Up to {site.attemptsIncluded} attempts are included.</p>
+      </div>
+      <div class="card stack">
+        <h3>Attempts at a glance</h3>
+        <AttemptLine />
+        <p class="muted" style="font-size:var(--fs-sm)">No times are promised for attempts 2 and 3. Each is recorded the same way.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-dark" id="sample" aria-labelledby="sample-h">
+    <div class="wrap-wide grid-2">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="sample-h" class="rule-draw">What you receive</h2>
+        <p class="lead-text">A sworn affidavit of service records when, where and how service was made. If the person cannot be reached, the record supports your next step.</p>
+        <div class="card rules-box">
+          <h3>Rules and forms</h3>
+          <p style="font-size:var(--fs-sm)">Rules and forms for proving service are set out by the court. Read them at the source.</p>
+          <ul style="margin-top:var(--s-3)">
+            <li><a href={sources.civilRules.url}>{sources.civilRules.label}</a>, Rule 4-6 (proving service)</li>
+            <li><a href={sources.form15.url}>{sources.form15.label}</a></li>
+            <li><a href={sources.bcscServing.url}>{sources.bcscServing.label}</a></li>
+            <li><a href={sources.bcscFamilyServing.url}>{sources.bcscFamilyServing.label}</a></li>
+          </ul>
+        </div>
+      </div>
+      <AffidavitSheet variant="static" />
+    </div>
+  </section>
+
+  <section class="section theme-light" id="difficult" aria-labelledby="hard-h">
+    <div class="wrap-wide grid-2">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="hard-h" class="rule-draw">When the person is hard to reach</h2>
+        <p class="lead-text">Secured buildings, people who have moved, people who avoid service. We record every attempt with date, time and location, adjust the approach and keep you informed, so your firm can decide next steps.</p>
+        <p>For a company, a BC corporate search can confirm the registered office first. See <a href="/corporate-search/">corporate search</a>.</p>
+      </div>
+      <div class="grid-auto" style="--min:14rem">
+        <div class="card stack">
+          <h3>What we record</h3>
+          <ul class="ruled">
+            <li>The date and time of each attempt</li>
+            <li>The location of each attempt</li>
+            <li>Relevant details of what happened</li>
+          </ul>
+        </div>
+        <div class="card stack">
+          <h3>What you receive</h3>
+          <p>After the included attempts, you receive an affidavit of attempted service and an update on next steps.</p>
+          <p>What helps us: a description, working hours, vehicle, previous attempts and building access. Add them to the request form.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight theme-light theme-paper" id="rush" aria-labelledby="rush-h">
+    <div class="wrap-wide grid-2 grid-split center-y">
+      <div class="stack">
+        <h2 id="rush-h" class="rule-draw">Rush and same day</h2>
+        <p class="lead-text">Choose Standard, Rush within 48 hours or Rush same day when you request service. Pricing is confirmed before service.</p>
+      </div>
+      <div class="cluster" style="--gap:var(--s-3)">
+        <a class="btn" href="/request-service/?service=process-serving&urgency=rush-same-day">Rush same day <Icon name="arrow-right" class="icon-go" /></a>
+        <a class="btn btn-secondary" href="/request-service/?service=process-serving&urgency=rush-48">Rush within 48 hours</a>
+        <a class="go" href="/pricing/">See pricing <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-light" id="where" aria-labelledby="where-h">
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <h2 id="where-h" class="rule-draw">Where we serve</h2>
+        <p>Not listed? Send the address and we confirm the same business day. <a href="/out-of-province-and-us/">Firms outside BC</a> instruct us directly.</p>
+      </div>
+      <ul class="links-grid">
+        {site.areas.map((a) => <li><a href={a.tier === 1 ? `/coverage/${a.slug}/` : `/coverage/?area=${a.slug}`}>{a.name}</a></li>)}
+      </ul>
+      <p style="margin-top:var(--s-5)"><a class="go" href="/coverage/">All areas we serve <Icon name="arrow-right" /></a></p>
+    </div>
+  </section>
+
+  <FaqList items={faqs} />
+  <InstructBand service="process-serving" />
+</Base>

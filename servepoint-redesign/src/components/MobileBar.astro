@@ -1,0 +1,10 @@
+---
+/** Persistent bottom bar under 700 px (docs/04 section 4). Hides while a form field has focus. */
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+---
+
+<div class="mbar theme-dark">
+  <a class="btn btn-secondary" href={`tel:${site.phone.tel}`}><Icon name="phone" /> Call</a>
+  <a class="btn" href={site.actions.primaryPath}>{site.actions.primary} <Icon name="arrow-right" class="icon-go" /></a>
+</div>

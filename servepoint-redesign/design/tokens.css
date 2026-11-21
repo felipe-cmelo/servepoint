@@ -1,0 +1,145 @@
+/* ServePoint Canada: design tokens (direction v3, "chain of record")
+   Source of truth: docs/06-design-direction.md. Visual reference: design/direction-specimen.html
+   Import once in the base layout. Components use tokens only. No raw hex in components. */
+
+@layer tokens, base, components, utilities;
+
+@layer tokens {
+  :root {
+    /* Colour: tonal navy, one action blue, one highlighter. No black anywhere */
+    --ink: #0A1E45;              /* text on light surfaces, navy surfaces. 16.4:1 on paper */
+    --ink-2: #16306A;            /* secondary navy surface (rare), hover on navy */
+    --pen: #2340B3;              /* actions, links, step names on light surfaces. 8.6:1 on paper, 7.4:1 on mist */
+    --pen-deep: #1A3190;         /* hover and pressed. 11.1:1 with paper text */
+    --pen-teal: #0F766E;         /* primary button fill, from the logo teal (owner request, docs/06 section 4). 5.47:1 with paper text */
+    --pen-teal-deep: #0B5C56;    /* primary button hover and pressed. 7.84:1 with paper text */
+    --link-teal: #0B6B66;        /* link text on paper (6.35:1) and mist (5.49:1). Never on ink */
+    --mist: #EAEFF6;             /* quiet surface behind the story, coverage, form. 14.2:1 with ink */
+    --mist-2: #D3DBE8;           /* rules, tracks, unfilled lines (decoration only) */
+    --paper: #FFFFFF;
+    --pad: #F6E7A1;              /* highlighter. Marks on the sheet, quote bars, selected states. Never a surface. 13.1:1 with ink */
+    --served: #0E7C66;           /* completed status text. 5.1:1 on paper */
+    --alert: #B3261E;            /* form errors only. 6.5:1 on paper, 5.7:1 on mist */
+    --muted: #4B5B7E;            /* secondary text on paper (6.8:1) and mist (5.9:1) */
+    --muted-on-ink: #B8C4DE;     /* secondary text on navy surfaces. 9.3:1 */
+    --water: #C5D2E6;            /* water shapes on the coverage map (decoration only) */
+
+    /* Type: one family (IBM Plex) in three roles. Self-hosted via Fontsource, latin subset */
+    --font-display: "IBM Plex Serif", "Plex Serif Fallback", Georgia, "Times New Roman", serif;
+    --font-text: "IBM Plex Sans", "Plex Sans Fallback", system-ui, "Segoe UI", Arial, sans-serif;
+    --font-record: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+    /* Fluid type scale, 375px to 1440px */
+    --step--2: 0.875rem;                                       /* 14px floor */
+    --step--1: 0.9375rem;                                      /* 15px */
+    --step-0: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);       /* 17 to 19. body */
+    --step-1: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);        /* 20 to 24 */
+    --h2: clamp(2.1rem, 1.3rem + 2.6vw, 3.75rem);              /* 34 to 60. every H2 */
+    --h3: clamp(1.9rem, 1.2rem + 2.4vw, 3.25rem);              /* 30 to 52. step names, "Who handles your file" */
+    --h1: clamp(2.9rem, 1rem + 5vw, 5.75rem);                  /* 46 to 92. home H1 */
+    --h1-page: clamp(2.5rem, 1rem + 4.2vw, 4.75rem);           /* 40 to 76. inner page H1 */
+    --amt: clamp(7rem, 3rem + 14vw, 15rem);                    /* 112 to 240. the price figure, once, on the pricing surface */
+    --display-close: clamp(2.75rem, 1.2rem + 7.4vw, 8rem);     /* closing phone number */
+
+    --lh-display: 1.04;
+    --lh-text: 1.6;
+    --ls-display: -0.018em;
+    --measure: 62ch;
+
+    /* Space */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2.5rem;
+    --space-7: 4rem;
+    --space-8: 6.5rem;
+    --space-9: 9rem;
+
+    /* Layout */
+    --page-max: 90rem;                              /* 1440px */
+    --page-pad: clamp(1.25rem, 0.6rem + 2.6vw, 3rem);
+    --gutter: clamp(1.5rem, 1rem + 1vw, 2rem);
+    --header-h: 4.25rem;
+
+    /* Shape: radius by role */
+    --radius-sheet: 0;
+    --radius-control: 4px;
+
+    /* Shadow: sheets and popovers only (the sample sheet and its stack, coverage panel, form box, clock card, Services menu) */
+    --shadow-sheet: 0 1px 0 var(--mist-2), 0 30px 50px -28px rgba(10, 30, 69, 0.6);
+
+    /* Controls */
+    --control-height: 3.5rem;       /* 56px primary button */
+    --control-height-small: 2.75rem;
+    --target-min: 3rem;             /* 48px */
+    --border-control: 2px solid var(--ink);
+
+    /* Motion: response and one-time moments */
+    --t-fast: 140ms;
+    --t-base: 220ms;
+    --t-mark: 700ms;                /* highlighter marks */
+    --t-draw: 1500ms;               /* signature stroke */
+    --ease: cubic-bezier(0.2, 0, 0, 1);
+
+    /* Scroll variables. Written by design/scroll-engine.js (or by animation-timeline in browsers that support it).
+       THE DEFAULTS ARE THE FINISHED STATE. With no script, with reduced motion, and in print, the page is complete. */
+    --sp: 0;                        /* page scroll progress 0..1 (header progress bar) */
+    --hp: 0;                        /* hero progress 0..1 (paper stack drift) */
+    --f1: 1; --f2: 1; --f3: 1; --f4: 1;   /* focus weight of each step on the sheet, 0..1 */
+    /* per-element, set on the element itself: --r (reveal 0..1), --t (node threshold for the coverage map) */
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --t-fast: 0ms;
+      --t-base: 0ms;
+      --t-mark: 0ms;
+      --t-draw: 0ms;
+    }
+  }
+}
+
+@layer base {
+  html { color: var(--ink); background: var(--paper); font-family: var(--font-text); font-size: 100%; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  body { margin: 0; font-size: var(--step-0); line-height: var(--lh-text); text-wrap: pretty; overflow-x: clip; }
+  h1, h2 { font-family: var(--font-display); font-weight: 500; letter-spacing: var(--ls-display); line-height: var(--lh-display); text-wrap: balance; margin: 0; }
+  h1 { font-size: var(--h1-page); }
+  h2 { font-size: var(--h2); }
+  h3, h4, h5, h6 { font-family: var(--font-text); font-weight: 600; line-height: 1.25; text-wrap: balance; margin: 0; }
+  h3 { font-size: var(--step-1); }
+  p, li { max-width: var(--measure); }
+  a { color: var(--link-teal); text-underline-offset: 0.2em; text-decoration-thickness: 2px; overflow-wrap: anywhere; }
+  a:hover { color: var(--pen-teal-deep); }
+  :focus-visible { outline: 3px solid var(--pen); outline-offset: 3px; }
+  table { font-variant-numeric: tabular-nums; }
+  .mono { font-family: var(--font-record); font-weight: 500; }
+
+  /* Highlighter mark: gradient background so it survives line wraps. Draws once on the hero sheet. */
+  mark {
+    color: var(--ink);
+    padding-inline: 0.12em;
+    margin-inline: -0.12em;
+    background: linear-gradient(var(--pad), var(--pad)) left center / 100% 90% no-repeat;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition: background-size var(--t-mark) var(--ease) calc(var(--i, 0) * 140ms + 0.4s);
+  }
+  .js mark { background-size: 0 90%; }
+  .js .drawn mark { background-size: 100% 90%; }
+}
+
+/* Surfaces: sections change colour, not borders. See docs/06 section 6 for the page rhythm. */
+@layer utilities {
+  .surface-paper { background: var(--paper); color: var(--ink); }
+  .surface-mist  { background: var(--mist);  color: var(--ink); }
+  .surface-ink   { background: var(--ink);   color: var(--paper); }
+
+  .surface-ink a { color: var(--paper); }
+  .surface-ink a:hover { color: var(--pad); }
+  .surface-ink h1, .surface-ink h2, .surface-ink h3 { color: var(--paper); }
+  .surface-ink p { color: var(--muted-on-ink); }
+  .surface-ink :focus-visible { outline-color: var(--pad); }
+}

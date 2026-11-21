@@ -1,0 +1,130 @@
+/* ServePoint Canada: motion (docs/15 section 7).
+   Time based, never scrubbed. A block rises a few pixels and fades in once when it comes into view, then it stays.
+   Page changes are a short cross fade. One load sequence plays in the hero. Reduced motion shows every page finished:
+   the engine adds nothing, and the rules at the end of this file cut every duration. */
+
+/* Cross-page transitions: a short fade, the header stays put. Progressive enhancement. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+@layer motion {
+  @media (prefers-reduced-motion: no-preference) {
+    ::view-transition-old(root) {
+      animation: vt-out 140ms ease-out both;
+    }
+    ::view-transition-new(root) {
+      animation: vt-in 300ms ease-out both;
+    }
+    ::view-transition-group(site-header) {
+      animation-duration: 0s;
+    }
+    @keyframes vt-out {
+      to {
+        opacity: 0;
+      }
+    }
+    @keyframes vt-in {
+      from {
+        opacity: 0;
+      }
+    }
+
+    /* Load sequence (hero and page intro). Plays once, with no script. */
+    .rise {
+      animation: rise 0.9s var(--ease) both;
+      animation-delay: calc(var(--d, 0) * 1ms);
+    }
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+    }
+    /* Headline and lead enter by sliding only. They are the largest text on the page and must paint at once (LCP). */
+    .rise-t {
+      animation: rise-t 0.9s var(--ease) both;
+      animation-delay: calc(var(--d, 0) * 1ms);
+    }
+    @keyframes rise-t {
+      from {
+        transform: translateY(12px);
+      }
+    }
+
+    /* The signature is written once, and the highlighter lays down on the sample sheet in the hero. */
+    .sheet-wrap[data-variant="hero"] .draw-in {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+      animation: draw-in 1.8s var(--ease-io) both;
+      animation-delay: calc(900ms + var(--i, 0) * 120ms);
+    }
+    @keyframes draw-in {
+      from {
+        stroke-dashoffset: 1;
+      }
+    }
+    .sheet-wrap[data-variant="hero"] mark {
+      animation: mark-in 0.9s var(--ease) both;
+      animation-delay: calc(0.7s + var(--i, 0) * 0.18s);
+    }
+    @keyframes mark-in {
+      from {
+        background-size: 0% 92%;
+      }
+    }
+  }
+
+  /* Blocks below the fold rise into view. The engine adds rv to a block that is not yet on screen and rv-in when it arrives,
+     then removes both. A block that is on screen when the page opens is never touched. */
+  .rv {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s var(--ease), transform 0.9s var(--ease);
+  }
+  .rv.rv-in {
+    opacity: 1;
+    transform: none;
+  }
+  /* The accent rule under a heading draws as the heading arrives */
+  .rule-draw {
+    position: relative;
+    padding-bottom: var(--s-4);
+  }
+  .rule-draw::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: min(100%, 4rem);
+    height: 2px;
+    border-radius: 2px;
+    background: var(--accent);
+    transform-origin: left;
+    transition: transform 0.9s var(--ease) 0.25s;
+  }
+  .rv:not(.rv-in) .rule-draw::after {
+    transform: scaleX(0);
+  }
+
+  @media print {
+    .rv {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-delay: 0ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

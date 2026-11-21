@@ -1,0 +1,77 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[build.processing]
+  skip_processing = true      # no post-build rewriting of HTML or JS, which would change the inline script hashes
+
+[[redirects]]
+  from = "/services/"
+  to = "/process-serving/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/process-serving/"
+  to = "/process-serving/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/court-services/"
+  to = "/court-filing/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/corporate-search/"
+  to = "/corporate-search/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/areas/"
+  to = "/coverage/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/for-us-law-firms/"
+  to = "/out-of-province-and-us/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact/"
+  to = "/request-service/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/thank-you/"
+  to = "/request-service/received/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

@@ -1,0 +1,169 @@
+{
+  "note": "Schematic network of the 15 communities. Not to scale. Lines mean service network, not driving routes. Reproduced from design/direction-specimen.html. Water labels added 2026-11-16 to match the four reference points on the current coverage map.",
+  "viewBox": "0 0 1000 620",
+  "water": [
+    {
+      "id": "burrard-inlet",
+      "d": "M-90 205 C120 218 200 206 300 200 C380 194 440 176 500 168"
+    },
+    {
+      "id": "fraser-river",
+      "d": "M1000 305 C900 335 780 335 700 345 C620 355 560 335 480 345 C400 355 330 372 300 402 C270 430 150 440 -90 420"
+    }
+  ],
+  "lines": [
+    "M130 110 H210 L250 150 V270",
+    "M250 270 H400 L480 350 L570 440 H760 L790 470",
+    "M400 270 L500 170 H540 L610 240 H650 L690 280 H800 L860 220",
+    "M250 270 V400 L350 500",
+    "M570 440 V470 L650 550"
+  ],
+  "nodes": [
+    {
+      "name": "West Vancouver",
+      "x": 130,
+      "y": 110,
+      "labelDx": 0,
+      "labelDy": -22,
+      "labelAnchor": "middle"
+    },
+    {
+      "name": "North Vancouver",
+      "x": 250,
+      "y": 150,
+      "labelDx": 20,
+      "labelDy": 5,
+      "labelAnchor": "start"
+    },
+    {
+      "name": "Vancouver",
+      "x": 250,
+      "y": 270,
+      "labelDx": -20,
+      "labelDy": 5,
+      "labelAnchor": "end"
+    },
+    {
+      "name": "Burnaby",
+      "x": 400,
+      "y": 270,
+      "labelDx": -14,
+      "labelDy": 34,
+      "labelAnchor": "end"
+    },
+    {
+      "name": "New Westminster",
+      "x": 480,
+      "y": 350,
+      "labelDx": -20,
+      "labelDy": 5,
+      "labelAnchor": "end"
+    },
+    {
+      "name": "Port Moody",
+      "x": 500,
+      "y": 170,
+      "labelDx": 0,
+      "labelDy": -22,
+      "labelAnchor": "middle"
+    },
+    {
+      "name": "Coquitlam",
+      "x": 610,
+      "y": 240,
+      "labelDx": 14,
+      "labelDy": -16,
+      "labelAnchor": "start"
+    },
+    {
+      "name": "Port Coquitlam",
+      "x": 690,
+      "y": 280,
+      "labelDx": -8,
+      "labelDy": 36,
+      "labelAnchor": "end"
+    },
+    {
+      "name": "Pitt Meadows",
+      "x": 790,
+      "y": 280,
+      "labelDx": 20,
+      "labelDy": 38,
+      "labelAnchor": "start"
+    },
+    {
+      "name": "Maple Ridge",
+      "x": 860,
+      "y": 220,
+      "labelDx": 0,
+      "labelDy": -22,
+      "labelAnchor": "middle"
+    },
+    {
+      "name": "Richmond",
+      "x": 250,
+      "y": 400,
+      "labelDx": -20,
+      "labelDy": 5,
+      "labelAnchor": "end"
+    },
+    {
+      "name": "Delta",
+      "x": 350,
+      "y": 500,
+      "labelDx": 20,
+      "labelDy": 5,
+      "labelAnchor": "start"
+    },
+    {
+      "name": "Surrey",
+      "x": 570,
+      "y": 440,
+      "labelDx": -20,
+      "labelDy": 5,
+      "labelAnchor": "end"
+    },
+    {
+      "name": "White Rock",
+      "x": 650,
+      "y": 550,
+      "labelDx": 20,
+      "labelDy": 5,
+      "labelAnchor": "start"
+    },
+    {
+      "name": "Langley",
+      "x": 790,
+      "y": 470,
+      "labelDx": 20,
+      "labelDy": 5,
+      "labelAnchor": "start"
+    }
+  ],
+  "waterLabels": [
+    {
+      "text": "Strait of Georgia",
+      "x": 28,
+      "y": 44,
+      "anchor": "start"
+    },
+    {
+      "text": "Burrard Inlet",
+      "x": 330,
+      "y": 186,
+      "anchor": "start"
+    },
+    {
+      "text": "Fraser River",
+      "x": 600,
+      "y": 372,
+      "anchor": "middle"
+    },
+    {
+      "text": "Boundary Bay",
+      "x": 470,
+      "y": 590,
+      "anchor": "middle"
+    }
+  ]
+}

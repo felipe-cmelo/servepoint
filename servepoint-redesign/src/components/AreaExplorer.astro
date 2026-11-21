@@ -1,0 +1,207 @@
+---
+/**
+ * Area explorer (docs/15 section 5): type a neighbourhood or city to check coverage, or use the route map or the list of 15
+ * communities. The combobox, the map, the list and the panels share one selection. Every community panel is in the HTML,
+ * so the content works without script. Nodes are keyboard operable. No external map service, no boundary data.
+ */
+import { getCollection } from "astro:content";
+import map from "../data/coverage-map.json";
+import Icon from "./Icon.astro";
+import { communities } from "../data/coverage";
+import { site } from "../data/site";
+
+interface Props {
+  initial?: string;
+  idp?: string;
+}
+const { initial = "vancouver", idp = "area" } = Astro.props;
+const published = new Set((await getCollection("coverage")).filter((c) => c.data.published).map((c) => c.data.slug));
+const bySlug = new Map(communities.map((c) => [c.name, c]));
+const courthouses = "https://www2.gov.bc.ca/gov/content/justice/courthouse-services/courthouse-locations";
+const data = communities.flatMap((c) => [
+  { n: c.name, c: c.slug, cn: c.name, k: "city" },
+  ...c.neighbourhoods.map((h) => ({ n: h, c: c.slug, cn: c.name, k: "hood" })),
+]);
+---
+
+<div class="area-grid" data-area>
+  <div class="area-tool card">
+    <div class="field" data-js>
+      <label for={`${idp}-q`}>Check an area</label>
+      <div class="combo">
+        <Icon name="search" />
+        <input
+          class="input"
+          id={`${idp}-q`}
+          type="text"
+          role="combobox"
+          aria-expanded="false"
+          aria-controls={`${idp}-list`}
+          aria-autocomplete="list"
+          placeholder="Neighbourhood or city"
+          autocomplete="off"
+          data-q
+        />
+        <div class="combo-list" id={`${idp}-list`} role="listbox" aria-label="Matching areas" hidden data-list></div>
+      </div>
+    </div>
+    <p class="area-status" role="status" data-status>
+      Choose a community, or type a neighbourhood.
+    </p>
+
+    <ul class="chips chips-scroll" aria-label="Communities we serve" data-area-chips>
+      {communities.map((c) => <li><button class="chip" type="button" aria-pressed={c.slug === initial ? "true" : "false"} data-c={c.slug}>{c.name}</button></li>)}
+    </ul>
+
+    <div class="cpanels" aria-live="polite">
+      {communities.map((c) => (
+        <div class:list={["cpanel", { on: c.slug === initial }]} data-c={c.slug}>
+          <h3>{c.name}</h3>
+          <ul class="hoods" aria-label={`Neighbourhoods in ${c.name}`} data-clip="8">
+            {c.neighbourhoods.map((h) => <li data-h={h.toLowerCase()}>{h}</li>)}
+          </ul>
+          {published.has(c.slug)
+            ? <p class="muted" style="font-size:var(--fs-sm)">Courts and access notes: <a href={`/coverage/${c.slug}/`}>Process server in {c.name}</a>.</p>
+            : <p class="muted" style="font-size:var(--fs-sm)">Nearest courts: see the <a href={courthouses}>BC courthouse locations</a>.</p>}
+          <p style="margin-top:var(--s-3)"><a class="go" href={`${site.actions.primaryPath}?city=${c.slug}&service=process-serving`}>Request service in {c.name} <Icon name="arrow-right" /></a></p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="map-card card" id={`${idp}-map-wrap`} data-map-wrap>
+    <svg id="map" viewBox={map.viewBox} role="group" aria-label="Schematic map of the 15 communities we serve. Not to scale." data-draw>
+      {map.water.map((w) => <path class="water" d={w.d} />)}
+      {map.waterLabels.map((w) => <text class="wl" x={w.x} y={w.y} text-anchor={w.anchor} aria-hidden="true">{w.text}</text>)}
+      <g class="lines">{map.lines.map((d, i) => <path pathLength="1" style={`--i:${i}`} d={d} />)}</g>
+      <g class="nodes">
+        {map.nodes.map((n) => {
+          const c = bySlug.get(n.name)!;
+          return (
+            <g class="node" style={`--t:${c.t.toFixed(2)}`} data-c={c.slug} tabindex="0" role="button" aria-pressed="false" aria-label={n.name}>
+              <circle class="hit" cx={n.x} cy={n.y} r="26" />
+              <circle class="dot" cx={n.x} cy={n.y} r="10" />
+              <text class="lbl" x={n.x + n.labelDx} y={n.y + n.labelDy} text-anchor={n.labelAnchor}>{n.name}</text>
+            </g>
+          );
+        })}
+      </g>
+    </svg>
+    <p class="map-note">Schematic, not to scale.</p>
+  </div>
+</div>
+
+<script type="application/json" id={`${idp}-data`} set:html={JSON.stringify(data)} />
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-area]").forEach((root) => {
+    const scope = root.parentElement!;
+    const data: { n: string; c: string; cn: string; k: string }[] = JSON.parse(scope.querySelector<HTMLScriptElement>("script[type='application/json']")!.textContent || "[]");
+    const input = root.querySelector<HTMLInputElement>("[data-q]")!;
+    const list = root.querySelector<HTMLElement>("[data-list]")!;
+    const status = root.querySelector<HTMLElement>("[data-status]")!;
+    const nodes = Array.from(root.querySelectorAll<SVGGElement>(".node"));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>(".cpanel"));
+    const chips = Array.from(scope.querySelectorAll<HTMLButtonElement>("[data-area-chips] button"));
+    let shown: typeof data = [];
+    let active = -1;
+
+    const pick = (slug: string, hood?: string) => {
+      nodes.forEach((g) => g.setAttribute("aria-pressed", String(g.dataset.c === slug)));
+      chips.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.c === slug)));
+      panels.forEach((p) => {
+        p.classList.toggle("on", p.dataset.c === slug);
+        p.querySelectorAll<HTMLElement>("li[data-h]").forEach((li) => li.classList.toggle("hit", Boolean(hood) && li.dataset.h === hood!.toLowerCase()));
+      });
+    };
+    const closeList = () => {
+      list.hidden = true;
+      input.setAttribute("aria-expanded", "false");
+      input.removeAttribute("aria-activedescendant");
+      active = -1;
+    };
+    const choose = (it: (typeof data)[number]) => {
+      pick(it.c, it.k === "hood" ? it.n : undefined);
+      input.value = it.n;
+      status.classList.remove("miss");
+      status.innerHTML = "";
+      const strong = document.createElement("strong");
+      strong.textContent = it.k === "hood" ? `Covered: ${it.n}, ${it.cn}.` : `Covered: ${it.cn}.`;
+      status.append(strong);
+      closeList();
+    };
+    const render = () => {
+      const q = input.value.trim().toLowerCase();
+      if (q.length < 2) {
+        closeList();
+        return;
+      }
+      shown = data
+        .filter((d) => d.n.toLowerCase().includes(q) || d.cn.toLowerCase().includes(q))
+        .sort((a, b) => Number(b.n.toLowerCase().startsWith(q)) - Number(a.n.toLowerCase().startsWith(q)) || (a.k === "city" ? -1 : 1))
+        .slice(0, 8);
+      list.innerHTML = "";
+      if (!shown.length) {
+        closeList();
+        status.classList.add("miss");
+        status.textContent = "Not on the list? Send the address and we confirm the same business day.";
+        return;
+      }
+      shown.forEach((it, i) => {
+        const el = document.createElement("div");
+        el.className = "combo-item";
+        el.id = `${input.id}-o${i}`;
+        el.setAttribute("role", "option");
+        el.setAttribute("aria-selected", "false");
+        const a = document.createElement("span");
+        a.textContent = it.n;
+        const b = document.createElement("span");
+        b.className = "sub";
+        b.textContent = it.k === "hood" ? it.cn : "Community";
+        el.append(a, b);
+        el.addEventListener("mousedown", (e) => {
+          e.preventDefault();
+          choose(it);
+        });
+        list.appendChild(el);
+      });
+      list.hidden = false;
+      input.setAttribute("aria-expanded", "true");
+      mark(0);
+    };
+    const mark = (i: number) => {
+      active = (i + shown.length) % shown.length;
+      list.querySelectorAll(".combo-item").forEach((el, j) => el.setAttribute("aria-selected", String(j === active)));
+      input.setAttribute("aria-activedescendant", `${input.id}-o${active}`);
+    };
+    input.addEventListener("input", render);
+    input.addEventListener("blur", () => setTimeout(closeList, 120));
+    input.addEventListener("keydown", (e) => {
+      if (list.hidden) return;
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        mark(active + 1);
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        mark(active - 1);
+      } else if (e.key === "Enter" && active >= 0) {
+        e.preventDefault();
+        choose(shown[active]);
+      } else if (e.key === "Escape") {
+        closeList();
+      }
+    });
+    nodes.forEach((g) => {
+      g.addEventListener("click", () => pick(g.dataset.c!));
+      g.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          pick(g.dataset.c!);
+        }
+      });
+    });
+    chips.forEach((b) => b.addEventListener("click", () => pick(b.dataset.c!)));
+    const start = new URLSearchParams(location.search).get("area") ?? root.querySelector<HTMLElement>(".cpanel.on")?.dataset.c;
+    if (start) pick(start);
+  });
+</script>

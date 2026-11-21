@@ -1,0 +1,106 @@
+---
+/** Pricing (docs/pages/pricing.md). Copy: content/pricing.md. Data: src/data/pricing.ts. Layout: docs/15. */
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import PageHero from "../components/PageHero.astro";
+import PriceExplorer from "../components/PriceExplorer.astro";
+import FaqList from "../components/FaqList.astro";
+import InstructBand from "../components/InstructBand.astro";
+import { site } from "../data/site";
+import { services, extras, extraAmount, coverageLine } from "../data/pricing";
+import { faqsFor } from "../data/faqs";
+import { faqPage, breadcrumbs } from "../data/schema";
+
+const faqs = faqsFor("pricing", ["pricing", "fails"]);
+---
+
+<Base
+  title="Process server pricing in Vancouver, BC | ServePoint"
+  description="Service starts from $168 and includes up to 3 attempts and a sworn affidavit. See what is included and what changes the price."
+  path="/pricing/"
+  schema={[breadcrumbs([{ name: "Home", path: "/" }, { name: "Pricing", path: "/pricing/" }]), faqPage(faqs)]}
+>
+  <PageHero
+    h1="Pricing for process serving, court filing and corporate search"
+    lead="Each service starts from $168. Pricing is confirmed before service."
+    crumbs={[{ name: "Pricing" }]}
+  />
+
+  <section class="section theme-dark" id="explorer" aria-labelledby="exp-h">
+    <div class="wrap-wide grid-2">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="exp-h" class="rule-draw">Each service starts from</h2>
+        <p class="figure" aria-label={`${site.basePrice.amount} dollars`}>${site.basePrice.amount}<span class="cur">{site.basePrice.currency}</span></p>
+        <p class="m-hide" style="max-width:28rem">Choose a service and an urgency to see what is included.</p>
+      </div>
+      <PriceExplorer idp="pp-px" />
+    </div>
+  </section>
+
+  <section class="section theme-light theme-paper" id="included" aria-labelledby="inc-h">
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <h2 id="inc-h" class="rule-draw">Starting prices and what is included</h2>
+        <p>{coverageLine}</p>
+      </div>
+      <div class="table-wrap">
+        <table class="stack-table">
+          <caption class="sr-only">Starting prices and what is included</caption>
+          <thead><tr><th scope="col">Service</th><th scope="col">Starts at</th><th scope="col">Included</th></tr></thead>
+          <tbody>
+            {services.map((s) => (
+              <tr><th scope="row">{s.name}</th><td data-l="Starts at">${s.from}</td><td data-l="Included">{s.included}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-light" id="changes" aria-labelledby="changes-h">
+    <div class="wrap-wide grid-2 grid-split-r">
+      <div class="stack" style="--stack:var(--s-5)">
+        <h2 id="changes-h" class="rule-draw">What changes the price</h2>
+        <p class="lead-text">Rush, travel and special requests may add to the price. Amounts are confirmed before service.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="stack-table">
+          <caption class="sr-only">Extras and their amounts</caption>
+          <thead><tr><th scope="col">What</th><th scope="col">Amount</th></tr></thead>
+          <tbody>
+            {extras.map((e) => <tr><th scope="row">{e.name}</th><td data-l="Amount">{extraAmount(e)}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-light theme-paper" id="who-pays-less" aria-label="Preferred pricing and the community rate">
+    <div class="wrap-wide grid-2 even">
+      <div class="card stack">
+        <h2 style="font-size:var(--fs-h3)">Law firms and high-volume clients</h2>
+        <p>Preferred pricing is available to law firms and clients who instruct us regularly.</p>
+        <p><a class="btn" href="/request-service/?topic=preferred-pricing">Ask about preferred pricing <Icon name="arrow-right" class="icon-go" /></a></p>
+      </div>
+      <div class="card stack">
+        <h2 style="font-size:var(--fs-h3)">Legal clinics and community organizations</h2>
+        <p>Discounted rates for free legal clinics and community organizations that support access to justice.</p>
+        <p><a class="btn btn-secondary" href="/request-service/?topic=community-rate">Ask about the community rate <Icon name="arrow-right" class="icon-go" /></a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section theme-light" id="quote" aria-labelledby="quote-h">
+    <div class="wrap-wide grid-2 grid-split-r">
+      <h2 id="quote-h" class="rule-draw">How a quote works</h2>
+      <ol class="seq">
+        <li>Send the service, the documents, the deadline and your instructions.</li>
+        <li>We confirm availability, price and next steps.</li>
+        <li>Pricing is confirmed before service.</li>
+      </ol>
+    </div>
+  </section>
+
+  <FaqList items={faqs} />
+  <InstructBand lead="Send the service, the documents and the deadline. We confirm availability, price and next steps." />
+</Base>

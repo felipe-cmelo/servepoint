@@ -1,0 +1,67 @@
+---
+/**
+ * Document finder (docs/06 section 7.6, restyled for docs/15): type a document or choose one of six categories.
+ * All six panels are in the HTML. Script shows one at a time, so the content works without script.
+ */
+import { docCategories } from "../data/documents";
+import { site } from "../data/site";
+
+interface Props {
+  id?: string;
+}
+const { id = "finder" } = Astro.props;
+---
+
+<div class="finder" data-finder>
+  <label class="label" for={`${id}-q`}>What are you serving?</label>
+  <input class="input" id={`${id}-q`} type="search" placeholder="Try: subpoena, demand letter, notice to end tenancy" autocomplete="off" data-q />
+  <div class="chips chips-scroll" role="group" aria-label="Document categories" style="margin-top:var(--s-3)">
+    {docCategories.map((c, i) => (
+      <button class="chip" type="button" aria-pressed={i === 0 ? "true" : "false"} data-k={c.key}>{c.name}</button>
+    ))}
+  </div>
+  <div class="panels" aria-live="polite">
+    {docCategories.map((c, i) => (
+      <div class:list={["panel", { on: i === 0 }]} data-k={c.key}>
+        <p class="panel-title">{c.name}</p>
+        <p><strong>Common documents:</strong> {c.documents}</p>
+        <p><strong>What to send:</strong> {c.send}</p>
+      </div>
+    ))}
+    <div class="panel" data-k="none" hidden>
+      <p class="panel-title">Not on the list?</p>
+      <p>Choose Not sure, please advise on the request form, or <a href={`${site.actions.primaryPath}?service=not-sure`}>describe the document there</a>.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { docCategories } from "../data/documents";
+  document.querySelectorAll<HTMLElement>("[data-finder]").forEach((root) => {
+    const input = root.querySelector<HTMLInputElement>("[data-q]")!;
+    const chips = Array.from(root.querySelectorAll<HTMLButtonElement>(".chip"));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>(".panel"));
+    const set = (k: string | null) => {
+      chips.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.k === k)));
+      const key = k ?? "none";
+      panels.forEach((p) => {
+        const on = p.dataset.k === key;
+        p.classList.toggle("on", on);
+        p.hidden = !on;
+      });
+    };
+    chips.forEach((b) =>
+      b.addEventListener("click", () => {
+        input.value = "";
+        set(b.dataset.k ?? null);
+      })
+    );
+    input.addEventListener("input", () => {
+      const q = input.value.trim().toLowerCase();
+      if (!q) return set(docCategories[0].key);
+      const hit = docCategories.find((c) => c.words.some((w) => w.startsWith(q) || q.includes(w)));
+      set(hit ? hit.key : null);
+    });
+    set(docCategories[0].key);
+  });
+</script>
